@@ -6,8 +6,8 @@ import { DefaultLayout } from '~/layouts';
 import { publicRoutes } from '~/routes';
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
         <Routes>
           {
             publicRoutes.map((route, index) => {
@@ -30,8 +30,8 @@ function App() {
             })}
           <Route path="*" element={<span>Error Page</span>} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
