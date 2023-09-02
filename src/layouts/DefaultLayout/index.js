@@ -12,7 +12,7 @@ function DefaultLayout({ children }) {
     return (
         <div className={cx('wrapper')}>
             <Header />
-            <main className={cx('container')}>
+            <main className={cx('content container-fluid px-0')}>
                 <Filter />
                 {children}
             </main>

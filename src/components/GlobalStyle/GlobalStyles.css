@@ -31,6 +31,10 @@ textarea {
     font-family: inherit;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Fonts emmbeded */
 @font-face {
     font-family: NikeTG;
