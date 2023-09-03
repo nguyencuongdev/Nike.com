@@ -10,21 +10,18 @@ const cx = classnames.bind(styles);
 function DropdownMenu({ data }, ref) {
     const dropDownRef = useRef(null);
 
-    const className = cx('dropdown-menu', 'h-100', 'hidden', {
+    const className = cx('dropdown-menu', 'hidden', {
     })
 
     useImperativeHandle(ref, () => {
         return {
-            onShow: () => {
-                dropDownRef.current.classList.remove(styles.hidden);
-            },
-            onHidden: () => {
-                dropDownRef.current.classList.add(styles.hidden);
-            }
+            onShow: () => dropDownRef.current.classList.remove(styles.hidden),
+            onHidden: () => dropDownRef.current.classList.add(styles.hidden)
         }
     }, []);
 
-    function handleHidden() {
+    function handleHidden(e) {
+        e.stopPropagation();
         dropDownRef.current.classList.add(styles.hidden);
     }
 
@@ -34,14 +31,18 @@ function DropdownMenu({ data }, ref) {
 
     return (
         <div className={className} ref={dropDownRef}
-            onMouseOut={handleHidden}
             onMouseOver={handleShow}
         >
-            <PropperWrapper container>
-                {data.map((menu, index) => {
-                    return <Menu title={menu.title} menuItems={menu.children} key={index} />
-                })}
-            </PropperWrapper>
+            <div className={cx('dropdown-body')}>
+                <PropperWrapper>
+                    {data && data.map((menu, index) => {
+                        return <Menu title={menu.title} menuItems={menu.children} key={index} />
+                    })}
+                </PropperWrapper>
+            </div>
+            <div className={cx('dropdown-overlay')}
+                onMouseOver={handleHidden}
+            ></div>
         </div>
     )
 }

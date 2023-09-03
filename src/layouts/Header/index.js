@@ -1,5 +1,5 @@
 import { Nav, Navbar } from 'react-bootstrap';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
@@ -8,29 +8,7 @@ import DropdownMenu from '~/components/Dropdown';
 import styles from './Header.module.css';
 const cx = classnames.bind(styles);
 
-const NAVIGATION_ITEM = [
-    {
-        title: 'New & Featured',
-        url: '#',
-    },
-    {
-        title: 'Men',
-        url: '/men'
-    },
-    {
-        title: 'Women',
-        url: '/woman'
-    },
-    {
-        title: 'Kids',
-        url: '/kids'
-    },
-    {
-        title: 'Sale',
-        url: '/sale'
-    },
-]
-const DROPDOWN_MENU = {
+const DROPDOWN_MENU_NEW_FEARTURED = {
     children: [
         {
             title: 'New & Featured',
@@ -160,7 +138,475 @@ const DROPDOWN_MENU = {
     ]
 }
 
+const DROPDOWN_MENU_MEN = {
+    children: [
+        {
+            title: 'Featured',
+            children: [
+                {
+                    title: 'New Releases',
+                    url: '/new/men'
+                },
+                {
+                    title: 'Bestsellers',
+                    url: '/new/men/bestsellers'
+                },
+                {
+                    title: 'Member Exclusive',
+                    url: '/member-access/men/'
+                },
+                {
+                    title: 'Jordan',
+                    url: '/men/jordan'
+                },
+                {
+                    title: 'Retro Running',
+                    url: '/men/retro-running'
+                },
+                {
+                    title: 'National Team Kits',
+                    url: '/men/football'
+                },
+                {
+                    title: 'Sale',
+                    url: '/men/sale'
+                }
+            ]
+        },
+        {
+            title: 'Shoes',
+            children: [
+                {
+                    title: 'All Shoes',
+                    url: '/men/shoes'
+                },
+                {
+                    title: 'Newest Sneakers',
+                    url: '/men/shoes/sneakers'
+                },
+                {
+                    title: 'Lifestyle',
+                    url: '/men/shoes/lifestyle'
+                },
+                {
+                    title: 'Jordan',
+                    url: '/men/shoes/jordan'
+                },
+                {
+                    title: 'Running',
+                    url: '/men/shoes/running'
+                },
+                {
+                    title: 'Basketball',
+                    url: '/men/shoes/basketball'
+                },
+                {
+                    title: 'Football',
+                    url: '/men/shoes/football'
+                },
+                {
+                    title: 'Basketball',
+                    url: '/men/shoes/basketball'
+                },
+                {
+                    title: 'Sandals',
+                    url: '/men/sandals'
+                },
+                {
+                    title: 'Top Kicks Under 3,000,000₫',
+                    url: '/men/shoes/lowprice'
+                }
+            ]
+        },
+        {
+            title: 'Clothing',
+            children: [
+                {
+                    title: 'All Clothing',
+                    url: '/men/clothing'
+                },
+                {
+                    title: 'Tops and T-Shirts',
+                    url: '/men/clothing/tshirts'
+                },
+                {
+                    title: 'Shorts',
+                    url: '/men/clothing/shorts'
+                },
+                {
+                    title: 'Pants and Leggings',
+                    url: '/men/clothing/trousers-tights'
+                },
+                {
+                    title: 'Hoodies and Sweatshirts',
+                    url: '/men/clothing/hooodies-sewatshirts'
+                },
+                {
+                    title: 'Jackets and Gilets',
+                    url: '/men/clothing/jackets-gilets'
+                },
+                {
+                    title: 'Jerseys and Kits',
+                    url: '/men/clothing/jerseys-kits'
+                },
+                {
+                    title: 'Jordan',
+                    url: '/men/clothing/jordan'
+                },
+            ]
+        },
+        {
+            title: 'Shop By Sport',
+            children: [
+                {
+                    title: 'Running',
+                    url: '/shop-sports/running'
+                },
+                {
+                    title: 'Football',
+                    url: '/shop-sports/football'
+                },
+                {
+                    title: 'Basketball',
+                    url: '/shop-sports/basketball'
+                },
+                {
+                    title: 'Yoga',
+                    url: '/shop-sports/yoga'
+                },
+                {
+                    title: 'Skateboarding',
+                    url: '/shop-sports/skateboarding'
+                },
+                {
+                    title: 'Tennis',
+                    url: '/shop-sports/tennis'
+                },
+                {
+                    title: 'Golf',
+                    url: '/shop-sports/golf'
+                },
+            ]
+        },
+        {
+            title: 'Accessories and Equipment',
+            children: [
+                {
+                    title: 'All Accessories and Equipment',
+                    url: '/men/accessories'
+                },
+                {
+                    title: 'Bags and Backpacks',
+                    url: '/men/accessories/bags-backpacks'
+                },
+                {
+                    title: 'Socks',
+                    url: '/men/accessories/socks'
+                },
+                {
+                    title: 'Hats and Headwear',
+                    url: '/men/accessories/hats-headwear'
+                },
+            ]
+        },
+        {
+            title: 'Shop By Brand',
+            children: [
+                {
+                    title: 'Nike',
+                    url: '/shopbybrand/nike'
+                },
+                {
+                    title: 'Jordan',
+                    url: '/shopbybrand/jordan'
+                },
+            ]
+        }
+    ]
+}
+
+const DROPDOWN_MENU_WOMEN = {
+    children: [
+        {
+            title: 'Featured',
+            children: [
+                {
+                    title: 'New Releases',
+                    url: '/new/men'
+                },
+                {
+                    title: 'Bestsellers',
+                    url: '/new/men/bestsellers'
+                },
+                {
+                    title: 'Member Exclusive',
+                    url: '/member-access/men/'
+                },
+                {
+                    title: 'Jordan',
+                    url: '/men/jordan'
+                },
+                {
+                    title: 'Retro Running',
+                    url: '/men/retro-running'
+                },
+                {
+                    title: 'National Team Kits',
+                    url: '/men/football'
+                },
+                {
+                    title: 'Sale',
+                    url: '/men/sale'
+                }
+            ]
+        },
+        {
+            title: 'Shoes',
+            children: [
+                {
+                    title: 'All Shoes',
+                    url: '/men/shoes'
+                },
+                {
+                    title: 'Newest Sneakers',
+                    url: '/men/shoes/sneakers'
+                },
+                {
+                    title: 'Lifestyle',
+                    url: '/men/shoes/lifestyle'
+                },
+                {
+                    title: 'Jordan',
+                    url: '/men/shoes/jordan'
+                },
+                {
+                    title: 'Running',
+                    url: '/men/shoes/running'
+                },
+                {
+                    title: 'Basketball',
+                    url: '/men/shoes/basketball'
+                },
+                {
+                    title: 'Football',
+                    url: '/men/shoes/football'
+                },
+                {
+                    title: 'Basketball',
+                    url: '/men/shoes/basketball'
+                },
+                {
+                    title: 'Sandals',
+                    url: '/men/sandals'
+                },
+                {
+                    title: 'Top Kicks Under 3,000,000₫',
+                    url: '/men/shoes/lowprice'
+                }
+            ]
+        },
+        {
+            title: 'Clothing',
+            children: [
+                {
+                    title: 'All Clothing',
+                    url: '/women/clothing'
+                },
+                {
+                    title: 'Tops and T-Shirts',
+                    url: '/women/clothing/tshirts'
+                },
+                {
+                    title: 'Sports Bras',
+                    url: '/woment/clothing/sports-bras'
+                },
+                {
+                    title: 'Performance Essentials',
+                    url: '/men/clothing/performance-essentials'
+                },
+                {
+                    title: 'Pants and Leggings',
+                    url: '/women/clothing/trousers-tights'
+                },
+                {
+                    title: 'Shorts',
+                    url: '/women/clothing/shorts'
+                },
+                {
+                    title: 'Hoodies and Sweatshirts',
+                    url: '/men/clothing/hooodies-sewatshirts'
+                },
+                {
+                    title: 'Jackets and Gilets',
+                    url: '/men/clothing/jackets-gilets'
+                },
+                {
+                    title: 'Jerseys and Kits',
+                    url: '/men/clothing/jerseys-kits'
+                },
+                {
+                    title: 'Modest Wear',
+                    url: '/women/clothing/modest-wear'
+                },
+                {
+                    title: 'Jordan',
+                    url: '/men/clothing/jordan'
+                },
+            ]
+        },
+        {
+            title: 'Shop By Sport',
+            children: [
+                {
+                    title: 'Running',
+                    url: '/shop-sports/running'
+                },
+                {
+                    title: 'Football',
+                    url: '/shop-sports/football'
+                },
+                {
+                    title: 'Basketball',
+                    url: '/shop-sports/basketball'
+                },
+                {
+                    title: 'Yoga',
+                    url: '/shop-sports/yoga'
+                },
+                {
+                    title: 'Skateboarding',
+                    url: '/shop-sports/skateboarding'
+                },
+                {
+                    title: 'Tennis',
+                    url: '/shop-sports/tennis'
+                },
+                {
+                    title: 'Golf',
+                    url: '/shop-sports/golf'
+                },
+            ]
+        },
+        {
+            title: 'Accessories and Equipment',
+            children: [
+                {
+                    title: 'All Accessories and Equipment',
+                    url: '/men/accessories'
+                },
+                {
+                    title: 'Bags and Backpacks',
+                    url: '/men/accessories/bags-backpacks'
+                },
+                {
+                    title: 'Socks',
+                    url: '/men/accessories/socks'
+                },
+                {
+                    title: 'Hats and Headwear',
+                    url: '/men/accessories/hats-headwear'
+                },
+            ]
+        },
+        {
+            title: 'Shop By Brand',
+            children: [
+                {
+                    title: 'Nike',
+                    url: '/shopbybrand/nike'
+                },
+                {
+                    title: 'Jordan',
+                    url: '/shopbybrand/jordan'
+                },
+            ]
+        }
+    ]
+}
+
+const DROPDOWN_MENU_SALES = {
+    children: [
+        {
+            title: 'Featured',
+            children: [
+                {
+                    title: 'Shop All Sales',
+                    url: '/sales'
+                },
+            ]
+        },
+        {
+            title: 'Men\'s Sale',
+            children: [
+                {
+                    title: 'Shoes',
+                    url: '/sales/men/shoes'
+                },
+                {
+                    title: 'Clothing',
+                    url: '/sales/men/clothing'
+                }
+            ]
+        },
+        {
+            title: 'Women\'s Sale',
+            children: [
+                {
+                    title: 'Shoes',
+                    url: '/sales/women/shoes'
+                },
+                {
+                    title: 'Clothing',
+                    url: '/sales/women/clothing'
+                }
+            ]
+        },
+        {
+            title: 'Kid\'s Sale',
+            children: [
+                {
+                    title: 'Shoes',
+                    url: '/sales/kids/shoes'
+                },
+                {
+                    title: 'Clothing',
+                    url: '/sales/kids/clothing'
+                }
+            ]
+        }
+    ]
+}
+
+const NAVIGATION_ITEM = [
+    {
+        title: 'New & Featured',
+        url: '#',
+        dataDropdownMenu: DROPDOWN_MENU_NEW_FEARTURED,
+    },
+    {
+        title: 'Men',
+        url: '/men',
+        dataDropdownMenu: DROPDOWN_MENU_MEN,
+    },
+    {
+        title: 'Women',
+        url: '/woman',
+        dataDropdownMenu: DROPDOWN_MENU_WOMEN,
+    },
+    {
+        title: 'Kids',
+        url: '/kids'
+    },
+    {
+        title: 'Sale',
+        url: '/sale',
+        dataDropdownMenu: DROPDOWN_MENU_SALES,
+    },
+]
+
 function Header() {
+    const [dataDropdown, setDataDropdown] = useState([]);
+
     const dropdownRef = useRef(null);
 
     return (
@@ -199,21 +645,15 @@ function Header() {
                 </Link>
                 <nav className={cx('h-100', 'align-items-center')}>
                     <Nav as='ul' className={cx('h-100', 'align-items-center')}>
-                        <Nav.Item as='li' className={cx('header-center-item', 'h-100')}>
-                            <Link to='/shop'
-                                className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
-                                onMouseOver={() => dropdownRef.current.onShow()}
-                                onMouseOut={() => dropdownRef.current.onHidden()}
-                            >
-                                New & Featured
-                            </Link>
-                        </Nav.Item>
                         {NAVIGATION_ITEM.map((item, index) => {
                             return (
                                 <Nav.Item as='li' className={cx('header-center-item', 'h-100')} key={index}>
                                     <Link to={item.url}
                                         className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
-                                        onMouseOver={() => dropdownRef.current.onShow()}
+                                        onMouseOver={() => {
+                                            dropdownRef.current.onShow();
+                                            setDataDropdown(item.dataDropdownMenu);
+                                        }}
                                         onMouseOut={() => dropdownRef.current.onHidden()}
                                     >
                                         {item.title}
@@ -225,7 +665,7 @@ function Header() {
                 </nav>
                 <div className={cx('header-center-action')}></div>
             </Navbar>
-            <DropdownMenu ref={dropdownRef} data={DROPDOWN_MENU.children} />
+            <DropdownMenu ref={dropdownRef} data={dataDropdown?.children} />
             <div>Test</div>
         </header>
     )

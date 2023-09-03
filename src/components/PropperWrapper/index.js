@@ -4,10 +4,9 @@ import styles from './Propper.module.css';
 
 const cx = classnames.bind(styles);
 function ProppWrapper(
-    { children, container }
+    { children }
 ) {
     const className = cx('wrapper', {
-        container
     })
     return (
         <div className={className}>
