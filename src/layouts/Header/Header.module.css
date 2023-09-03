@@ -73,9 +73,10 @@
 }
 
 .header-center-link {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     color: #111;
     padding: 12px;
+    font-weight: 500;
     border-bottom: 2px solid transparent;
 }
 

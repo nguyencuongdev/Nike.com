@@ -3,10 +3,162 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
-import Dropdown from '~/components/Dropdown';
+import DropdownMenu from '~/components/Dropdown';
 
 import styles from './Header.module.css';
 const cx = classnames.bind(styles);
+
+const NAVIGATION_ITEM = [
+    {
+        title: 'New & Featured',
+        url: '#',
+    },
+    {
+        title: 'Men',
+        url: '/men'
+    },
+    {
+        title: 'Women',
+        url: '/woman'
+    },
+    {
+        title: 'Kids',
+        url: '/kids'
+    },
+    {
+        title: 'Sale',
+        url: '/sale'
+    },
+]
+const DROPDOWN_MENU = {
+    children: [
+        {
+            title: 'New & Featured',
+            children: [
+                {
+                    title: 'New Arrivals',
+                    url: '/newArrivals',
+                },
+                {
+                    title: 'Lastest Shoes',
+                    url: '/newShoes',
+                },
+                {
+                    title: 'Lastest Clothing',
+                    url: '/newClothing',
+                },
+                {
+                    title: 'Bestsellers',
+                    url: '/bestsellers',
+                },
+                {
+                    title: 'Member Exclusive',
+                    url: '/member-access',
+                },
+                {
+                    title: 'National Team Kits',
+                    url: '/football',
+                },
+                {
+                    title: 'Top Kicks Under 3,000,000₫',
+                    url: '/lower-price',
+                },
+            ]
+        },
+        {
+            title: 'Shop Icons',
+            children: [
+                {
+                    title: 'Air Force 1',
+                    url: '/air-force-1/shoes',
+                },
+                {
+                    title: 'Air Jordan 1',
+                    url: '/jordan-1/shoes',
+                },
+                {
+                    title: 'Air Max',
+                    url: '/air-max/shoes',
+                },
+                {
+                    title: 'Dunk',
+                    url: '/dunk/shoes',
+                },
+                {
+                    title: 'Blazer',
+                    url: '/blazer/shoes',
+                },
+                {
+                    title: 'Pegasus',
+                    url: '/pegasus/shoes',
+                },
+            ]
+        },
+        {
+            title: 'New for Men',
+            children: [
+                {
+                    title: 'Shoes',
+                    url: '/new/men/shoes',
+                },
+                {
+                    title: 'Clothing',
+                    url: '/new/men/clothing',
+                },
+                {
+                    title: 'Accessories',
+                    url: '/new/men/accessories',
+                },
+                {
+                    title: 'Shop All New',
+                    url: '/new/men/',
+                }
+            ]
+        },
+        {
+            title: 'New for Women',
+            children: [
+                {
+                    title: 'Shoes',
+                    url: '/new/women/shoes',
+                },
+                {
+                    title: 'Clothing',
+                    url: '/new/women/clothing',
+                },
+                {
+                    title: 'Accessories',
+                    url: '/new/women/accessories',
+                },
+                {
+                    title: 'Shop All New',
+                    url: '/new/women/',
+                }
+            ]
+        },
+        {
+            title: 'New for Kids',
+            children: [
+                {
+                    title: 'Shoes',
+                    url: '/new/kids/shoes',
+                },
+                {
+                    title: 'Clothing',
+                    url: '/new/kids/clothing',
+                },
+                {
+                    title: 'Accessories',
+                    url: '/new/kids/accessories',
+                },
+                {
+                    title: 'Shop All New',
+                    url: '/new/kids/',
+                }
+            ]
+        },
+    ]
+}
 
 function Header() {
     const dropdownRef = useRef(null);
@@ -45,9 +197,9 @@ function Header() {
                         </path>
                     </svg>
                 </Link>
-                <Nav className={cx('h-100', 'align-items-center')}>
+                <nav className={cx('h-100', 'align-items-center')}>
                     <Nav as='ul' className={cx('h-100', 'align-items-center')}>
-                        <Nav.Item as='li' className={cx('header-top-item', 'h-100')}>
+                        <Nav.Item as='li' className={cx('header-center-item', 'h-100')}>
                             <Link to='/shop'
                                 className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
                                 onMouseOver={() => dropdownRef.current.onShow()}
@@ -56,46 +208,24 @@ function Header() {
                                 New & Featured
                             </Link>
                         </Nav.Item>
-                        <Nav.Item as='li' className={cx('header-top-item', 'h-100')}>
-                            <Link to='/shop'
-                                className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
-                            >
-                                Men
-                            </Link>
-                        </Nav.Item>
-                        <Nav.Item as='li' className={cx('header-top-item', 'h-100')}>
-                            <Link to='/shop'
-                                className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
-                            >
-                                Women
-                            </Link>
-                        </Nav.Item>
-                        <Nav.Item as='li' className={cx('header-top-item', 'h-100')}>
-                            <Link to='/shop'
-                                className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
-                            >
-                                Kids
-                            </Link>
-                        </Nav.Item>
-                        <Nav.Item as='li' className={cx('header-top-item', 'h-100')}>
-                            <Link to='/shop'
-                                className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
-                            >
-                                Sale
-                            </Link>
-                        </Nav.Item>
-                        <Nav.Item as='li' className={cx('header-top-item', 'h-100')}>
-                            <Link to='/shop'
-                                className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
-                            >
-                                SNKRS
-                            </Link>
-                        </Nav.Item>
+                        {NAVIGATION_ITEM.map((item, index) => {
+                            return (
+                                <Nav.Item as='li' className={cx('header-center-item', 'h-100')} key={index}>
+                                    <Link to={item.url}
+                                        className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
+                                        onMouseOver={() => dropdownRef.current.onShow()}
+                                        onMouseOut={() => dropdownRef.current.onHidden()}
+                                    >
+                                        {item.title}
+                                    </Link>
+                                </Nav.Item>
+                            )
+                        })}
                     </Nav>
-                </Nav>
+                </nav>
                 <div className={cx('header-center-action')}></div>
             </Navbar>
-            <Dropdown ref={dropdownRef} />
+            <DropdownMenu ref={dropdownRef} data={DROPDOWN_MENU.children} />
             <div>Test</div>
         </header>
     )
