@@ -1,10 +1,10 @@
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, Carousel } from 'react-bootstrap';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
 import DropdownMenu from '~/components/Dropdown';
-
+import { SearchIcon, HeartIcon, CartIcon } from '~/components/Icon';
 import styles from './Header.module.css';
 const cx = classnames.bind(styles);
 
@@ -34,7 +34,7 @@ const DROPDOWN_MENU_NEW_FEARTURED = {
                     url: '/member-access',
                 },
                 {
-                    title: 'National Team Kits',
+                    title: 'Natioval Team Kits',
                     url: '/football',
                 },
                 {
@@ -606,13 +606,14 @@ const NAVIGATION_ITEM = [
 
 function Header() {
     const [dataDropdown, setDataDropdown] = useState([]);
+    const [searchValue, setSearchValue] = useState('');
 
     const dropdownRef = useRef(null);
 
     return (
         <header className={cx('header')}>
             <Navbar
-                className={cx('header-top', 'justify-content-between', 'align-items-center')} bg='light' expand="xl"
+                className={cx('header-top', 'justify-content-between', 'align-items-center')} bg='light'
             >
                 <Link to='/' className={cx('navbar-brand', 'header-top-brand')}>
                     <svg height="24px" width="24px" fill="#111" viewBox="0 0 26 32">
@@ -636,15 +637,15 @@ function Header() {
                     </Nav.Item>
                 </Nav>
             </Navbar>
-            <Navbar className={cx('header-center', 'justify-content-between')} expand="xl">
+            <Navbar className={cx('header-center', 'justify-content-between')}>
                 <Link to='/' className={cx('navbar-brand', 'header-center-brand')}>
                     <svg aria-hidden="true" className="pre-logo-svg" focusable="false" viewBox="0 0 24 24" role="img">
                         <path fill="currentColor" d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z">
                         </path>
                     </svg>
                 </Link>
-                <nav className={cx('h-100', 'align-items-center')}>
-                    <Nav as='ul' className={cx('h-100', 'align-items-center')}>
+                <nav className={cx('h-100', 'align-items-center', 'header-navigation')}>
+                    <Nav as='ul' className={cx('h-100', 'align-items-center', 'header-navigation-list')}>
                         {NAVIGATION_ITEM.map((item, index) => {
                             return (
                                 <Nav.Item as='li' className={cx('header-center-item', 'h-100')} key={index}>
@@ -663,10 +664,50 @@ function Header() {
                         })}
                     </Nav>
                 </nav>
-                <div className={cx('header-center-action')}></div>
+                <div className={cx('header-action')}>
+                    <div className={cx('header-search')}>
+                        <span className={cx('header-search-icon')}>
+                            <SearchIcon />
+                        </span>
+                        <input className={cx('header-search-input')} placeholder='Search' type='text'
+                            value={searchValue} onChange={(e) => setSearchValue(e.target.value)}
+                        />
+                    </div>
+                    <div className={cx('header-btn')}>
+                        <Link to='/favorites' className={cx('header-btn-item')}><HeartIcon /></Link>
+                        <Link to='/cart' className={cx('header-btn-item')}><CartIcon /></Link>
+                    </div>
+                </div>
             </Navbar>
             <DropdownMenu ref={dropdownRef} data={dataDropdown?.children} />
-            <div>Test</div>
+            <Carousel className={cx('header-bottom')} controls={false} indicators={false}>
+                <Carousel.Item interval={3000}>
+                    <h3 className={cx('header-bottom-title', 'text-center')}>Hello Nike App</h3>
+                    <p className={cx('header-bottom-text', 'text-center')}>
+                        Download the app to access everything Nike
+                        <a className={cx('header-bottom-link')}
+                            href='https://www.nike.com/sg/nike-app' target='_blank' rel="noreferrer">
+                            Get Your Great
+                        </a>
+                    </p>
+                </Carousel.Item>
+                <Carousel.Item interval={3000}>
+                    <h3 className={cx('header-bottom-title', 'text-center')}>Free Delivery</h3>
+                    <p className={cx('header-bottom-text', 'text-center')}>
+                        Applies to orders of 5.000.000₫ or more.
+                        <a className={cx('header-bottom-link')}
+                            href='https://www.nike.com/vn/help/a/shipping-delivery-gs' target='_blank' rel="noreferrer">
+                            View details
+                        </a>
+                    </p>
+                </Carousel.Item>
+                <Carousel.Item interval={3000}>
+                    <h3 className={cx('header-bottom-title', 'text-center')}>New Styles on Sale: Up to 40% Off</h3>
+                    <p className={cx('header-bottom-text', 'text-center')}>
+                        <Link className={cx('header-bottom-link')} >Shop All Our New Markdowns</Link>
+                    </p>
+                </Carousel.Item>
+            </Carousel>
         </header>
     )
 }

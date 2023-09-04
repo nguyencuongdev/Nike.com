@@ -7,7 +7,7 @@ import { publicRoutes } from '~/routes';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App" style={{ height: '2000px' }}>
         <Routes>
           {
             publicRoutes.map((route, index) => {
