@@ -1,0 +1,21 @@
+.content-body {
+    margin: 48px 48px 0;
+}
+
+.content-title {
+    font-size: 72px;
+    line-height: 60px;
+    font-family: 'NikeFutura';
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.content-subitlte {
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.content-text {
+    text-align: center;
+    margin-bottom: 24px;
+}

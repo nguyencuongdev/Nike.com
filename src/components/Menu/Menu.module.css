@@ -11,6 +11,8 @@
 }
 
 .menu-link {
+    display: block;
+    line-height: inherit;
     color: #757575;
     font-size: 1.4rem;
 }

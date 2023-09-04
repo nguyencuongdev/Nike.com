@@ -7,3 +7,11 @@
     background-color: #fff;
     padding-bottom: 20px;
 }
+
+/* Nếu propper nhận prop oneMenu thì nó sẽ tạo 1 khung hiển thị 1 menu duy nhất chứ không phải list menu*/
+.wrapper.oneMenu {
+    flex-direction: column;
+    max-width: 320px;
+    min-width: 240px;
+    padding: 18px 16px;
+}

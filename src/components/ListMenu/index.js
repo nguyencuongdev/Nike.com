@@ -4,47 +4,47 @@ import classnames from 'classnames/bind';
 
 import PropperWrapper from '~/components/PropperWrapper';
 
-import styles from './Dropdown.module.css';
+import styles from './ListMenu.module.css';
 const cx = classnames.bind(styles);
 
-function DropdownMenu({ data }, ref) {
-    const dropDownRef = useRef(null);
+function ListMenu({ data }, ref) {
+    const listMenuRef = useRef(null);
 
-    const className = cx('dropdown-menu', 'hidden', {
+    const className = cx('list-menu', 'hidden', {
     })
 
     useImperativeHandle(ref, () => {
         return {
-            onShow: () => dropDownRef.current.classList.remove(styles.hidden),
-            onHidden: () => dropDownRef.current.classList.add(styles.hidden)
+            onShow: () => listMenuRef.current.classList.remove(styles.hidden),
+            onHidden: () => listMenuRef.current.classList.add(styles.hidden)
         }
     }, []);
 
     function handleHidden(e) {
         e.stopPropagation();
-        dropDownRef.current.classList.add(styles.hidden);
+        listMenuRef.current.classList.add(styles.hidden);
     }
 
     function handleShow() {
-        dropDownRef.current.classList.remove(styles.hidden);
+        listMenuRef.current.classList.remove(styles.hidden);
     }
 
     return (
-        <div className={className} ref={dropDownRef}
+        <div className={className} ref={listMenuRef}
             onMouseOver={handleShow}
         >
-            <div className={cx('dropdown-body')}>
+            <div className={cx('list-body')}>
                 <PropperWrapper>
                     {data && data.map((menu, index) => {
                         return <Menu title={menu.title} menuItems={menu.children} key={index} />
                     })}
                 </PropperWrapper>
             </div>
-            <div className={cx('dropdown-overlay')}
+            <div className={cx('list-overlay')}
                 onMouseOver={handleHidden}
             ></div>
         </div>
     )
 }
 
-export default forwardRef(DropdownMenu);
+export default forwardRef(ListMenu);
