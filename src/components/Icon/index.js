@@ -31,3 +31,12 @@ export function UserIcon({ width = '24px', height = '24px', color }) {
         </svg>
     )
 }
+
+export function MenuIcon({ width = '24px', height = '24px', color }) {
+    return (
+        <svg aria-hidden="true" className="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width={width} height={height} fill="none">
+            <path stroke="currentColor" d="M21 5.25H3M21 12H3m18 6.75H3">
+            </path>
+        </svg>
+    )
+}

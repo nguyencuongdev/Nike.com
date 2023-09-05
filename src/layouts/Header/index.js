@@ -1,11 +1,13 @@
 import { Nav, Navbar, Carousel } from 'react-bootstrap';
 import { useRef, useState } from 'react';
+import Tipy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
+import Menu from '~/components/Menu';
 import ListMenu from '~/components/ListMenu';
 import AccountMenu from '~/components/AccoutMenu';
-import { SearchIcon, HeartIcon, CartIcon, UserIcon } from '~/components/Icon';
+import { SearchIcon, HeartIcon, CartIcon, UserIcon, MenuIcon } from '~/components/Icon';
 import styles from './Header.module.css';
 const cx = classnames.bind(styles);
 
@@ -729,6 +731,42 @@ function Header() {
                 </div>
             </Navbar>
             <ListMenu ref={listMenuRef} data={dataListMenu?.children} />
+
+            {/* Reponse IPad, Mobile */}
+            <Navbar className={cx('navbar-reponsive')}>
+                <Link to='/' className={cx('navbar-brand', 'navbar-reponsive-logo')}>
+                    <svg aria-hidden="true" className="pre-logo-svg" focusable="false" viewBox="0 0 24 24" role="img">
+                        <path fill="currentColor" d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z">
+                        </path>
+                    </svg>
+                </Link>
+                <Nav as='ul' className={cx('navbar-reponsive-nav')}>
+                    <Nav.Item>
+                        <Link to='/search' className={cx('nav-reponsive-btn')}><SearchIcon /></Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Link to='/card' className={cx('nav-reponsive-btn')} small><CartIcon /></Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Link to='/profile' className={cx('nav-reponsive-btn')} small><UserIcon /></Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Tipy
+                            visible
+                            interactive
+                            placement='bottom-end'
+                            render={() => {
+                                return (
+                                    <Menu menuItems={NAVIGATION_ITEM} />
+                                )
+                            }}
+                        >
+                            <button className={cx('nav-reponsive-btn')}><MenuIcon /></button>
+                        </Tipy>
+                    </Nav.Item>
+                </Nav>
+            </Navbar>
+
             <Carousel className={cx('header-bottom')} controls={false} indicators={false}>
                 <Carousel.Item interval={3000}>
                     <h3 className={cx('header-bottom-title', 'text-center')}>Hello Nike App</h3>

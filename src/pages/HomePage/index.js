@@ -21,7 +21,9 @@ function HomePage() {
                     <p className={cx('content-text')}>
                         The season is here. Start yours prepared with the best in touch, agility, precision and speed.
                     </p>
-                    <Link className={cx('btn', 'btn-secondary', 'btn-lg')}>Shop All</Link>
+                    <div className={cx('d-flex', 'justify-content-center')}>
+                        <Link className={cx('content-btn')}>Shop All</Link>
+                    </div>
                 </div>
             </div>
             <div className={cx('content-two')}>
