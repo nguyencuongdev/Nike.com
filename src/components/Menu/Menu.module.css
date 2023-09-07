@@ -10,6 +10,7 @@
     padding: 6px 0;
 }
 
+
 .menu-link {
     display: block;
     line-height: inherit;
@@ -20,4 +21,9 @@
 .menu-link:hover {
     text-decoration: none;
     color: #111;
+}
+
+.menu-item-icon~.menu-link,
+.menu-link~.menu-item-icon {
+    margin-left: 12px;
 }

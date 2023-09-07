@@ -5,10 +5,23 @@ import styles from './Menu.module.css';
 const cx = classnames.bind(styles);
 
 
-function MenuItem({ itemData }) {
+function MenuItem({
+    title = '', url = '', as = 'li', iconLeft = null, iconRight = null,
+    classNameAdd, ...propsAdd
+}) {
+    const className = cx('border-0', 'menu-item', classNameAdd);
+
+    const props = {
+        as,
+        className,
+        ...propsAdd
+    }
+
     return (
-        <ListGroup.Item className={cx('border-0', 'menu-item')} as='li'>
-            <Link to={itemData.url} className={cx('menu-link')}>{itemData.title}</Link>
+        <ListGroup.Item {...props}>
+            {iconLeft && <span className={cx('menu-item-icon')}>{iconLeft}</span>}
+            <Link to={url} className={cx('menu-link')}>{title}</Link>
+            {iconRight && <span className={cx('menu-item-icon')}>{iconRight}</span>}
         </ListGroup.Item>
     )
 }

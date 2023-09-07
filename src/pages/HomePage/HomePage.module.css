@@ -1,33 +1,18 @@
-.content-body {
-    margin: 48px 48px 0;
+.content {
+    margin: 0 48px;
 }
 
-.content-title {
-    font-size: 72px;
-    line-height: 60px;
-    font-family: 'NikeFutura';
-    margin-bottom: 24px;
-    text-align: center;
-    text-transform: uppercase;
+.content-item {
+    margin-bottom: 84px;
 }
 
-.content-subitlte {
-    margin-bottom: 10px;
-    text-align: center;
+.content-media {
+    height: 700px;
+    overflow: hidden;
+    margin-left: -24px;
+    margin-right: -24px;
 }
 
-.content-text {
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.content-btn {
-    border: none;
-    outline: none;
-    background-color: #111;
-    color: var(--white);
-    padding: 6px 20px;
-    font-size: 1.6rem;
-    border-radius: 30px;
-    line-height: 2.4rem;
+.content-media-item {
+    padding: 12px;
 }

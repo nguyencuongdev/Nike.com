@@ -12,9 +12,9 @@ function Menu({ title, menuItems }) {
             {title && <h2 className={cx('menu-header')}>{title}</h2>}
             <ListGroup as='ul'>
                 {
-                    menuItems.map((item, index) => {
-                        return <MenuItem key={index} itemData={item} />
-                    })
+                    menuItems.map((item, index) =>
+                        <MenuItem key={index} url={item?.url} title={item?.title} />
+                    )
                 }
             </ListGroup>
         </div>

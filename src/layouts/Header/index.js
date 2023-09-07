@@ -5,9 +5,15 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
 
 import Menu from '~/components/Menu';
+import MenuItem from '~/components/Menu/MenuItem';
+
 import ListMenu from '~/components/ListMenu';
 import AccountMenu from '~/components/AccoutMenu';
-import { SearchIcon, HeartIcon, CartIcon, UserIcon, MenuIcon } from '~/components/Icon';
+import {
+    SearchIcon, HeartIcon, CartIcon,
+    UserIcon, MenuIcon, CloseIcon,
+    ArrowRightIcon, OrderIcon, ShopIcon, HelpIcon,
+} from '~/components/Icon';
 import styles from './Header.module.css';
 const cx = classnames.bind(styles);
 
@@ -608,17 +614,17 @@ const NAVIGATION_ITEM = [
     {
         title: 'New & Featured',
         url: '#',
-        dataMenu: MENU_NEW_FEARTURED,
+        children: MENU_NEW_FEARTURED,
     },
     {
         title: 'Men',
         url: '/men',
-        dataMenu: MENU_MEN,
+        children: MENU_MEN,
     },
     {
         title: 'Women',
         url: '/woman',
-        dataMenu: MENU_WOMEN,
+        children: MENU_WOMEN,
     },
     {
         title: 'Kids',
@@ -627,18 +633,26 @@ const NAVIGATION_ITEM = [
     {
         title: 'Sale',
         url: '/sale',
-        dataMenu: MENU_SALES,
+        children: MENU_SALES,
     },
 ]
 
 
 
 function Header() {
+    const [dataSidebarMenu, setDataSidebarMenu] = useState(() => { return [NAVIGATION_ITEM] });
     const [dataListMenu, setDataListMenu] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [currentUser, setCurrentUser] = useState('Cường');
 
     const listMenuRef = useRef(null);
+    const dataSiderbarMenuCurrent = dataSidebarMenu[dataSidebarMenu.length - 1];
+
+    function handleChangeSiderbarMenu(dataMenu) {
+        setDataSidebarMenu((pre) => {
+            return [...pre, dataMenu];
+        })
+    }
 
     return (
         <header className={cx('header')}>
@@ -704,7 +718,7 @@ function Header() {
                                         className={cx('nav-link', 'header-center-link', 'd-flex', 'align-items-center', 'justify-content-center', 'h-100')}
                                         onMouseOver={() => {
                                             listMenuRef.current.onShow();
-                                            setDataListMenu(item.dataMenu);
+                                            setDataListMenu(item.children);
                                         }}
                                         onMouseOut={() => listMenuRef.current.onHidden()}
                                     >
@@ -740,31 +754,90 @@ function Header() {
                         </path>
                     </svg>
                 </Link>
-                <Nav as='ul' className={cx('navbar-reponsive-nav')}>
-                    <Nav.Item>
-                        <Link to='/search' className={cx('nav-reponsive-btn')}><SearchIcon /></Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Link to='/card' className={cx('nav-reponsive-btn')} small><CartIcon /></Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Link to='/profile' className={cx('nav-reponsive-btn')} small><UserIcon /></Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Tipy
-                            visible
-                            interactive
-                            placement='bottom-end'
-                            render={() => {
-                                return (
-                                    <Menu menuItems={NAVIGATION_ITEM} />
-                                )
-                            }}
-                        >
-                            <button className={cx('nav-reponsive-btn')}><MenuIcon /></button>
-                        </Tipy>
-                    </Nav.Item>
-                </Nav>
+                <nav className={cx('navbar-reponsive-menu')}>
+                    <Nav as='ul' className={cx('navbar-reponsive-menuitem')}>
+                        <Nav.Item>
+                            <Link to='/search' className={cx('nav-reponsive-btn')}><SearchIcon /></Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Link to='/card' className={cx('nav-reponsive-btn')}><CartIcon /></Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Link to='/profile' className={cx('nav-reponsive-btn')}><UserIcon /></Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Tipy
+                                visible
+                                interactive
+                                placement='bottom-end'
+                                render={() => {
+                                    return (
+                                        <div className={cx('siderbar')}>
+                                            <div className={cx('siderbar-overlay')}></div>
+                                            <div className={(cx('siderbar-container'))}>
+                                                <button
+                                                    className={cx('border-0 bg-transparent', 'siderbar-btn-close')}
+                                                    onClick={(e) => console.log('close')}
+                                                >
+                                                    <CloseIcon />
+                                                </button>
+                                                {currentUser &&
+                                                    <MenuItem
+                                                        title={`Hi, ${currentUser}`}
+                                                        classNameAdd='d-flex justify-content-between mb-2'
+                                                        iconLeft={<UserIcon />}
+                                                        iconRight={<ArrowRightIcon />}
+                                                    />
+                                                }
+                                                <ul className='siderbar-list'>
+                                                    {
+                                                        dataSiderbarMenuCurrent.map((item, index) =>
+                                                            <MenuItem key={index}
+                                                                title={item.title}
+                                                                classNameAdd={cx('d-flex justify-content-between', 'siderbar-item')}
+                                                                iconRight={<ArrowRightIcon />}
+                                                                onClick={() => {
+                                                                    const dataMenu = item?.children.children ?? item?.children;
+                                                                    handleChangeSiderbarMenu(dataMenu)
+                                                                }}
+                                                            />
+                                                        )}
+                                                    <MenuItem
+                                                        title='Favorite'
+                                                        classNameAdd='d-flex'
+                                                        iconLeft={<HeartIcon />}
+                                                    />
+                                                    <MenuItem
+                                                        title='Bag'
+                                                        classNameAdd='d-flex'
+                                                        iconLeft={<CartIcon />}
+                                                    />
+                                                    <MenuItem
+                                                        title='Favorite'
+                                                        classNameAdd='d-flex'
+                                                        iconLeft={<OrderIcon />}
+                                                    />
+                                                    <MenuItem
+                                                        title='Find a Store'
+                                                        classNameAdd='d-flex'
+                                                        iconLeft={<ShopIcon />}
+                                                    />
+                                                    <MenuItem
+                                                        title='Help'
+                                                        classNameAdd='d-flex'
+                                                        iconLeft={<HelpIcon />}
+                                                    />
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )
+                                }}
+                            >
+                                <button className={cx('nav-reponsive-btn')}><MenuIcon /></button>
+                            </Tipy>
+                        </Nav.Item>
+                    </Nav>
+                </nav>
             </Navbar>
 
             <Carousel className={cx('header-bottom')} controls={false} indicators={false}>

@@ -228,10 +228,11 @@
     display: none;
     justify-content: space-between;
     align-items: center;
+    height: 60px;
     padding: 0 14px 0 16px;
 }
 
-.navbar-reponsive-nav {
+.navbar-reponsive-menuitem {
     display: flex;
     align-items: center;
 }
@@ -243,6 +244,35 @@
     border: none;
     background-color: transparent;
     margin-left: 8px;
+}
+
+.siderbar {
+    padding: 20px 30px;
+    width: 320px;
+    background-color: #fff;
+}
+
+.siderbar-container {
+    position: relative;
+    padding-top: 36px;
+}
+
+.siderbar-btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.siderbar-item {
+    padding: 12px 0;
+    color: var(--text-color);
+}
+
+.siderbar-item>a {
+    font-size: 2.4rem;
+    color: inherit;
+    font-weight: 400;
 }
 
 /* Mobile and Tablet */
