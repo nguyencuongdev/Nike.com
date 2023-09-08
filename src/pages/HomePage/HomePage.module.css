@@ -31,3 +31,8 @@
     padding: 12px;
     height: 100%;
 }
+
+.content-menu {
+    position: relative;
+    background-color: var(--white-color);
+}

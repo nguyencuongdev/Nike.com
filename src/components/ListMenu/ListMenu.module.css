@@ -1,14 +1,11 @@
 .list-menu {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: calc(var(--height-header-navbar-top) + var(--height-header-navbar-center));
-    left: 0;
-    right: 0;
-    background-color: color(--white-color);
     animation: showListMenu 0.2s linear;
+}
+
+.list-menu.h-full {
     height: 100vh;
-    z-index: 999;
 }
 
 .list-menu.hidden {
@@ -16,28 +13,6 @@
     transform: translateY(-30px);
     opacity: 1;
     animation: hiddenListMenu 0.2s linear;
-}
-
-.list-menu::before {
-    display: block;
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 20px;
-    top: -20px;
-    background-color: transparent;
-}
-
-.list-menu.hidden::before {
-    display: none;
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 20px;
-    top: -20px;
-    background-color: transparent;
 }
 
 @keyframes showListMenu {

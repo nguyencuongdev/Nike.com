@@ -14,9 +14,7 @@ function Media({ classNameAdd, img, title, subtitle, button, to, href }) {
     const props = {
         className,
     }
-    const propsButton = {
-
-    }
+    const propsButton = {}
 
     if (to) {
         props.to = to;

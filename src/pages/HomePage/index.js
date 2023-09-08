@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import classnames from 'classnames/bind';
 
+import ListMenu from '~/components/ListMenu';
 import Banner from '~/components/Banner';
 import Media from '~/components/Media';
+import { MENU_BOTTOM_CONTEXT } from './HomePageContext';
 
 import BannerImg from '~/assets/images/Banner-nike-just-do-it.jpg';
 import BannerImg2 from '~/assets/images/Banner-nike-3.jpg';
@@ -17,6 +20,7 @@ import styles from './HomePage.module.css';
 const cx = classnames.bind(styles);
 
 function HomePage() {
+    const MENU_BOTTOM = useContext(MENU_BOTTOM_CONTEXT);
     return (
         <div className={cx('content')}>
             <div className={cx('content-item')}>
@@ -67,7 +71,7 @@ function HomePage() {
                     button={{ title: 'See All', to: '/clothing/jordan' }}
                 />
             </div>
-            <div className={cx('content-item', 'container-fluid', 'px-0')}>
+            <div className={cx('content-item', 'container-fluid', 'px-0', 'mb-4')}>
                 <h3 className={cx('content-title')}>Featured</h3>
                 <div className={cx('row', 'content-media', 'content-media-small')}>
                     <Media img={{ src: Media_Men }}
@@ -81,6 +85,9 @@ function HomePage() {
                         button={{ title: 'Kids\'s', className: 'white' }}
                     />
                 </div>
+            </div>
+            <div className={cx('content-item', 'content-menu', 'mb-4')}>
+                <ListMenu data={MENU_BOTTOM} />
             </div>
         </div>
     )

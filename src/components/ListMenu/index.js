@@ -7,10 +7,12 @@ import PropperWrapper from '~/components/PropperWrapper';
 import styles from './ListMenu.module.css';
 const cx = classnames.bind(styles);
 
-function ListMenu({ data }, ref) {
+function ListMenu({ data = [], overlay = false, hidden = false, height_full = false }, ref) {
     const listMenuRef = useRef(null);
 
-    const className = cx('list-menu', 'hidden', {
+    const className = cx('list-menu', {
+        hidden,
+        'h-full': height_full,
     })
 
     useImperativeHandle(ref, () => {
@@ -40,9 +42,11 @@ function ListMenu({ data }, ref) {
                     })}
                 </PropperWrapper>
             </div>
-            <div className={cx('list-overlay')}
-                onMouseOver={handleHidden}
-            ></div>
+            {overlay &&
+                <div className={cx('list-overlay')}
+                    onMouseOver={handleHidden}
+                ></div>
+            }
         </div>
     )
 }
