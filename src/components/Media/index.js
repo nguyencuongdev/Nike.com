@@ -14,12 +14,18 @@ function Media({ classNameAdd, img, title, subtitle, button, to, href }) {
     const props = {
         className,
     }
+    const propsButton = {
+
+    }
+
     if (to) {
         props.to = to;
+        propsButton.to = to;
         Comp = Link;
     }
     else if (href) {
         props.href = href;
+        propsButton.href = href;
         Comp = 'a';
     }
 
@@ -29,7 +35,7 @@ function Media({ classNameAdd, img, title, subtitle, button, to, href }) {
             <div className={cx('media-body')}>
                 <h4 className={cx('media-subtitle')}>{subtitle}</h4>
                 <h2 className={cx('media-title')}>{title}</h2>
-                {button && <Button to='/shop' classNameAdd={cx('media-btn')}>{button.title}</Button>}
+                {button && <Button {...propsButton} classNameAdd={cx('media-btn', button?.className)}>{button?.title}</Button>}
             </div>
         </Comp>
     );

@@ -1,7 +1,6 @@
 import { routerConfig } from '~/configs';
-import { OnlyHeaderLayout } from '~/layouts'
-import HomePage from '~/pages/HomePage';
-import ProductPage from '~/pages/ProductPage'
+import { OnlyHeaderLayout } from '~/layouts';
+import { HomePage, ProductPage } from '~/pages';
 
 export const publicRoutes = [
     {

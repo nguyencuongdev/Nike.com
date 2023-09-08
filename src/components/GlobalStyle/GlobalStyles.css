@@ -18,9 +18,9 @@ html {
 
 body {
     font-family: 'Helvetical', 'Roboto', sans-serif;
-    font-size: 1.6rem;
     box-sizing: border-box;
     line-height: 1.6rem;
+    color: var(--text-color);
 }
 
 ul,

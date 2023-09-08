@@ -25,6 +25,10 @@
     align-items: center;
 }
 
+.header-top-item:last-child>.header-top-link {
+    padding-right: 8px;
+}
+
 .header-top-link {
     display: flex;
     align-items: center;

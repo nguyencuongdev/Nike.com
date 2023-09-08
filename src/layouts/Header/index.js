@@ -643,7 +643,7 @@ function Header() {
     const [dataSidebarMenu, setDataSidebarMenu] = useState(() => { return [NAVIGATION_ITEM] });
     const [dataListMenu, setDataListMenu] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [currentUser, setCurrentUser] = useState('Cường');
+    const [currentUser, setCurrentUser] = useState('');
 
     const listMenuRef = useRef(null);
     const dataSiderbarMenuCurrent = dataSidebarMenu[dataSidebarMenu.length - 1];

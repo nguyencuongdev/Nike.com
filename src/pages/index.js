@@ -1,10 +1,2 @@
-
-function HomePage() {
-    return (
-        <div>
-            Home page
-        </div>
-    )
-}
-
-export default HomePage;
+export { default as HomePage } from './HomePage';
+export { default as ProductPage } from './ProductPage';
