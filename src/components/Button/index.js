@@ -81,8 +81,8 @@ Button.propTypes = {
     large: propTypes.bool,
     outline: propTypes.bool,
     disable: propTypes.bool,
-    iconLeft: propTypes.object,
-    iconRight: propTypes.object,
+    iconLeft: propTypes.node,
+    iconRight: propTypes.node,
     separator: propTypes.bool,
     classNameAdd: propTypes.string
 }

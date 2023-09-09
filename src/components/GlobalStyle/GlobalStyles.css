@@ -14,11 +14,11 @@
 
 html {
     font-size: 62.5%;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Helvetical', 'Roboto', sans-serif;
-    box-sizing: border-box;
     line-height: 1.6rem;
     color: var(--text-color);
 }

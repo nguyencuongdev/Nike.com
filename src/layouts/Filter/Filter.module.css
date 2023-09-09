@@ -1,0 +1,39 @@
+.fillter {
+    padding: 0
+}
+
+.fillter-types-item {
+    font-size: 1.6rem;
+    line-height: 3.2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.fillter-types-item.active,
+.fillter-types-item:hover {
+    text-decoration: underline;
+}
+
+.fillter-separator {
+    height: 1px;
+    background-color: #ccc;
+}
+
+.fillter-colors-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-colors-value {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-bottom: 4px;
+}
+
+.fillter-colors-name {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}

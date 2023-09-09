@@ -5,7 +5,7 @@ const cx = classnames.bind(styles);
 
 function ProductPage() {
     return (
-        <div className={cx('content')}>
+        <div className={cx('content', 'container-fluid', 'col-lg-10')}>
             Product page
         </div>
     )
