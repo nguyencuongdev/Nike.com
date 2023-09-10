@@ -74,7 +74,7 @@ function DefaultLayout({ children }) {
                     {children}
                 </div>
             </main >
-            {/* <Footer /> */}
+            <Footer />
         </div >
     )
 }
