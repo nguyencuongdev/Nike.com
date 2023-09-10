@@ -1,5 +1,5 @@
 .fillter {
-    padding: 0
+    padding: 20px 20px 20px 0;
 }
 
 .fillter-types-item {
@@ -17,12 +17,48 @@
 .fillter-separator {
     height: 1px;
     background-color: #ccc;
+    margin: 20px 0;
 }
 
+.fillter-sizes,
+.fillter-colors,
+.fillter-brands {
+    position: relative;
+}
+
+.btn-toggle-gender,
+.btn-toggle-brand,
+.btn-toggle-sizes,
+.btn-toggle-color {
+    width: 100%;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    background-color: transparent;
+    height: 24px;
+}
+
+.fillter-gender-list,
+.fillter-brands-list {
+    padding-left: 15px;
+}
+
+.fillter-gender-list,
+.fillter-brands-list,
+.fillter-colors-list,
+.fillter-sizes-list {
+    margin-top: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.fillter-sizes-item,
 .fillter-colors-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .filter-colors-value {
@@ -36,4 +72,57 @@
     text-align: center;
     font-size: 1.2rem;
     color: var(--text-color);
+}
+
+.fillter-sizes-item {
+    justify-content: center;
+    height: 36px;
+    padding: 0 15px;
+}
+
+.fillter-sizes-item_btn {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    border: 1px solid #ccc;
+    padding-bottom: 2px;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+.fillter-sizes-item_btn.active,
+.fillter-sizes-item_btn:focus {
+    border-color: #111;
+}
+
+.fillter-gender-item,
+.fillter-brands-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 24px;
+    margin-bottom: 10px;
+}
+
+.fillter-gender-item>input[type="checkbox"],
+.fillter-brands-item>input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.fillter-gender-item>input[type="checkbox"]:checked,
+.fillter-brands-item>input[type="checkbox"]:checked {
+    background-color: #111;
+}
+
+.fillter-gender-title,
+.fillter-brands-title {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-left: 10px;
 }

@@ -72,3 +72,11 @@ export const ColorsList = createContext([
         value: '#F36B26'
     }
 ])
+
+export const BrandList = createContext([
+    'Nike', 'Jordan', 'ACG'
+])
+
+export const SizeList = createContext([
+    '33.5', '34.5', '35.5', '36', '36,5', '38', '39', '40', '40.5'
+])
