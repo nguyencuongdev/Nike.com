@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     type: 'All',
-    brands: ['All'],
-    colors: ['All'],
-    sizes: ['All'],
-    gender: ['All']
+    brands: [],
+    colors: [],
+    sizes: [],
+    gender: ['Male', 'Female']
 };
 
 const sliceFillter = createSlice({
@@ -13,7 +13,7 @@ const sliceFillter = createSlice({
     initialState,
     reducers: {
         changeType: (state, action) => {
-            state.type = action.type
+            state.type = action.payload;
             return state;
         },
         addBrand: (state, action) => {
@@ -40,7 +40,7 @@ const sliceFillter = createSlice({
             return state;
         },
         addGender: (state, action) => {
-            state.gender = state.gender.push(action.payload);
+            state.gender.push(action.payload);
         },
         cancelGender: (state, action) => {
             state.gender = state.gender.filter((gender) => gender !== action.payload);

@@ -4,6 +4,10 @@ import { createContext } from 'react';
 
 export const TypesShoes = createContext([
     {
+        title: 'All',
+        url: '/shoes'
+    },
+    {
         title: 'Lifestyle',
         url: '/shoes/Lifestyle'
     },

@@ -77,7 +77,7 @@ function DefaultLayout({ children }) {
                     </div>
                 </div>
                 <div className={cx('row')}>
-                    <Filter classNameAdd={cx('col-lg-2')} ref={fillterRef} />
+                    <Filter ref={fillterRef} />
                     {children}
                 </div>
             </main >

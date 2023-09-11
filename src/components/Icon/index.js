@@ -1,3 +1,5 @@
+import checkIcon from '~/assets/images/check.png';
+
 export function SearchIcon({ width = '24px', height = '24px', color = 'none' }) {
     return (
         <svg aria-hidden="true" className='pre-nav-design-ico' focusable="false" viewBox="0 0 24 24" role="img" width={width} height={height} fill={color}>
@@ -141,6 +143,11 @@ export function FilterIcon({ width = '24px', height = '24px', color = 'none' }) 
             <path stroke="currentColor" d="M3 15.75h10.75m5 0H21"></path>
             <path stroke="currentColor" d="M16.5 13.5v0a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" ></path>
         </svg>
+    )
+}
+export function CheckIcon({ width = '24px', height = '24px', className }) {
+    return (
+        <img src={checkIcon} alt="check-icon" width={width} height={height} className={className} />
     )
 }
 

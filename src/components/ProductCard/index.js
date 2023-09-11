@@ -17,6 +17,7 @@ function ProductCard({
         className,
         ...propsAdd
     }
+    console.log(productColors);
 
     const ImgSrc = useRef(productImgSrc);
     const productRef = useRef(null);
@@ -55,7 +56,7 @@ function ProductCard({
                 <h3 className={cx('card-title', 'product-card-title')}>{productTitle}</h3>
                 <h4 className={cx('product-card-types')}>{productTypes}</h4>
                 <p className={cx('product-card-colors')}>
-                    {(productColors) ? 'Không xác định' : productColors.lenght} Colours
+                    {(!productColors) ? 'Không xác định' : productColors.length} Colours
                 </p>
                 <p className={cx('product-card-price', 'card-text')}>{productPrice}đ</p>
             </div>

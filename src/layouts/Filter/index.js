@@ -3,8 +3,9 @@ import { useContext, forwardRef, useImperativeHandle, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { TypesShoes, ColorsList, SizeList, BrandList } from './FilterContext';
-import { FillterBrandsSelector } from './FillterSelector';
+import { FillterBrandsSelector, FillterGendersSelector, FillterTypeSelector } from './FillterSelector';
 import { actionsFillter } from './FillterSlice';
+import { CheckIcon } from '~/components/Icon';
 
 import styles from './Filter.module.css';
 const cx = classnames.bind(styles);
@@ -16,6 +17,9 @@ function Filter({ ...props }, ref) {
     const brandList = useContext(BrandList);
 
     const brands = useSelector(FillterBrandsSelector);
+    const gender = useSelector(FillterGendersSelector);
+    const typeState = useSelector(FillterTypeSelector);
+
     const dispatch = useDispatch();
 
     const FillterRef = useRef(null);
@@ -34,12 +38,21 @@ function Filter({ ...props }, ref) {
     }, []);
 
     return (
-        <div className={cx('fillter', 'col-lg-2')} ref={FillterRef}>
+        <div className={cx('fillter', 'col-lg-2')} ref={FillterRef} {...props}>
             {typesShoes &&
                 <ul className={cx('fillter-types-list')}>
                     {typesShoes.map((type, index) => {
                         return (
-                            <li key={index} className={cx('fillter-types-item')}>{type.title}</li>
+                            <li key={index} className={cx('fillter-types-item', {
+                                'active': type.title.includes(typeState)
+                            })}
+                                onClick={(e) => {
+                                    if (e.target.innerText !== typeState)
+                                        dispatch(actionsFillter.changeType(e.target.innerText));
+                                }}
+                            >
+                                {type.title}
+                            </li>
                         )
                     })}
                 </ul>
@@ -84,8 +97,23 @@ function Filter({ ...props }, ref) {
                         {colorsList.map((color, index) => {
                             return (
                                 <div className={cx('fillter-colors-item', 'col-lg-4', 'px-0')} key={index}>
-                                    <div className={cx('filter-colors-value')}
-                                        style={{ backgroundColor: color.value }}>
+                                    <div className={cx('fillter-colors-value')}
+                                        style={{ backgroundColor: color.value }}
+                                        data-value={color.title}
+                                        onClick={(e) => {
+                                            let nameColor = e.target.getAttribute('data-value');
+                                            console.log(nameColor);
+                                            if (e.target.classList.contains(cx('active'))) {
+                                                e.target.classList.remove(cx('active'));
+                                                dispatch(actionsFillter.cancelColor(nameColor));
+                                            }
+                                            else {
+                                                e.target.classList.add(cx('active'));
+                                                dispatch(actionsFillter.addColor(nameColor));
+                                            }
+                                        }}
+                                    >
+                                        <CheckIcon className={cx('fillter-colors-icon')} width='16px' height='16px' />
                                     </div>
                                     <span className={cx('fillter-colors-name')}
 
@@ -107,7 +135,22 @@ function Filter({ ...props }, ref) {
                         {sizeList.map((size, index) => {
                             return (
                                 <div className={cx('fillter-sizes-item', 'col-4')} key={index}>
-                                    <button className={cx('fillter-sizes-item_btn')}>{size}</button>
+                                    <button className={cx('fillter-sizes-item_btn')}
+                                        data-size={size}
+                                        onClick={(e) => {
+                                            let size = e.target.getAttribute('data-size');
+                                            if (e.target.classList.contains(cx('active'))) {
+                                                e.target.classList.remove(cx('active'));
+                                                dispatch(actionsFillter.cancelSize(size));
+                                            }
+                                            else {
+                                                e.target.classList.add(cx('active'));
+                                                dispatch(actionsFillter.addSize(size));
+                                            }
+                                        }}
+                                    >
+                                        {size}
+                                    </button>
                                 </div>
                             )
                         })}
@@ -122,11 +165,28 @@ function Filter({ ...props }, ref) {
                 </button>
                 <div className={cx('fillter-gender-list', 'row', 'collapse', 'show')} id='genderlist'>
                     <div className={cx('fillter-gender-item')}>
-                        <input type='checkbox' />
-                        <span className={cx('fillter-gender-title')}>Nam</span>
+                        <input type='checkbox' checked={(gender.includes('Male'))} value={'Male'}
+                            onChange={(e) => {
+                                let check = !e.target.checked;
+                                let value = e.target.value;
+                                (!check)
+                                    ? dispatch(actionsFillter.addGender(value))
+                                    : dispatch(actionsFillter.cancelGender(value));
+                            }}
+                        />
+                        <span className={cx('fillter-gender-title')}>Male</span>
                     </div>
                     <div className={cx('fillter-gender-item')}>
-                        <input type='checkbox' />
+                        <input type='checkbox' checked={(gender.includes('Female'))} value={'Female'}
+                            onChange={(e) => {
+                                let check = !e.target.checked;
+                                let value = e.target.value;
+                                (!check)
+                                    ? dispatch(actionsFillter.addGender(value))
+                                    : dispatch(actionsFillter.cancelGender(value));
+                            }}
+
+                        />
                         <span className={cx('fillter-gender-title')}>Nữ</span>
                     </div>
                 </div>

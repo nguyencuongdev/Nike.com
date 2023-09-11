@@ -68,11 +68,23 @@
     margin-bottom: 10px;
 }
 
-.filter-colors-value {
+.fillter-colors-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 28px;
     height: 28px;
     border-radius: 50%;
     margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.fillter-colors-icon {
+    display: none;
+}
+
+.fillter-colors-value.active>img {
+    display: block;
 }
 
 .fillter-colors-name {
@@ -101,8 +113,7 @@
     border-radius: 4px;
 }
 
-.fillter-sizes-item_btn.active,
-.fillter-sizes-item_btn:focus {
+.fillter-sizes-item_btn.active {
     border-color: #111;
 }
 
