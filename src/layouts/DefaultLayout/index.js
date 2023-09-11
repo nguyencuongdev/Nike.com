@@ -21,7 +21,10 @@ function DefaultLayout({ children }) {
         return title;
     });
 
+    const [btnToggleFillterValue, setBtnToggleFillterValue] = useState('Hidden fillter');
+
     const optionSortByRef = useRef(null);
+    const fillterRef = useRef(null);
 
     return (
         <div className={cx('wrapper')}>
@@ -33,8 +36,12 @@ function DefaultLayout({ children }) {
                         <span className={cx('main-title-count')}> (434)</span>
                     </h2>
                     <div className={cx('main-sortby')}>
-                        <button className={cx('btn-toggle-fillter')}>
-                            Hide Fillter
+                        <button className={cx('btn-toggle-fillter')} onClick={() => {
+                            console.log(fillterRef.current);
+                            let result = fillterRef.current.onToggle();
+                            setBtnToggleFillterValue(result);
+                        }}>
+                            {btnToggleFillterValue}
                             <FilterIcon />
                         </button>
                         <div className={cx('main-dropdown-menu')}>
@@ -70,7 +77,7 @@ function DefaultLayout({ children }) {
                     </div>
                 </div>
                 <div className={cx('row')}>
-                    <Filter classNameAdd={cx('col-lg-2')} />
+                    <Filter classNameAdd={cx('col-lg-2')} ref={fillterRef} />
                     {children}
                 </div>
             </main >

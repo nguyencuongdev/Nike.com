@@ -1,18 +1,40 @@
 import classnames from 'classnames/bind';
-import { useContext } from 'react';
+import { useContext, forwardRef, useImperativeHandle, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TypesShoes, ColorsList, SizeList, BrandList } from './FilterContext';
+import { FillterBrandsSelector } from './FillterSelector';
+import { actionsFillter } from './FillterSlice';
+
 import styles from './Filter.module.css';
 const cx = classnames.bind(styles);
 
-export default function Filter() {
+function Filter({ ...props }, ref) {
     const typesShoes = useContext(TypesShoes);
     const colorsList = useContext(ColorsList);
     const sizeList = useContext(SizeList);
     const brandList = useContext(BrandList);
 
+    const brands = useSelector(FillterBrandsSelector);
+    const dispatch = useDispatch();
+
+    const FillterRef = useRef(null);
+
+    useImperativeHandle(ref, () => {
+        return {
+            onToggle: () => {
+                let result = '';
+                FillterRef.current.classList.toggle(cx('hidden'));
+                (FillterRef.current.classList.contains(cx('hidden')))
+                    ? (result = 'Show fillter')
+                    : (result = 'Hidden fillter');
+                return result;
+            },
+        }
+    }, []);
+
     return (
-        <div className={cx('fillter', 'col-lg-2')}>
+        <div className={cx('fillter', 'col-lg-2')} ref={FillterRef}>
             {typesShoes &&
                 <ul className={cx('fillter-types-list')}>
                     {typesShoes.map((type, index) => {
@@ -33,7 +55,17 @@ export default function Filter() {
                         {brandList.map((brand, index) => {
                             return (
                                 <div className={cx('fillter-brands-item')} key={index}>
-                                    <input type='checkbox' />
+                                    <input type='checkbox'
+                                        checked={(brands.includes(brand))}
+                                        value={brand}
+                                        onChange={(e) => {
+                                            let check = !e.target.checked;
+                                            let value = e.target.value;
+                                            (!check)
+                                                ? dispatch(actionsFillter.addBrand(value))
+                                                : dispatch(actionsFillter.cancelBrand(value));
+                                        }}
+                                    />
                                     <span className={cx('fillter-brands-title')}>{brand}</span>
                                 </div>
                             )
@@ -83,24 +115,24 @@ export default function Filter() {
                 </div>
             }
             <div className={cx('fillter-separator')}></div>
-            {sizeList &&
-                <div className={cx('fillter-gender', 'container-fluid', 'px-0')}>
-                    <button className={cx('btn-toggle-gender', 'mx-0')} data-target='#genderlist' data-toggle='collapse'>
-                        Gender
-                        <span></span>
-                    </button>
-                    <div className={cx('fillter-gender-list', 'row', 'collapse', 'show')} id='genderlist'>
-                        <div className={cx('fillter-gender-item')}>
-                            <input type='checkbox' />
-                            <span className={cx('fillter-gender-title')}>Nam</span>
-                        </div>
-                        <div className={cx('fillter-gender-item')}>
-                            <input type='checkbox' />
-                            <span className={cx('fillter-gender-title')}>Nữ</span>
-                        </div>
+            <div className={cx('fillter-gender', 'container-fluid', 'px-0')}>
+                <button className={cx('btn-toggle-gender', 'mx-0')} data-target='#genderlist' data-toggle='collapse'>
+                    Gender
+                    <span></span>
+                </button>
+                <div className={cx('fillter-gender-list', 'row', 'collapse', 'show')} id='genderlist'>
+                    <div className={cx('fillter-gender-item')}>
+                        <input type='checkbox' />
+                        <span className={cx('fillter-gender-title')}>Nam</span>
+                    </div>
+                    <div className={cx('fillter-gender-item')}>
+                        <input type='checkbox' />
+                        <span className={cx('fillter-gender-title')}>Nữ</span>
                     </div>
                 </div>
-            }
+            </div>
         </div>
     )
 }
+
+export default forwardRef(Filter);

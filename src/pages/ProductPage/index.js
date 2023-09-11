@@ -13,7 +13,7 @@ const cx = classnames.bind(styles);
 
 function ProductPage() {
     return (
-        <div className={cx('product', 'container-fluid', 'col-lg-10',)}>
+        <div className={cx('product', 'container-fluid', 'col',)}>
             <div className={cx('row', 'product-list')}>
                 <div className={cx('product-card-item', 'col-lg-4')}>
                     <ProductCard to='/products/details'
