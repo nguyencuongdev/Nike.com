@@ -1,9 +1,9 @@
 import classnames from 'classnames/bind';
-import { useContext, forwardRef, useImperativeHandle, useRef } from 'react';
+import { useContext, forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { TypesShoes, ColorsList, SizeList, BrandList } from './FilterContext';
-import { FillterBrandsSelector, FillterGendersSelector, FillterTypeSelector } from './FillterSelector';
+import { FillterBrandsSelector, FillterGendersSelector, FillterSuitableSelector } from './FillterSelector';
 import { actionsFillter } from './FillterSlice';
 import { CheckIcon } from '~/components/Icon';
 
@@ -16,13 +16,90 @@ function Filter({ ...props }, ref) {
     const sizeList = useContext(SizeList);
     const brandList = useContext(BrandList);
 
-    const brands = useSelector(FillterBrandsSelector);
-    const gender = useSelector(FillterGendersSelector);
-    const typeState = useSelector(FillterTypeSelector);
-
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        handleTypeContent();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    function handleTypeContent() {
+        let pathNameSplited = window.location.pathname.split('/');
+        pathNameSplited.shift();
+        //handle exception;
+        if (pathNameSplited[pathNameSplited.length - 1] === '') pathNameSplited.pop();
+        if (pathNameSplited.length === 1) return; //render all products;
+        //handle type content
+        if (pathNameSplited.length === 3) {
+            switch (pathNameSplited[1]) {
+                case 'shoes': {
+                    //fillter for products is shoes matched with suitable;
+                    dispatch(actionsFillter.changeType('shoes'));
+                    dispatch(actionsFillter.changeSuitable(pathNameSplited[2]));
+                    return;
+                }
+                case 'clothing': {
+                    //fillter for products is clothing matched with suitable;
+                    dispatch(actionsFillter.changeType('clothing'));
+                    dispatch(actionsFillter.changeSuitable(pathNameSplited[2]));
+                    return;
+                }
+                case 'accessories-equipment': {
+                    //fillter for products is accessories-equipment matched with suitable;
+                    dispatch(actionsFillter.changeType('accessories-equipment'));
+                    dispatch(actionsFillter.changeSuitable(pathNameSplited[2]));
+                    return;
+                }
+                default: {
+                    console.log('Content khong hop le');
+                    return;
+                }
+            }
+        }
+        else {
+            switch (pathNameSplited[0]) {
+                case 'products': {
+                    //fillter for products is shoes
+                    if (pathNameSplited[1] === 'shoes') {
+                        dispatch(actionsFillter.changeType('shoes'));
+                        dispatch(actionsFillter.changeSuitable('All'));
+                    }
+                    else if (pathNameSplited[1] === 'clothing') {
+                        //fillter for products is clothing
+                        dispatch(actionsFillter.changeType('clothing'));
+                        dispatch(actionsFillter.changeSuitable('All'));
+                    }
+                    else {
+                        //fillter for accessories-equipment
+                        dispatch(actionsFillter.changeType('accessories-equipment'));
+                        dispatch(actionsFillter.changeSuitable('All'));
+
+                    }
+                    return;
+                }
+                case 'shopbybrand': {
+                    //fillter for products by brand;
+                    dispatch(actionsFillter.addBrand(pathNameSplited[1]));
+                    return;
+                }
+                case 'shopbygender': {
+                    //filter for products by gender
+                    dispatch(actionsFillter.addGender(pathNameSplited[1]));
+                    return;
+                }
+                default: {
+                    console.log('Content khong hop le');
+                    return;
+                }
+            }
+        }
+
+    }
+
     const FillterRef = useRef(null);
+    const brands = useSelector(FillterBrandsSelector);
+    const gender = useSelector(FillterGendersSelector);
+    const typeState = useSelector(FillterSuitableSelector);
 
     useImperativeHandle(ref, () => {
         return {
@@ -44,11 +121,11 @@ function Filter({ ...props }, ref) {
                     {typesShoes.map((type, index) => {
                         return (
                             <li key={index} className={cx('fillter-types-item', {
-                                'active': type.title.includes(typeState)
+                                'active': type.title === typeState
                             })}
                                 onClick={(e) => {
                                     if (e.target.innerText !== typeState)
-                                        dispatch(actionsFillter.changeType(e.target.innerText));
+                                        dispatch(actionsFillter.changeSuitable(e.target.innerText));
                                 }}
                             >
                                 {type.title}
@@ -101,19 +178,24 @@ function Filter({ ...props }, ref) {
                                         style={{ backgroundColor: color.value }}
                                         data-value={color.title}
                                         onClick={(e) => {
-                                            let nameColor = e.target.getAttribute('data-value');
-                                            console.log(nameColor);
-                                            if (e.target.classList.contains(cx('active'))) {
-                                                e.target.classList.remove(cx('active'));
+                                            e.preventDefault();
+                                            let element = e.target;
+                                            while (!element.classList.contains(cx('fillter-colors-value'))) {
+                                                element = element.parentNode;
+                                            }
+                                            let nameColor = element.getAttribute('data-value');
+                                            if (element.classList.contains(cx('active'))) {
+                                                element.classList.remove(cx('active'));
                                                 dispatch(actionsFillter.cancelColor(nameColor));
                                             }
                                             else {
-                                                e.target.classList.add(cx('active'));
+                                                element.classList.add(cx('active'));
                                                 dispatch(actionsFillter.addColor(nameColor));
                                             }
                                         }}
                                     >
-                                        <CheckIcon className={cx('fillter-colors-icon')} width='16px' height='16px' />
+                                        <CheckIcon className={cx('fillter-colors-icon')} width='16px' height='16px'
+                                        />
                                     </div>
                                     <span className={cx('fillter-colors-name')}
 
@@ -165,7 +247,7 @@ function Filter({ ...props }, ref) {
                 </button>
                 <div className={cx('fillter-gender-list', 'row', 'collapse', 'show')} id='genderlist'>
                     <div className={cx('fillter-gender-item')}>
-                        <input type='checkbox' checked={(gender.includes('Male'))} value={'Male'}
+                        <input type='checkbox' checked={(gender.includes('Men'))} value={'Men'}
                             onChange={(e) => {
                                 let check = !e.target.checked;
                                 let value = e.target.value;
@@ -174,10 +256,10 @@ function Filter({ ...props }, ref) {
                                     : dispatch(actionsFillter.cancelGender(value));
                             }}
                         />
-                        <span className={cx('fillter-gender-title')}>Male</span>
+                        <span className={cx('fillter-gender-title')}>Men</span>
                     </div>
                     <div className={cx('fillter-gender-item')}>
-                        <input type='checkbox' checked={(gender.includes('Female'))} value={'Female'}
+                        <input type='checkbox' checked={(gender.includes('Women'))} value={'Women'}
                             onChange={(e) => {
                                 let check = !e.target.checked;
                                 let value = e.target.value;
@@ -187,7 +269,7 @@ function Filter({ ...props }, ref) {
                             }}
 
                         />
-                        <span className={cx('fillter-gender-title')}>Nữ</span>
+                        <span className={cx('fillter-gender-title')}>Women</span>
                     </div>
                 </div>
             </div>

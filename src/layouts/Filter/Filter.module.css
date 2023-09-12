@@ -19,6 +19,7 @@
 .fillter-types-item.active,
 .fillter-types-item:hover {
     text-decoration: underline;
+    font-size: 1.8rem;
 }
 
 .fillter-separator {

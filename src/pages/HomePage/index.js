@@ -27,7 +27,7 @@ function HomePage() {
                 <Banner title='Nike Ready Pack' img={{ src: BannerImg }}
                     subtitle='Just in'
                     text='The season is here. Start yours prepared with the best in touch, agility, precision and speed.'
-                    button={{ title: 'See All', to: '/shoes/nike' }}
+                    button={{ title: 'See All', to: 'products/shoes/' }}
                 />
             </div>
             <div className={cx('content-item')}>

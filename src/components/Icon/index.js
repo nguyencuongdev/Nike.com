@@ -147,7 +147,8 @@ export function FilterIcon({ width = '24px', height = '24px', color = 'none' }) 
 }
 export function CheckIcon({ width = '24px', height = '24px', className }) {
     return (
-        <img src={checkIcon} alt="check-icon" width={width} height={height} className={className} />
+        <img src={checkIcon} alt="check-icon" width={width} height={height} className={className}
+        />
     )
 }
 

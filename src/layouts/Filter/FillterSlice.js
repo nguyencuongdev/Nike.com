@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    type: 'All',
+    type: '',
+    suitable: 'All',
     brands: [],
     colors: [],
     sizes: [],
-    gender: ['Male', 'Female']
+    gender: ['Men', 'Women']
 };
 
 const sliceFillter = createSlice({
@@ -14,6 +15,10 @@ const sliceFillter = createSlice({
     reducers: {
         changeType: (state, action) => {
             state.type = action.payload;
+            return state;
+        },
+        changeSuitable: (state, action) => {
+            state.suitable = action.payload;
             return state;
         },
         addBrand: (state, action) => {

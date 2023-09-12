@@ -17,7 +17,6 @@ function ProductCard({
         className,
         ...propsAdd
     }
-    console.log(productColors);
 
     const ImgSrc = useRef(productImgSrc);
     const productRef = useRef(null);

@@ -1,39 +1,37 @@
 import classnames from 'classnames/bind';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-
+import { memo, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ProductService } from '~/services';
 import ProductCard from '~/components/ProductCard';
-import imgSimilar1 from '~/assets/images/similar_1.jpg';
-import imgSimilar2 from '~/assets/images/similar_2.jpg';
-import imgSimilar3 from '~/assets/images/similar_3.jpg';
-import imgSimilar4 from '~/assets/images/smilar_4.jpg';
+
+import { actionProduct } from './ProductPageSlice';
+import { productListRemainingSelector } from './ProductSelector'
 
 import styles from './Product.module.css';
-
-
 const cx = classnames.bind(styles);
 
+
 function ProductPage() {
-    const [productList, setProductList] = useState([]);
-
+    const dispatch = useDispatch();
+    const dataProductList = useSelector(productListRemainingSelector);
     useEffect(() => {
-        axios.get('http://localhost:3000/shoes')
-            .then((res) => {
-                return res.data;
-            })
-            .then((data) => {
-                console.log(data);
-                setProductList(data);
-            })
-            .catch((err) => console.log(err));
-
+        const getProduct = async () => {
+            const productList = await ProductService.getProductService('/productList');
+            dispatch(actionProduct.clearStore());//clears store product;
+            dispatch(actionProduct.store(productList));
+        }
+        getProduct();
+        return () => {
+            dispatch(actionProduct.clearStore());
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <div className={cx('product', 'container-fluid', 'col',)}>
             <div className={cx('row', 'product-list')}>
-                {productList &&
-                    productList.map((product, index) =>
+                {dataProductList &&
+                    dataProductList.map((product, index) =>
                         <div className={cx('product-card-item', 'col-lg-4')} key={index}>
                             <ProductCard to='/products/details'
                                 productImgSrc={product.img}
@@ -47,8 +45,11 @@ function ProductPage() {
                     )
                 }
             </div>
+            {!dataProductList &&
+                <div div className={cx('row')}>Không tìm thấy nội dung yêu cầu</div>
+            }
         </div >
     )
 }
 
-export default ProductPage;
+export default memo(ProductPage);

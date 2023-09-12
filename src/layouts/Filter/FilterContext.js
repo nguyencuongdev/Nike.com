@@ -12,10 +12,6 @@ export const TypesShoes = createContext([
         url: '/shoes/Lifestyle'
     },
     {
-        title: 'Jordan',
-        url: '/shoes/Jordan'
-    },
-    {
         title: 'Running',
         url: '/shoes/Running'
     },

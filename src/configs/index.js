@@ -1,7 +1,15 @@
 const configs = {
     router: {
         home: '/',
-        product: '/products/:type'
+        productAll: '/products',
+        productShoes: '/products/shoes',
+        productShoesTypes: '/products/shoes/:type',
+        productClothing: '/products/clothing',
+        productClothingTypes: '/products/clothing/:type',
+        prodcutAccessoriesandEquipment: '/products/accessories-equipment',
+        prodcutAccessoriesandEquipmentTypes: '/products/accessories-equipment/:type',
+        shopByBrand: '/shopbybrand/:type',
+        shopbyGender: '/shopbygender/:gender',
     }
 }
 

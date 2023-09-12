@@ -15,12 +15,11 @@ const cx = classnames.bind(styles);
 function DefaultLayout({ children }) {
     const [sortByValue, setSortByValue] = useState('Price: Hight-Low');
     // eslint-disable-next-line no-unused-vars
-    const [titleContent, setTitleContent] = useState(() => {
+    const [typeContent, setTypeContent] = useState(() => {
         const titleSplited = window.location.pathname;
         let title = handleFormatTitle(titleSplited);
         return title;
-    });
-
+    })
     const [btnToggleFillterValue, setBtnToggleFillterValue] = useState('Hidden fillter');
 
     const optionSortByRef = useRef(null);
@@ -32,12 +31,11 @@ function DefaultLayout({ children }) {
             <main className={cx('main', 'container-fluid')}>
                 <div className={cx('row', 'main-TitleAndSort')}>
                     <h2 className={cx('main-title')}>
-                        {titleContent}
-                        <span className={cx('main-title-count')}> (434)</span>
+                        {typeContent}
+                        <span className={cx('main-title-count')}></span>
                     </h2>
                     <div className={cx('main-sortby')}>
                         <button className={cx('btn-toggle-fillter')} onClick={() => {
-                            console.log(fillterRef.current);
                             let result = fillterRef.current.onToggle();
                             setBtnToggleFillterValue(result);
                         }}>

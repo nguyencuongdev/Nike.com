@@ -1,6 +1,6 @@
-// import { createSelector } from '@reduxjs/toolkit';
-
-
 export const FillterBrandsSelector = (state) => state.fillter.brands;
 export const FillterGendersSelector = (state) => state.fillter.gender;
+export const FillterSuitableSelector = (state) => state.fillter.suitable;
+export const FillterSizesSelector = (state) => state.fillter.sizes;
+export const FillterColorsSelector = (state) => state.fillter.colors;
 export const FillterTypeSelector = (state) => state.fillter.type;

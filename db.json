@@ -1,6 +1,7 @@
 {
-    "shoes": [
+    "productList": [
         {
+            "id": 1,
             "name": "Nike InfinityRN 4 SE",
             "subTitle": "Shoes for Male, Female",
             "brand": "Nike",
@@ -10,9 +11,10 @@
                 "Black",
                 "Green"
             ],
+            "type": "shoes",
             "gender": [
-                "Male",
-                "Female"
+                "Men",
+                "Women"
             ],
             "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ed45ceac-1a49-450c-a71d-3ffedbb376d0/infinityrn-4-road-running-shoes-mLRjcz.png",
             "price": 4699000,
@@ -25,9 +27,17 @@
             "imgSimilar": [
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fb5ad585-ec9c-4ab6-ab6f-b0b6b50235a4/infinityrn-4-road-running-shoes-mLRjcz.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/71a3d324-05c0-4b8d-9d78-0bd937520798/infinityrn-4-road-running-shoes-mLRjcz.png"
+            ],
+            "sizes": [
+                "35.5",
+                "40",
+                "39",
+                "36",
+                "41"
             ]
         },
         {
+            "id": 2,
             "name": "Nike Air Force 1 '07",
             "subTitle": "Men's Shoes",
             "brand": "Nike",
@@ -35,35 +45,45 @@
                 "White",
                 "Black"
             ],
+            "type": "shoes",
             "gender": [
-                "Male",
-                "Female"
+                "Men",
+                "Women"
             ],
             "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e6da41fa-1be4-4ce5-b89c-22be4f1f02d4/air-force-1-07-shoes-WrLlWX.png",
-            "price": 4699000,
+            "price": 1999000,
             "suitable": [
-                "Lifestyle"
+                "Lifestyle",
+                "Football"
             ],
             "imgSimilar": [
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/21d38052-598b-44f6-a857-123c9f72b015/air-force-1-07-shoes-WrLlWX.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/71a3d324-05c0-4b8d-9d78-0bd937520798/infinityrn-4-road-running-shoes-mLRjcz.png"
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e6da41fa-1be4-4ce5-b89c-22be4f1f02d4/air-force-1-07-shoes-WrLlWX.png"
+            ],
+            "sizes": [
+                "7",
+                "38",
+                "39",
+                "36",
+                "41"
             ]
         },
         {
+            "id": 3,
             "name": "Air Jordan 1 Zoom CMFT 2",
             "subTitle": "Men's Shoes",
             "brand": "Jordan",
             "colors": [
-                "White",
-                "Yellow",
                 "Green",
-                "Blue"
+                "Blue",
+                "Orange"
             ],
             "gender": [
-                "Male"
+                "Men"
             ],
+            "type": "shoes",
             "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0068f7a7-6789-4750-b05a-350f80e0684c/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
-            "price": 4699000,
+            "price": 2599000,
             "suitable": [
                 "Lifestyle"
             ],
@@ -72,20 +92,30 @@
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2fd7f3e8-b092-421b-9ca1-fbe92a586aa5/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0068f7a7-6789-4750-b05a-350f80e0684c/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ed71f213-14a5-4d5e-a0d8-1416208566b8/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png"
+            ],
+            "sizes": [
+                "7",
+                "38",
+                "39",
+                "36",
+                "41"
             ]
         },
         {
+            "id": 4,
             "name": "Nike Air VaporMax 2023 Flyknit",
             "subTitle": "Men's Shoes",
             "brand": "Nike",
             "colors": [
-                "White",
-                "Black"
+                "Red",
+                "Blue",
+                "Gray"
             ],
             "gender": [
-                "Male",
-                "Female"
+                "Men",
+                "Women"
             ],
+            "type": "shoes",
             "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/3d2786a4-7b5f-470a-8a6e-ba844b637abd/air-vapormax-2023-flyknit-shoes-xjVzw5.png",
             "price": 6179000,
             "suitable": [
@@ -94,11 +124,55 @@
                 "Tennis",
                 "Walking"
             ],
+            "sizes": [
+                "7",
+                "38",
+                "39",
+                "36",
+                "41"
+            ],
             "imgSimilar": [
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/bc65cd4b-ce49-4ab9-88a4-0dbcf20ebcbf/air-vapormax-2023-flyknit-shoes-xjVzw5.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/52332e7e-fcac-427e-b0cf-cd603a29d90a/air-vapormax-2023-flyknit-shoes-xjVzw5.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/3d2786a4-7b5f-470a-8a6e-ba844b637abd/air-vapormax-2023-flyknit-shoes-xjVzw5.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/6ff6e596-2f93-47f8-98a4-611de407bffb/air-vapormax-2023-flyknit-shoes-xjVzw5.png"
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Nike Dri-FIT Primary",
+            "subTitle": "Men's Training T-Shirt",
+            "brand": "Nike",
+            "colors": [
+                "White",
+                "Black",
+                "Yellow",
+                "Blue"
+            ],
+            "gender": [
+                "Men"
+            ],
+            "type": "clothing",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/77d88870-47a9-4529-8cd6-37194288e0d2/dri-fit-primary-training-t-shirt-z9dSFb.png",
+            "price": 6179000,
+            "suitable": [
+                "Lifestyle",
+                "Basketball",
+                "Tennis",
+                "Walking"
+            ],
+            "sizes": [
+                "37",
+                "38",
+                "39",
+                "36",
+                "41"
+            ],
+            "imgSimilar": [
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/25de54ca-d0d6-4309-b61d-41914aca1267/dri-fit-primary-training-t-shirt-z9dSFb.png",
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/77d88870-47a9-4529-8cd6-37194288e0d2/dri-fit-primary-training-t-shirt-z9dSFb.png",
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/1850f732-d635-44b2-b65a-b3093cd1432d/dri-fit-primary-training-t-shirt-z9dSFb.png",
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/53a6853e-8e50-41b3-974a-9ccbff68f576/dri-fit-primary-training-t-shirt-z9dSFb.png"
             ]
         }
     ]
