@@ -16,7 +16,7 @@
                 "Men",
                 "Women"
             ],
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ed45ceac-1a49-450c-a71d-3ffedbb376d0/infinityrn-4-road-running-shoes-mLRjcz.png",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fb5ad585-ec9c-4ab6-ab6f-b0b6b50235a4/infinityrn-4-road-running-shoes-mLRjcz.png",
             "price": 4699000,
             "suitable": [
                 "Running",
@@ -103,21 +103,19 @@
         },
         {
             "id": 4,
-            "name": "Nike Air VaporMax 2023 Flyknit",
-            "subTitle": "Men's Shoes",
-            "brand": "Nike",
+            "name": "Jordan Flight Heritage 85",
+            "subTitle": "Men's T-Shirt",
+            "brand": "Jordan",
             "colors": [
-                "Red",
-                "Blue",
-                "Gray"
+                "Black",
+                "White"
             ],
             "gender": [
-                "Men",
-                "Women"
+                "Men"
             ],
-            "type": "shoes",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/3d2786a4-7b5f-470a-8a6e-ba844b637abd/air-vapormax-2023-flyknit-shoes-xjVzw5.png",
-            "price": 6179000,
+            "type": "clothing",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b59c279d-321b-42ee-902f-dd5a751f6bed/jordan-flight-heritage-85-t-shirt-qVM4Fc.png",
+            "price": 1169000,
             "suitable": [
                 "Lifestyle",
                 "Basketball",
@@ -125,17 +123,12 @@
                 "Walking"
             ],
             "sizes": [
-                "7",
-                "38",
-                "39",
                 "36",
                 "41"
             ],
             "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/bc65cd4b-ce49-4ab9-88a4-0dbcf20ebcbf/air-vapormax-2023-flyknit-shoes-xjVzw5.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/52332e7e-fcac-427e-b0cf-cd603a29d90a/air-vapormax-2023-flyknit-shoes-xjVzw5.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/3d2786a4-7b5f-470a-8a6e-ba844b637abd/air-vapormax-2023-flyknit-shoes-xjVzw5.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/6ff6e596-2f93-47f8-98a4-611de407bffb/air-vapormax-2023-flyknit-shoes-xjVzw5.png"
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a4e98809-0f97-4a55-9297-42ad6d769457/jordan-flight-heritage-85-t-shirt-qVM4Fc.png",
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b59c279d-321b-42ee-902f-dd5a751f6bed/jordan-flight-heritage-85-t-shirt-qVM4Fc.png"
             ]
         },
         {
@@ -173,6 +166,88 @@
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/77d88870-47a9-4529-8cd6-37194288e0d2/dri-fit-primary-training-t-shirt-z9dSFb.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/1850f732-d635-44b2-b65a-b3093cd1432d/dri-fit-primary-training-t-shirt-z9dSFb.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/53a6853e-8e50-41b3-974a-9ccbff68f576/dri-fit-primary-training-t-shirt-z9dSFb.png"
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Chelsea F.C. 2023/24 Match Away",
+            "subTitle": "Men's, women's Nike Dri-FIT ADV Football Shirt",
+            "brand": "Nike",
+            "colors": [
+                "Blue"
+            ],
+            "gender": [
+                "Men",
+                "Women"
+            ],
+            "type": "clothing",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/48beb34d-6200-4325-b7d1-73cfa5721baa/chelsea-fc-2023-24-match-away-dri-fit-adv-football-shirt-2l80ZZ.png",
+            "price": 1119000,
+            "suitable": [
+                "Football"
+            ],
+            "sizes": [
+                "37",
+                "38",
+                "39",
+                "36",
+                "41"
+            ],
+            "imgSimilar": []
+        },
+        {
+            "id": 7,
+            "name": "Nike Max90",
+            "subTitle": "Men's Basketball T-shirt",
+            "brand": "Nike",
+            "colors": [
+                "Black",
+                "Pink"
+            ],
+            "gender": [
+                "Men"
+            ],
+            "type": "clothing",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d2468621-159a-4013-a193-c57a2915efaf/max90-basketball-t-shirt-jQZ50P.png",
+            "price": 6179000,
+            "suitable": [
+                "Basketball"
+            ],
+            "sizes": [
+                "37",
+                "38"
+            ],
+            "imgSimilar": [
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/bb0f2701-c185-4279-89e5-494cd52e7303/max90-basketball-t-shirt-jQZ50P.png",
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d2468621-159a-4013-a193-c57a2915efaf/max90-basketball-t-shirt-jQZ50P.png"
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Nike Club Cap",
+            "subTitle": "Unstructured Corduroy Cap",
+            "brand": "Nike",
+            "colors": [
+                "Black",
+                "Blue"
+            ],
+            "gender": [
+                "Men",
+                "Women"
+            ],
+            "type": "accessories-equipment",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png",
+            "price": 6179000,
+            "suitable": [
+                "Lifestyle"
+            ],
+            "sizes": [
+                "37",
+                "38"
+            ],
+            "imgSimilar": [
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/304fd33e-d600-4e4d-8f5f-a4895c461d20/club-cap-unstructured-corduroy-cap-r85WQS.png",
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png"
             ]
         }
     ]

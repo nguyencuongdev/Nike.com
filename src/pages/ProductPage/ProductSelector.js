@@ -12,7 +12,8 @@ export const productListRemainingSelector = createSelector(
     (productList, type, suitable, brand, colors, sizes, gender) => {
 
         let checkColor = false, checkSize = false, checkGender = false, checkBrand = false;
-        return productList.filter((product) => {
+        const data = productList.filter((product) => {
+
             (colors.length > 0) ?
                 checkColor = checkProduct.handlecCheckColor(product, colors)
                 : (checkColor = true);
@@ -25,13 +26,21 @@ export const productListRemainingSelector = createSelector(
             (brand.length > 0) ?
                 checkBrand = brand.includes(product.brand)
                 : checkBrand = true;
-            if (suitable === 'All') {
+
+            if (suitable === 'All' && type === '') {
+                return checkBrand && checkColor && checkSize && checkGender; //trả về tất cả sản phẩm của tất cả thể loại nhưng phải khớp với fillter;
+            }
+            else if (suitable === 'All' && type !== '') {
+                //trả về tất cả sản phẩm có type khớp với type of filter;
                 return (product.type === type) && checkBrand && checkColor && checkSize && checkGender
             }
             else {
+                //trả về tất cả sản phầm khớp với suitable và type khớp với type of filter;
                 return product.suitable.includes(suitable) && product.type === type && checkBrand && checkColor && checkSize && checkGender;
             }
         })
+
+        return data.sort((a, b) => Math.random() - 0.5);
     }
 )
 
