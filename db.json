@@ -53,8 +53,7 @@
             "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e6da41fa-1be4-4ce5-b89c-22be4f1f02d4/air-force-1-07-shoes-WrLlWX.png",
             "price": 1999000,
             "suitable": [
-                "Lifestyle",
-                "Football"
+                "Lifestyle"
             ],
             "imgSimilar": [
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/21d38052-598b-44f6-a857-123c9f72b015/air-force-1-07-shoes-WrLlWX.png",
@@ -177,8 +176,7 @@
                 "Blue"
             ],
             "gender": [
-                "Men",
-                "Women"
+                "Men"
             ],
             "type": "clothing",
             "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/48beb34d-6200-4325-b7d1-73cfa5721baa/chelsea-fc-2023-24-match-away-dri-fit-adv-football-shirt-2l80ZZ.png",
@@ -187,10 +185,7 @@
                 "Football"
             ],
             "sizes": [
-                "37",
-                "38",
-                "39",
-                "36",
+                "40",
                 "41"
             ],
             "imgSimilar": []
@@ -249,6 +244,81 @@
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/304fd33e-d600-4e4d-8f5f-a4895c461d20/club-cap-unstructured-corduroy-cap-r85WQS.png",
                 "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png"
             ]
+        },
+        {
+            "id": 9,
+            "name": "Nike Sportswear Tech Fleece",
+            "subTitle": "Women's Oversized Asymmetrical Hoodie",
+            "brand": "Nike",
+            "colors": [
+                "Black",
+                "White"
+            ],
+            "gender": [
+                "Women"
+            ],
+            "type": "clothing",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/985c6cd9-ddf9-4d67-a691-f2bc2813a175/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png",
+            "price": 6179000,
+            "suitable": [
+                "Hoodies & Sweatshirts"
+            ],
+            "sizes": [
+                "37",
+                "38"
+            ],
+            "imgSimilar": [
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ff465ca9-7bbe-4cc7-9e23-75c6992d517a/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png",
+                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/985c6cd9-ddf9-4d67-a691-f2bc2813a175/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png"
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Nike Sportswear",
+            "subTitle": "Women's T-shirt",
+            "brand": "Nike",
+            "colors": [
+                "Green"
+            ],
+            "gender": [
+                "Women"
+            ],
+            "type": "accessories-equipment",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/411e9dbf-bf9f-49ce-959f-3207817858da/sportswear-t-shirt-pptNcN.png",
+            "price": 6179000,
+            "suitable": [
+                "Tops & T-Shirts"
+            ],
+            "sizes": [
+                "35.5",
+                "37",
+                "36"
+            ],
+            "imgSimilar": []
+        },
+        {
+            "id": 11,
+            "name": "Nike Sportswear",
+            "subTitle": "Women's High-Waisted French Terry Shorts",
+            "brand": "Nike",
+            "colors": [
+                "Black",
+                "White"
+            ],
+            "gender": [
+                "Women"
+            ],
+            "type": "clothing",
+            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/7689b197-de21-4bc1-8e4c-2a778c14d962/sportswear-high-waisted-french-terry-shorts-hFD0rm.png",
+            "price": 6179000,
+            "suitable": [
+                "Shorts"
+            ],
+            "sizes": [
+                "37",
+                "38"
+            ],
+            "imgSimilar": []
         }
     ]
 }

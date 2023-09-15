@@ -2,13 +2,11 @@ const configs = {
     router: {
         home: '/',
         productAll: '/products',
-        productShoes: '/products/shoes',
-        productShoesTypes: '/products/shoes/:type',
-        productClothing: '/products/clothing',
-        productClothingTypes: '/products/clothing/:type',
-        prodcutAccessoriesandEquipment: '/products/accessories-equipment',
-        prodcutAccessoriesandEquipmentTypes: '/products/accessories-equipment/:type',
-        shopByBrand: '/shopbybrand/:type',
+        productByType: '/products/:type',
+        productByTypeAndGender: '/products/:type/:gender',
+        productByTypeAndGenderAndSuitableFor: '/products/:type/:gender/:suitable',
+        shopByBrand: '/shopbybrand/:brand',
+        shopByBrandAndGender: '/shopbybrand/:brand/:gender',
         shopbyGender: '/shopbygender/:gender',
     }
 }

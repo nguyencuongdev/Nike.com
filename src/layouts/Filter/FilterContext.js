@@ -1,6 +1,20 @@
 
 import { createContext } from 'react';
 
+export const TypesProduct = createContext([
+    {
+        title: 'Shoes',
+        url: 'shoes'
+    },
+    {
+        title: 'Clothing',
+        url: 'clothing'
+    },
+    {
+        title: 'Accessories & Equipment',
+        url: 'Accessories & Equipment'
+    }
+])
 
 export const TypesShoes = createContext([
     {
@@ -53,6 +67,64 @@ export const TypesShoes = createContext([
     }
 
 ])
+
+export const TypesClothing = createContext([
+    {
+        title: 'All',
+        url: '/clothing'
+    },
+    {
+        title: 'Tops & T-Shirts',
+        url: '/clothing/Tops & T-Shirts'
+    },
+    {
+        title: 'Hoodies & Sweatshirts',
+        url: '/clothing/Hoodies- & Sweatshirts'
+    },
+    {
+        title: 'Jackets',
+        url: '/clothing/Jackets'
+    },
+    {
+        title: 'Trousers & T-Shirts',
+        url: '/clothing/Trousers & T-Shirts'
+    },
+    {
+        title: 'Tracksuits',
+        url: '/clothing/Tracksuits'
+    },
+    {
+        title: 'Shorts',
+        url: '/clothing/Shorts'
+    },
+    {
+        title: 'Commpressiion & Baselayer',
+        url: '/clothing/Commpression & Baselayer'
+    },
+    {
+        title: 'Shocks',
+        url: '/clothing/Shocks'
+    }
+])
+
+export const TypesClothingOfWoment = [
+    {
+        title: 'Sports Bras',
+        url: '/clothing/Sports Bars'
+    },
+    {
+        title: 'Jumpsuits & Rompers',
+        url: '/clothing/Jumpsuits & Rompers'
+    },
+    {
+        title: 'Skirts & Dresses',
+        url: '/clothing/Skirts & Dresses'
+    },
+    {
+        title: 'Bodysuits',
+        url: '/clothing/Bodysuits'
+    }
+]
 
 export const ColorsList = createContext([
     {

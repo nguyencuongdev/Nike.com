@@ -13,32 +13,24 @@ export const publicRoutes = [
         component: ProductPage,
     },
     {
-        path: routerConfig.productShoes,
+        path: routerConfig.productByType,
         component: ProductPage,
     },
     {
-        path: routerConfig.productShoesTypes,
+        path: routerConfig.productByTypeAndGender,
         component: ProductPage,
     },
     {
-        path: routerConfig.productClothing,
+        path: routerConfig.productByTypeAndGenderAndSuitableFor,
         component: ProductPage,
-    },
-    {
-        path: routerConfig.productClothingTypes,
-        component: ProductPage,
-    },
-
-    {
-        path: routerConfig.prodcutAccessoriesandEquipment,
-        component: ProductPage,
-    },
-    {
-        path: routerConfig.prodcutAccessoriesandEquipmentTypes,
-        component: ProductPage,
-    },
+    }
+    ,
     {
         path: routerConfig.shopByBrand,
+        component: ProductPage,
+    },
+    {
+        path: routerConfig.shopByBrandAndGender,
         component: ProductPage,
     },
     {

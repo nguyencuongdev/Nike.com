@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import classnames from 'classnames/bind';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { FilterIcon } from '~/components/Icon';
 
@@ -8,22 +9,27 @@ import Footer from '~/layouts/Footer';
 import Filter from '~/layouts/Filter';
 
 import { handleFormatTitle } from '~/helper';
+import { productListRemainingSelector } from '~/pages/ProductPage/ProductSelector';
 
 import styles from './Default.module.css';
+import { actionsFillter } from '../Filter/FillterSlice';
 const cx = classnames.bind(styles);
 
 function DefaultLayout({ children }) {
-    const [sortByValue, setSortByValue] = useState('Price: Hight-Low');
+    const [sortByValue, setSortByValue] = useState('Price: High-Low');
     // eslint-disable-next-line no-unused-vars
     const [typeContent, setTypeContent] = useState(() => {
         const titleSplited = window.location.pathname;
         let title = handleFormatTitle(titleSplited);
+        if (!title) title = 'Products';
         return title;
     })
     const [btnToggleFillterValue, setBtnToggleFillterValue] = useState('Hidden fillter');
 
     const optionSortByRef = useRef(null);
     const fillterRef = useRef(null);
+    const countProduct = useSelector(productListRemainingSelector).length;
+    const dispatch = useDispatch();
 
     return (
         <div className={cx('wrapper')}>
@@ -31,8 +37,8 @@ function DefaultLayout({ children }) {
             <main className={cx('main', 'container-fluid')}>
                 <div className={cx('row', 'main-TitleAndSort')}>
                     <h2 className={cx('main-title')}>
-                        {typeContent}
-                        <span className={cx('main-title-count')}></span>
+                        {typeContent}:
+                        <span className={cx('main-title-count')}>{countProduct}</span>
                     </h2>
                     <div className={cx('main-sortby')}>
                         <button className={cx('btn-toggle-fillter')} onClick={() => {
@@ -43,32 +49,34 @@ function DefaultLayout({ children }) {
                             <FilterIcon />
                         </button>
                         <div className={cx('main-dropdown-menu')}>
-                            <button className={cx('btn-toggle-dropmenu')}
+                            <button className={cx('btn-toggle-dropmenu', 'sort')}
                                 onClick={() => optionSortByRef.current.classList.toggle(cx('hidden'))}
                             >
                                 Sort by:
                                 <span className={cx('sorby-value')}>{sortByValue}</span>
                             </button>
                             <ul className={cx('dropdownMenu', 'hidden')} ref={optionSortByRef}>
-                                <li className={cx('dorpdown-menu-item')}
-                                    value='desc'
+                                <li className={cx('dorpdown-menu-item', 'sort-item')}
+                                    data-value='desc'
                                     onClick={(e) => {
-                                        console.log(e.target.textContent);
+                                        let value = e.target.getAttribute('data-value');
                                         setSortByValue(e.target.textContent);
                                         optionSortByRef.current.classList.toggle(cx('hidden'));
+                                        dispatch(actionsFillter.changeSort(value));
                                     }}
                                 >
-                                    Price: Hight-Low
+                                    Price: High-Low
                                 </li>
-                                <li className={cx('dorpdown-menu-item')}
+                                <li className={cx('dorpdown-menu-item', 'sort-item')}
                                     value='asc'
                                     onClick={(e) => {
-                                        console.log(e.target.textContent);
+                                        let value = e.target.getAttribute('data-value');
                                         setSortByValue(e.target.textContent);
                                         optionSortByRef.current.classList.toggle(cx('hidden'));
+                                        dispatch(actionsFillter.changeSort(value));
                                     }}
                                 >
-                                    Price: Low-Hight
+                                    Price: Low-High
                                 </li>
                             </ul>
                         </div>

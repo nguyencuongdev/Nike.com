@@ -20,7 +20,9 @@ function MenuItem({
     return (
         <ListGroup.Item {...props}>
             {iconLeft && <span className={cx('menu-item-icon')}>{iconLeft}</span>}
-            <Link to={url} className={cx('menu-link')}>{title}</Link>
+            <a href={url} className={cx('menu-link')}>
+                {title}
+            </a>
             {iconRight && <span className={cx('menu-item-icon')}>{iconRight}</span>}
         </ListGroup.Item>
     )

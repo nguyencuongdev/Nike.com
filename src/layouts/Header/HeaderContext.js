@@ -170,43 +170,35 @@ const MENU_MEN = {
             children: [
                 {
                     title: 'All Shoes',
-                    url: '/men/shoes'
+                    url: '/products/shoes/Men'
                 },
                 {
                     title: 'Newest Sneakers',
-                    url: '/men/shoes/sneakers'
+                    url: '/products/shoes/Men/Sneakers'
                 },
                 {
                     title: 'Lifestyle',
-                    url: '/men/shoes/lifestyle'
-                },
-                {
-                    title: 'Jordan',
-                    url: '/men/shoes/jordan'
+                    url: '/products/shoes/Men/Lifestyle'
                 },
                 {
                     title: 'Running',
-                    url: '/men/shoes/running'
+                    url: '/products/shoes/Men/Running'
                 },
                 {
                     title: 'Basketball',
-                    url: '/men/shoes/basketball'
+                    url: '/products/shoes/Men/Basketball'
                 },
                 {
                     title: 'Football',
-                    url: '/men/shoes/football'
+                    url: '/products/shoes/Men/Football'
                 },
                 {
                     title: 'Basketball',
-                    url: '/men/shoes/basketball'
+                    url: '/products/shoes/Men/Basketball'
                 },
                 {
                     title: 'Sandals',
-                    url: '/men/sandals'
-                },
-                {
-                    title: 'Top Kicks Under 3,000,000₫',
-                    url: '/men/shoes/lowprice'
+                    url: '/products/shoes/Men/sandals'
                 }
             ]
         },
@@ -215,36 +207,32 @@ const MENU_MEN = {
             children: [
                 {
                     title: 'All Clothing',
-                    url: '/men/clothing'
+                    url: '/products/clothing/Men'
                 },
                 {
-                    title: 'Tops and T-Shirts',
-                    url: '/men/clothing/tshirts'
+                    title: 'Tops & T-Shirts',
+                    url: 'products/clothing/Men/Tops & T-Shirts'
                 },
                 {
                     title: 'Shorts',
-                    url: '/men/clothing/shorts'
+                    url: '/products/clothing/Men/Shorts'
                 },
                 {
                     title: 'Pants and Leggings',
-                    url: '/men/clothing/trousers-tights'
+                    url: '/products/clothing/Men/Trousers & Tights'
                 },
                 {
                     title: 'Hoodies and Sweatshirts',
-                    url: '/men/clothing/hooodies-sewatshirts'
+                    url: '/products/clothing/Men/Hoodies & Sweatshirts'
                 },
                 {
-                    title: 'Jackets and Gilets',
-                    url: '/men/clothing/jackets-gilets'
+                    title: 'Jackets',
+                    url: '/products/clothing/Men/Jackets'
                 },
                 {
                     title: 'Jerseys and Kits',
-                    url: '/men/clothing/jerseys-kits'
-                },
-                {
-                    title: 'Jordan',
-                    url: '/men/clothing/jordan'
-                },
+                    url: '/products/clothing/Men/jerseys-kits'
+                }
             ]
         },
         {
@@ -285,19 +273,19 @@ const MENU_MEN = {
             children: [
                 {
                     title: 'All Accessories and Equipment',
-                    url: '/men/accessories'
+                    url: '/products/accessories-equipment/Men'
                 },
                 {
                     title: 'Bags and Backpacks',
-                    url: '/men/accessories/bags-backpacks'
+                    url: '/products/accessories-equipment/Men/Bags & backpacks'
                 },
                 {
                     title: 'Socks',
-                    url: '/men/accessories/socks'
+                    url: '/products/accessories-equipment/Men/Socks'
                 },
                 {
                     title: 'Hats and Headwear',
-                    url: '/men/accessories/hats-headwear'
+                    url: '/products/accessories-equipment/Men/Hats & Headwear'
                 },
             ]
         },
@@ -306,11 +294,11 @@ const MENU_MEN = {
             children: [
                 {
                     title: 'Nike',
-                    url: '/shopbybrand/nike'
+                    url: '/shopbybrand/Nike/Men'
                 },
                 {
                     title: 'Jordan',
-                    url: '/shopbybrand/jordan'
+                    url: '/shopbybrand/Jordan/Men'
                 },
             ]
         }
@@ -357,43 +345,31 @@ const MENU_WOMEN = {
             children: [
                 {
                     title: 'All Shoes',
-                    url: '/men/shoes'
+                    url: '/products/shoes/Women'
                 },
                 {
                     title: 'Newest Sneakers',
-                    url: '/men/shoes/sneakers'
+                    url: 'products/shoes/Women/Sneakers'
                 },
                 {
                     title: 'Lifestyle',
-                    url: '/men/shoes/lifestyle'
-                },
-                {
-                    title: 'Jordan',
-                    url: '/men/shoes/jordan'
+                    url: 'products/shoes/Women/Lifestyle'
                 },
                 {
                     title: 'Running',
-                    url: '/men/shoes/running'
+                    url: 'products/shoes/Women/Running'
                 },
                 {
                     title: 'Basketball',
-                    url: '/men/shoes/basketball'
+                    url: 'products/shoes/Women/Basketball'
                 },
                 {
                     title: 'Football',
-                    url: '/men/shoes/football'
-                },
-                {
-                    title: 'Basketball',
-                    url: '/men/shoes/basketball'
+                    url: 'products/shoes/Women/Football'
                 },
                 {
                     title: 'Sandals',
-                    url: '/men/sandals'
-                },
-                {
-                    title: 'Top Kicks Under 3,000,000₫',
-                    url: '/men/shoes/lowprice'
+                    url: '/products/shoes/Women/Sandals'
                 }
             ]
         },
@@ -402,48 +378,44 @@ const MENU_WOMEN = {
             children: [
                 {
                     title: 'All Clothing',
-                    url: '/women/clothing'
+                    url: '/products/clothing/Women'
                 },
                 {
-                    title: 'Tops and T-Shirts',
-                    url: '/women/clothing/tshirts'
+                    title: 'Tops & T-Shirts',
+                    url: '/products/clothing/Women/Tops & T-Shirts'
                 },
                 {
                     title: 'Sports Bras',
-                    url: '/woment/clothing/sports-bras'
+                    url: '/products/clothing/Women/Sports Bras'
                 },
                 {
                     title: 'Performance Essentials',
-                    url: '/men/clothing/performance-essentials'
+                    url: '/products/clothing/Women/Performance Essentials'
                 },
                 {
                     title: 'Pants and Leggings',
-                    url: '/women/clothing/trousers-tights'
+                    url: '/products/clothing/Women/Trousers & Tights'
                 },
                 {
                     title: 'Shorts',
-                    url: '/women/clothing/shorts'
+                    url: '/products/clothing/Women/Shorts'
                 },
                 {
                     title: 'Hoodies and Sweatshirts',
-                    url: '/men/clothing/hooodies-sewatshirts'
+                    url: '/products/clothing/Women/Hoodies & Sweatshirts'
                 },
                 {
-                    title: 'Jackets and Gilets',
-                    url: '/men/clothing/jackets-gilets'
+                    title: 'Jackets',
+                    url: '/products/clothing/Women/Jackets'
                 },
                 {
-                    title: 'Jerseys and Kits',
-                    url: '/men/clothing/jerseys-kits'
+                    title: 'Jerseys & Kits',
+                    url: '/products/clothing/Women/Jerseys & kits'
                 },
                 {
                     title: 'Modest Wear',
-                    url: '/women/clothing/modest-wear'
-                },
-                {
-                    title: 'Jordan',
-                    url: '/men/clothing/jordan'
-                },
+                    url: '/products/clothing/Women/Modest Wear'
+                }
             ]
         },
         {
@@ -451,31 +423,27 @@ const MENU_WOMEN = {
             children: [
                 {
                     title: 'Running',
-                    url: '/shop-sports/running'
+                    url: '/shopbysports/Running'
                 },
                 {
                     title: 'Football',
-                    url: '/shop-sports/football'
+                    url: '/shopbysports/Football'
                 },
                 {
                     title: 'Basketball',
-                    url: '/shop-sports/basketball'
+                    url: '/shopbysports/Basketball'
                 },
                 {
                     title: 'Yoga',
-                    url: '/shop-sports/yoga'
-                },
-                {
-                    title: 'Skateboarding',
-                    url: '/shop-sports/skateboarding'
+                    url: '/shopbysports/Yoga'
                 },
                 {
                     title: 'Tennis',
-                    url: '/shop-sports/tennis'
+                    url: '/shopbysports/Tennis'
                 },
                 {
                     title: 'Golf',
-                    url: '/shop-sports/golf'
+                    url: '/shopbysports/Golf'
                 },
             ]
         },
@@ -484,19 +452,19 @@ const MENU_WOMEN = {
             children: [
                 {
                     title: 'All Accessories and Equipment',
-                    url: '/men/accessories'
+                    url: '/products/accessories-equipment/Women'
                 },
                 {
-                    title: 'Bags and Backpacks',
-                    url: '/men/accessories/bags-backpacks'
+                    title: 'Bags & Backpacks',
+                    url: '/products/accessories-equipment/Women/Bags & Backpacks'
                 },
                 {
                     title: 'Socks',
-                    url: '/men/accessories/socks'
+                    url: '/products/accessories-equipment/Women/Socks'
                 },
                 {
                     title: 'Hats and Headwear',
-                    url: '/men/accessories/hats-headwear'
+                    url: '/products/accessories-equipment/Women/Hats & Headwear'
                 },
             ]
         },
@@ -505,11 +473,11 @@ const MENU_WOMEN = {
             children: [
                 {
                     title: 'Nike',
-                    url: '/shopbybrand/nike'
+                    url: '/shopbybrand/Nike/Women'
                 },
                 {
                     title: 'Jordan',
-                    url: '/shopbybrand/jordan'
+                    url: '/shopbybrand/Jordan/Women'
                 },
             ]
         }

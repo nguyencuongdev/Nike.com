@@ -27,14 +27,14 @@ function HomePage() {
                 <Banner title='Nike Ready Pack' img={{ src: BannerImg }}
                     subtitle='Just in'
                     text='The season is here. Start yours prepared with the best in touch, agility, precision and speed.'
-                    button={{ title: 'See All', to: 'products/shoes/' }}
+                    button={{ title: 'See All', to: 'products' }}
                 />
             </div>
             <div className={cx('content-item')}>
                 <h3 className={cx('content-title')}>Just In</h3>
                 <Banner title='SABRINA’S LAWS OF THE GAME' img={{ src: BannerImg2 }}
                     text='Sabrina Ionescu’s basketball journey has been nothing short of iconic. From neighborhood pickup games to breakout college star to No. 1 draft pick with her own signature shoe. Now she’s laying down her Laws of the Game, so every hooper can follow in her footsteps. Ready? Let’s go.'
-                    button={{ title: 'See All', to: '/women' }}
+                    button={{ title: 'See All', to: 'shopbygender/Women' }}
                 />
             </div>
             <div className={cx('content-item', 'container-fluid', 'px-0')}>
@@ -44,7 +44,7 @@ function HomePage() {
                         classNameAdd={cx('content-media-item', 'col')}
                         title='Step Up Your Style'
                         subtitle='Nike Tech Hera'
-                        href='/shoes/nike'
+                        href='/shopbybrand/nike'
                         button={{ title: 'See All' }}
                     />
                     <Media img={{ src: Media2 }} classNameAdd={cx('content-media-item', 'col')}
@@ -60,7 +60,7 @@ function HomePage() {
                 <Banner text='With unreal speed combined with a grip and fit that can keep your feet on the ground at a reality-bending pace, the Kylian Mbappé Mercurial takes fast into unknown dimensions.' img={{ src: BannerImg3 }}
                     subtitle='Unreal Speed'
                     title='KYLIAN MBAPPÉ MERCURIAL'
-                    button={{ title: 'See All', to: '/men' }}
+                    button={{ title: 'See All', to: 'shopbygender/Men' }}
                 />
             </div>
             <div className={cx('content-item')}>
@@ -68,7 +68,7 @@ function HomePage() {
                 <Banner title='DESERT NEUTRALS' img={{ src: BannerImg4 }}
                     text='Experience the magic of neutrals with utility pants, cropped tees, jackets, and more that bring fun and style to your everyday fits.'
                     subtitle='Jordan Apparel'
-                    button={{ title: 'See All', to: '/clothing/jordan' }}
+                    button={{ title: 'See All', to: '/shopbybrand/Jordan' }}
                 />
             </div>
             <div className={cx('content-item', 'container-fluid', 'px-0', 'mb-4')}>
@@ -77,12 +77,15 @@ function HomePage() {
                     <Media img={{ src: Media_Men }}
                         classNameAdd={cx('content-media-item', 'col')}
                         button={{ title: 'Men\'s', className: 'white' }}
+                        to='shopbygender/Men'
                     />
                     <Media img={{ src: Media_Women }} classNameAdd={cx('content-media-item', 'col')}
                         button={{ title: 'Women\'s', className: 'white' }}
+                        to='shopbygender/Women'
                     />
                     <Media img={{ src: Media_kids }} classNameAdd={cx('content-media-item', 'col')}
                         button={{ title: 'Kids\'s', className: 'white' }}
+                        to='shopbygender/kids'
                     />
                 </div>
             </div>

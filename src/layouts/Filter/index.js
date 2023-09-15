@@ -1,9 +1,10 @@
 import classnames from 'classnames/bind';
-import { useContext, forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
+import { useContext, forwardRef, useImperativeHandle, useRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { TypesShoes, ColorsList, SizeList, BrandList } from './FilterContext';
-import { FillterBrandsSelector, FillterGendersSelector, FillterSuitableSelector } from './FillterSelector';
+import { TypesProduct, TypesShoes, ColorsList, SizeList, BrandList, TypesClothing }
+    from './FilterContext';
+import { FillterBrandsSelector, FillterGendersSelector, FillterSuitableSelector, FillterTypeSelector } from './FillterSelector';
 import { actionsFillter } from './FillterSlice';
 import { CheckIcon } from '~/components/Icon';
 
@@ -11,15 +12,22 @@ import styles from './Filter.module.css';
 const cx = classnames.bind(styles);
 
 function Filter({ ...props }, ref) {
-    const typesShoes = useContext(TypesShoes);
+
+    const typesProduct = useContext(TypesProduct);
+    const typesShoesList = useContext(TypesShoes);
+    const typesClothingList = useContext(TypesClothing);
     const colorsList = useContext(ColorsList);
     const sizeList = useContext(SizeList);
     const brandList = useContext(BrandList);
 
+    const [menuTypes, setMenuTypes] = useState([]);
+    const [shopByGenderValue, setShopByGenderValue] = useState('');
     const dispatch = useDispatch();
-
     useEffect(() => {
         handleTypeContent();
+        return () => {
+            dispatch(actionsFillter.clearFilter());
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -30,42 +38,69 @@ function Filter({ ...props }, ref) {
         if (pathNameSplited[pathNameSplited.length - 1] === '') pathNameSplited.pop();
         if (pathNameSplited.length === 1) return; //render all products;
         //handle type content
+
+        //với pathName có 3 tham số;
         if (pathNameSplited.length === 3) {
-            switch (pathNameSplited[1]) {
-                case 'shoes': {
-                    //fillter for products is shoes matched with suitable;
-                    dispatch(actionsFillter.changeType('shoes'));
-                    dispatch(actionsFillter.changeSuitable(pathNameSplited[2]));
-                    return;
+            if (pathNameSplited[0] === 'products') {
+                switch (pathNameSplited[1]) {
+                    case 'shoes': {
+                        //fillter for products is shoes matched with suitable;
+                        setMenuTypes(typesShoesList);
+                        dispatch(actionsFillter.changeType('shoes'));
+                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        return;
+                    }
+                    case 'clothing': {
+                        setMenuTypes(typesClothingList);
+                        //fillter for products is clothing matched with suitable;
+                        dispatch(actionsFillter.changeType('clothing'));
+                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        return;
+                    }
+                    case 'accessories-equipment': {
+                        //fillter for products is accessories-equipment matched with suitable;
+                        dispatch(actionsFillter.changeType('accessories-equipment'));
+                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        return;
+                    }
+                    default: {
+                        console.log('Content khong hop le');
+                        return;
+                    }
                 }
-                case 'clothing': {
-                    //fillter for products is clothing matched with suitable;
-                    dispatch(actionsFillter.changeType('clothing'));
-                    dispatch(actionsFillter.changeSuitable(pathNameSplited[2]));
-                    return;
-                }
-                case 'accessories-equipment': {
-                    //fillter for products is accessories-equipment matched with suitable;
-                    dispatch(actionsFillter.changeType('accessories-equipment'));
-                    dispatch(actionsFillter.changeSuitable(pathNameSplited[2]));
-                    return;
-                }
-                default: {
-                    console.log('Content khong hop le');
-                    return;
+            }
+            else {
+                switch (pathNameSplited[2]) {
+                    case 'Women': {
+                        dispatch(actionsFillter.addBrand(pathNameSplited[1]));
+                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        return;
+                    }
+                    case 'Men': {
+                        dispatch(actionsFillter.addBrand(pathNameSplited[1]));
+                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        return;
+                    }
+                    default: {
+                        console.log('Content không hợp lệ!');
+                        return;
+                    }
                 }
             }
         }
-        else {
+        //với pathName có 2 tham số;
+        else if (pathNameSplited.length === 2) {
             switch (pathNameSplited[0]) {
                 case 'products': {
                     //fillter for products is shoes
                     if (pathNameSplited[1] === 'shoes') {
+                        setMenuTypes(typesShoesList);
                         dispatch(actionsFillter.changeType('shoes'));
                         dispatch(actionsFillter.changeSuitable('All'));
                     }
                     else if (pathNameSplited[1] === 'clothing') {
                         //fillter for products is clothing
+                        setMenuTypes(typesClothingList);
                         dispatch(actionsFillter.changeType('clothing'));
                         dispatch(actionsFillter.changeSuitable('All'));
                     }
@@ -84,6 +119,7 @@ function Filter({ ...props }, ref) {
                 }
                 case 'shopbygender': {
                     //filter for products by gender
+                    setShopByGenderValue(pathNameSplited[1]);
                     dispatch(actionsFillter.addGender(pathNameSplited[1]));
                     return;
                 }
@@ -93,13 +129,21 @@ function Filter({ ...props }, ref) {
                 }
             }
         }
+        else {
+            //filter for products by type , gender, suitable for;
+            dispatch(actionsFillter.changeType(pathNameSplited[1]));
+            dispatch(actionsFillter.addGender(pathNameSplited[2]));
+            dispatch(actionsFillter.changeSuitable(pathNameSplited[3]));
+        }
 
     }
 
     const FillterRef = useRef(null);
     const brands = useSelector(FillterBrandsSelector);
     const gender = useSelector(FillterGendersSelector);
-    const typeState = useSelector(FillterSuitableSelector);
+    const type_suitable = useSelector(FillterSuitableSelector);
+    const type_product = useSelector(FillterTypeSelector);
+
 
     useImperativeHandle(ref, () => {
         return {
@@ -116,15 +160,37 @@ function Filter({ ...props }, ref) {
 
     return (
         <div className={cx('fillter', 'col-lg-2')} ref={FillterRef} {...props}>
-            {typesShoes &&
+            {
+                shopByGenderValue &&
                 <ul className={cx('fillter-types-list')}>
-                    {typesShoes.map((type, index) => {
+                    {typesProduct.map((type, index) => {
                         return (
                             <li key={index} className={cx('fillter-types-item', {
-                                'active': type.title === typeState
+                                'active': type.title.toLowerCase() === type_product
+                            })}
+                                data-title={type.title.toLowerCase()}
+                                onClick={(e) => {
+                                    let title = e.target.getAttribute('data-title');
+                                    console.log(title)
+                                    if (title !== type_product)
+                                        dispatch(actionsFillter.changeType(title));
+                                }}
+                            >
+                                {type.title}
+                            </li>
+                        )
+                    })}
+                </ul>
+            }
+            {menuTypes &&
+                <ul className={cx('fillter-types-list')}>
+                    {menuTypes.map((type, index) => {
+                        return (
+                            <li key={index} className={cx('fillter-types-item', {
+                                'active': type.title === type_suitable
                             })}
                                 onClick={(e) => {
-                                    if (e.target.innerText !== typeState)
+                                    if (e.target.innerText !== type_suitable)
                                         dispatch(actionsFillter.changeSuitable(e.target.innerText));
                                 }}
                             >

@@ -22,6 +22,11 @@
     margin-bottom: 16px;
 }
 
+.main-title-count {
+    margin-left: 8px;
+    color: #757575;
+}
+
 .main-sortby {
     display: flex;
     align-items: center;

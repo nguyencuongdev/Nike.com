@@ -7,35 +7,35 @@ export const MENU_BOTTOM_CONTEXT = createContext([
         children: [
             {
                 title: 'Air Force 1',
-                url: '/shoes/Air-Force-1'
+                url: 'products/shoes/Air-Force-1'
             },
             {
                 title: 'Huarache',
-                url: '/shoes/Huarache'
+                url: 'products/shoes/Huarache'
             },
             {
                 title: 'Air Max 90',
-                url: '/shoes/Air-Max-90'
+                url: 'products/shoes/Air-Max-90'
             },
             {
                 title: 'Air Max 95',
-                url: '/shoes/Air-Max-95'
+                url: 'products/shoes/Air Max 95'
             },
             {
                 title: 'Air Max 97',
-                url: '/shoes/Air-Max-97'
+                url: 'products/shoes/Air-Max-97'
             },
             {
                 title: 'Air Max 270',
-                url: '/shoes/Air-Max-270'
+                url: 'products/shoes/Air-Max-270'
             },
             {
                 title: 'All Air Max',
-                url: '/shoes/Air-Max'
+                url: 'products/shoes/Air-Max'
             },
             {
                 title: 'Vapormax',
-                url: '/shoes/Vapormax'
+                url: 'products/shoes/Vapormax'
             }
         ]
     },
@@ -44,31 +44,31 @@ export const MENU_BOTTOM_CONTEXT = createContext([
         children: [
             {
                 title: 'All Shoes',
-                url: '/shoes/'
+                url: 'products/shoes'
             },
             {
                 title: 'Jordan Shoes',
-                url: '/shoes/Jordan'
+                url: 'products/shoes/Jordan'
             },
             {
                 title: 'Running Shoes',
-                url: '/shoes/Running'
+                url: 'products/shoes/Running'
             },
             {
                 title: 'Basketball Shoes',
-                url: '/shoes/Basketball'
+                url: 'products/shoes/Basketball'
             },
             {
                 title: 'Football Shoes',
-                url: '/shoes/Football'
+                url: 'products/shoes/Football'
             },
             {
                 title: 'Gym & Training Shoes',
-                url: '/shoes/GymAndTraining'
+                url: 'products/shoes/Gym & Training'
             },
             {
                 title: 'Lifestyle Shoes',
-                url: '/shoes/Lifestyle'
+                url: 'products/shoes/Lifestyle'
             }
         ]
     },
@@ -77,27 +77,27 @@ export const MENU_BOTTOM_CONTEXT = createContext([
         children: [
             {
                 title: 'All Clothing',
-                url: '/clothing'
+                url: 'products/clothing'
             },
             {
                 title: 'Modest Wear',
-                url: '/clothing/ModestWear'
+                url: 'products/clothing/ModestWear'
             },
             {
                 title: 'Hoodies & Pullovers',
-                url: '/clothing/Hoodies-Pullovers'
+                url: 'products/clothing/Hoodies & Pullovers'
             },
             {
                 title: 'Shirts',
-                url: '/clothing/Shirts'
+                url: 'products/clothing/Shirts'
             },
             {
                 title: 'Jackets',
-                url: '/clothing/Jackets'
+                url: 'products/clothing/Jackets'
             },
             {
                 title: 'Shorts',
-                url: '/clothing/Shorts'
+                url: 'products/clothing/Shorts'
             }
         ]
     },

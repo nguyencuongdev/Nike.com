@@ -18,7 +18,6 @@ function ProductCard({
         ...propsAdd
     }
 
-    const ImgSrc = useRef(productImgSrc);
     const productRef = useRef(null);
     const productImgSimilarRef = useRef(null);
     const productInforRef = useRef(null);
@@ -28,11 +27,6 @@ function ProductCard({
         const imgsrc = e.target?.src;
         const productImg = productRef.current.querySelector('img');
         productImg.src = imgsrc;
-    }
-
-    function handleHiddenImgSimilar() {
-        const productImg = productRef.current.querySelector('img');
-        productImg.src = ImgSrc.current;
     }
 
     function handleMouseOverProductCard() {
@@ -67,19 +61,16 @@ function ProductCard({
                                 <div className={cx('product-card-ImgSimilar-item')}>
                                     <Image src={subProductImg[0]} alt='img 1'
                                         onMouseOver={(e) => handleShowImgSimilar(e)}
-                                        onMouseOut={handleHiddenImgSimilar}
                                     />
                                 </div>
                                 <div className={cx('product-card-ImgSimilar-item')}>
                                     <Image src={subProductImg[1]} alt='img 2'
                                         onMouseOver={(e) => handleShowImgSimilar(e)}
-                                        onMouseOut={handleHiddenImgSimilar}
                                     />
                                 </div>
                                 <div className={cx('product-card-ImgSimilar-item')}>
                                     <Image src={subProductImg[2]} alt='img 3'
                                         onMouseOver={(e) => handleShowImgSimilar(e)}
-                                        onMouseOut={handleHiddenImgSimilar}
                                     />
                                 </div>
                                 <div className={cx('product-card-ImgSimilar-item')}>
@@ -91,7 +82,6 @@ function ProductCard({
                                 return <div className={cx('product-card-ImgSimilar-item')} key={index}>
                                     <Image src={img} alt={`img ${index}`}
                                         onMouseOver={(e) => handleShowImgSimilar(e)}
-                                        onMouseOut={handleHiddenImgSimilar}
                                     />
                                 </div>
                             })

@@ -6,13 +6,17 @@ const initialState = {
     brands: [],
     colors: [],
     sizes: [],
-    gender: ['Men', 'Women']
+    gender: [],
+    sort: 'desc'
 };
 
 const sliceFillter = createSlice({
     name: 'fillter',
     initialState,
     reducers: {
+        clearFilter: () => {
+            return initialState;
+        },
         changeType: (state, action) => {
             state.type = action.payload;
             return state;
@@ -49,6 +53,10 @@ const sliceFillter = createSlice({
         },
         cancelGender: (state, action) => {
             state.gender = state.gender.filter((gender) => gender !== action.payload);
+        },
+        changeSort: (state, action) => {
+            state.sort = action.payload;
+            return state;
         }
     }
 })
