@@ -1,4 +1,5 @@
 import checkIcon from '~/assets/images/check.png';
+import arrowDownicon from '~/assets/images/iconDown.png';
 
 export function SearchIcon({ width = '24px', height = '24px', color = 'none' }) {
     return (
@@ -151,5 +152,13 @@ export function CheckIcon({ width = '24px', height = '24px', className }) {
         />
     )
 }
+
+export function ArrowDownIcon({ width = '24px', height = '24px', className }) {
+    return (
+        <img src={arrowDownicon} alt="arrow-down-icon" width={width} height={height} className={className}
+        />
+    )
+}
+
 
 

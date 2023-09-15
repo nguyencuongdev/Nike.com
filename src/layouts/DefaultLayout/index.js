@@ -38,7 +38,7 @@ function DefaultLayout({ children }) {
                 <div className={cx('row', 'main-TitleAndSort')}>
                     <h2 className={cx('main-title')}>
                         {typeContent}:
-                        <span className={cx('main-title-count')}>{countProduct}</span>
+                        <span className={cx('main-title-count')}>({countProduct})</span>
                     </h2>
                     <div className={cx('main-sortby')}>
                         <button className={cx('btn-toggle-fillter')} onClick={() => {

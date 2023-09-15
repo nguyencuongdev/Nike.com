@@ -9,6 +9,7 @@
     transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.fillter-suitable-item,
 .fillter-types-item {
     font-size: 1.6rem;
     padding-bottom: 20px;
@@ -16,6 +17,8 @@
     user-select: none;
 }
 
+.fillter-suitable-item.active,
+.fillter-suitable-item:hover,
 .fillter-types-item.active,
 .fillter-types-item:hover {
     text-decoration: underline;
@@ -34,6 +37,7 @@
     position: relative;
 }
 
+.btn-toggle-suitable,
 .btn-toggle-gender,
 .btn-toggle-brand,
 .btn-toggle-sizes,
@@ -52,6 +56,7 @@
     padding-left: 15px;
 }
 
+.fillter-suitable-list,
 .fillter-gender-list,
 .fillter-brands-list,
 .fillter-colors-list,
@@ -78,6 +83,11 @@
     border-radius: 50%;
     margin-bottom: 4px;
     cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.fillter-colors-value:hover>img {
+    display: block;
 }
 
 .fillter-colors-icon {
@@ -127,15 +137,15 @@
     margin-bottom: 10px;
 }
 
-.fillter-gender-item>input[type="checkbox"],
+.filter-gender-checkbox,
 .fillter-brands-item>input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
 }
 
-.fillter-gender-item>input[type="checkbox"]:checked,
-.fillter-brands-item>input[type="checkbox"]:checked {
+.filter-gender-checkbox:checked,
+.filter-gender-checkbox:checked {
     background-color: #111;
 }
 
@@ -144,4 +154,9 @@
     font-size: 1.6rem;
     color: var(--text-color);
     margin-left: 10px;
+}
+
+.filter-gender-checkbox.block {
+    pointer-events: none;
+    cursor: not-allowed;
 }

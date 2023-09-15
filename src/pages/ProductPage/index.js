@@ -1,5 +1,5 @@
 import classnames from 'classnames/bind';
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductService } from '~/services';
 import ProductCard from '~/components/ProductCard';
@@ -13,7 +13,7 @@ const cx = classnames.bind(styles);
 
 function ProductPage() {
     const dispatch = useDispatch();
-    const dataProductList = useSelector(productListRemainingSelector);
+    const dataProductList = useSelector(productListRemainingSelector) ?? [];
     useEffect(() => {
         const getProduct = async () => {
             const productList = await ProductService.getProductService('/productList');
@@ -45,11 +45,8 @@ function ProductPage() {
                     )
                 }
             </div>
-            {!dataProductList &&
-                <div div className={cx('row')}>Không tìm thấy nội dung yêu cầu</div>
-            }
         </div >
     )
 }
 
-export default memo(ProductPage);
+export default ProductPage;

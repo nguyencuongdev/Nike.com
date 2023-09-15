@@ -1,12 +1,25 @@
 import classnames from 'classnames/bind';
-import { useContext, forwardRef, useImperativeHandle, useRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { TypesProduct, TypesShoes, ColorsList, SizeList, BrandList, TypesClothing }
+import {
+    useContext, forwardRef,
+    useImperativeHandle, useRef,
+    useEffect, useState
+}
+    from 'react';
+import {
+    TypesProduct, TypesSuitable,
+    ColorsList, SizeList,
+    BrandList, TypesClothing, TypesClothingOfWoment
+}
     from './FilterContext';
-import { FillterBrandsSelector, FillterGendersSelector, FillterSuitableSelector, FillterTypeSelector } from './FillterSelector';
+import {
+    FillterBrandsSelector, FillterGendersSelector,
+    FillterSuitableSelector, FillterTypeSelector
+}
+    from './FillterSelector';
 import { actionsFillter } from './FillterSlice';
-import { CheckIcon } from '~/components/Icon';
+import { capitalizeFirstLetter } from '~/helper/';
+import { CheckIcon, ArrowDownIcon } from '~/components/Icon';
 
 import styles from './Filter.module.css';
 const cx = classnames.bind(styles);
@@ -14,14 +27,17 @@ const cx = classnames.bind(styles);
 function Filter({ ...props }, ref) {
 
     const typesProduct = useContext(TypesProduct);
-    const typesShoesList = useContext(TypesShoes);
+    const typesSuitableList = useContext(TypesSuitable);
     const typesClothingList = useContext(TypesClothing);
     const colorsList = useContext(ColorsList);
     const sizeList = useContext(SizeList);
     const brandList = useContext(BrandList);
 
-    const [menuTypes, setMenuTypes] = useState([]);
-    const [shopByGenderValue, setShopByGenderValue] = useState('');
+    const [menuTypesSuitable, setMenuTypesSuitable] = useState(false);
+    const [menuTypesClothing, setMenuTypesClothing] = useState([]);
+    const [menuTypesProduct, setMenuTypesProduct] = useState(false);
+    const [blockGender, setBlockGender] = useState(false);
+
     const dispatch = useDispatch();
     useEffect(() => {
         handleTypeContent();
@@ -36,7 +52,10 @@ function Filter({ ...props }, ref) {
         pathNameSplited.shift();
         //handle exception;
         if (pathNameSplited[pathNameSplited.length - 1] === '') pathNameSplited.pop();
-        if (pathNameSplited.length === 1) return; //render all products;
+        if (pathNameSplited.length === 1) {
+            setMenuTypesProduct(true);
+            return; //render all products;
+        }
         //handle type content
 
         //với pathName có 3 tham số;
@@ -45,44 +64,55 @@ function Filter({ ...props }, ref) {
                 switch (pathNameSplited[1]) {
                     case 'shoes': {
                         //fillter for products is shoes matched with suitable;
-                        setMenuTypes(typesShoesList);
+                        let gender = capitalizeFirstLetter(pathNameSplited[2]);
+                        setMenuTypesSuitable(true);
                         dispatch(actionsFillter.changeType('shoes'));
-                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        dispatch(actionsFillter.addGender(gender));
                         return;
                     }
                     case 'clothing': {
-                        setMenuTypes(typesClothingList);
                         //fillter for products is clothing matched with suitable;
+                        let gender = capitalizeFirstLetter(pathNameSplited[2]);
+                        setMenuTypesSuitable(true);
+                        (gender === 'Men') ? setMenuTypesClothing(typesClothingList) :
+                            setMenuTypesClothing([...typesClothingList, ...TypesClothingOfWoment])
                         dispatch(actionsFillter.changeType('clothing'));
-                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        dispatch(actionsFillter.addGender(gender));
                         return;
                     }
                     case 'accessories-equipment': {
                         //fillter for products is accessories-equipment matched with suitable;
+                        let gender = capitalizeFirstLetter(pathNameSplited[2]);
+                        setMenuTypesSuitable(true);
                         dispatch(actionsFillter.changeType('accessories-equipment'));
-                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        dispatch(actionsFillter.addGender(gender));
                         return;
                     }
                     default: {
-                        console.log('Content khong hop le');
+                        //Content khong hop le;
+                        window.location.href = '/'
                         return;
                     }
                 }
             }
+            //với pathName /shopbybrand/brand/gender
             else {
-                switch (pathNameSplited[2]) {
+                let gender = capitalizeFirstLetter(pathNameSplited[2]);
+                let brand = pathNameSplited[1].toLowerCase();
+                switch (gender) {
                     case 'Women': {
-                        dispatch(actionsFillter.addBrand(pathNameSplited[1]));
-                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        dispatch(actionsFillter.addBrand(brand));
+                        dispatch(actionsFillter.addGender(gender));
                         return;
                     }
                     case 'Men': {
-                        dispatch(actionsFillter.addBrand(pathNameSplited[1]));
-                        dispatch(actionsFillter.addGender(pathNameSplited[2]));
+                        dispatch(actionsFillter.addBrand(brand));
+                        dispatch(actionsFillter.addGender(gender));
                         return;
                     }
                     default: {
-                        console.log('Content không hợp lệ!');
+                        //Content không hợp lệ!;
+                        window.location.href = '/'
                         return;
                     }
                 }
@@ -93,47 +123,64 @@ function Filter({ ...props }, ref) {
             switch (pathNameSplited[0]) {
                 case 'products': {
                     //fillter for products is shoes
-                    if (pathNameSplited[1] === 'shoes') {
-                        setMenuTypes(typesShoesList);
+                    let type = pathNameSplited[1].toLowerCase();
+                    if (type === 'shoes') {
+                        setMenuTypesSuitable(true);
                         dispatch(actionsFillter.changeType('shoes'));
                         dispatch(actionsFillter.changeSuitable('All'));
                     }
-                    else if (pathNameSplited[1] === 'clothing') {
+                    else if (type === 'clothing') {
                         //fillter for products is clothing
-                        setMenuTypes(typesClothingList);
+                        setMenuTypesSuitable(typesClothingList);
                         dispatch(actionsFillter.changeType('clothing'));
                         dispatch(actionsFillter.changeSuitable('All'));
                     }
-                    else {
+                    else if (type === 'accessories-equipment') {
                         //fillter for accessories-equipment
                         dispatch(actionsFillter.changeType('accessories-equipment'));
                         dispatch(actionsFillter.changeSuitable('All'));
-
+                    }
+                    else {
+                        window.location.href = '/'
                     }
                     return;
                 }
                 case 'shopbybrand': {
                     //fillter for products by brand;
-                    dispatch(actionsFillter.addBrand(pathNameSplited[1]));
+                    let brand = capitalizeFirstLetter(pathNameSplited[1]);
+                    dispatch(actionsFillter.addBrand(brand));
                     return;
                 }
                 case 'shopbygender': {
                     //filter for products by gender
-                    setShopByGenderValue(pathNameSplited[1]);
-                    dispatch(actionsFillter.addGender(pathNameSplited[1]));
+                    let gender = capitalizeFirstLetter(pathNameSplited[1]);
+                    setBlockGender(gender);
+                    setMenuTypesProduct(true);
+                    dispatch(actionsFillter.addGender(gender));
                     return;
                 }
                 default: {
-                    console.log('Content khong hop le');
+                    //Content khong hop le
+                    window.location.href = '/'
                     return;
                 }
             }
         }
+        //với pathName: /products/:type/:gender/:suitable;
         else {
             //filter for products by type , gender, suitable for;
-            dispatch(actionsFillter.changeType(pathNameSplited[1]));
-            dispatch(actionsFillter.addGender(pathNameSplited[2]));
-            dispatch(actionsFillter.changeSuitable(pathNameSplited[3]));
+            let gender = capitalizeFirstLetter(pathNameSplited[2]);
+            let type = pathNameSplited[1].toLowerCase();
+            if (type === 'clothing' && gender === 'Men') {
+                setMenuTypesClothing(typesClothingList);
+            }
+            else {
+                setMenuTypesClothing([...typesClothingList, ...TypesClothingOfWoment]);
+            }
+            let suitable = pathNameSplited[3].toLowerCase();
+            dispatch(actionsFillter.changeType(type));
+            dispatch(actionsFillter.addGender(gender));
+            dispatch(actionsFillter.changeSuitable(suitable));
         }
 
     }
@@ -161,51 +208,87 @@ function Filter({ ...props }, ref) {
     return (
         <div className={cx('fillter', 'col-lg-2')} ref={FillterRef} {...props}>
             {
-                shopByGenderValue &&
-                <ul className={cx('fillter-types-list')}>
-                    {typesProduct.map((type, index) => {
-                        return (
-                            <li key={index} className={cx('fillter-types-item', {
-                                'active': type.title.toLowerCase() === type_product
+                menuTypesProduct &&
+                <>
+                    <div className={cx('fillter-typesproduct')}>
+                        <ul className={cx('fillter-types-list')}>
+                            {typesProduct.map((type, index) => {
+                                return (
+                                    <li key={index} className={cx('fillter-types-item', {
+                                        'active': type.title.toLowerCase() === type_product
+                                    })}
+                                        data-title={type.title.toLowerCase()}
+                                        onClick={(e) => {
+                                            let title = e.target.getAttribute('data-title');
+                                            setMenuTypesSuitable(typesClothingList);
+                                            if (title !== type_product)
+                                                dispatch(actionsFillter.changeType(title));
+                                        }}
+                                    >
+                                        {type.title}
+                                    </li>
+                                )
                             })}
-                                data-title={type.title.toLowerCase()}
-                                onClick={(e) => {
-                                    let title = e.target.getAttribute('data-title');
-                                    console.log(title)
-                                    if (title !== type_product)
-                                        dispatch(actionsFillter.changeType(title));
-                                }}
-                            >
-                                {type.title}
-                            </li>
-                        )
-                    })}
-                </ul>
+                        </ul>
+                    </div>
+                    <div className={cx('fillter-separator')}></div>
+                </>
             }
-            {menuTypes &&
-                <ul className={cx('fillter-types-list')}>
-                    {menuTypes.map((type, index) => {
-                        return (
-                            <li key={index} className={cx('fillter-types-item', {
-                                'active': type.title === type_suitable
-                            })}
-                                onClick={(e) => {
-                                    if (e.target.innerText !== type_suitable)
-                                        dispatch(actionsFillter.changeSuitable(e.target.innerText));
-                                }}
-                            >
-                                {type.title}
-                            </li>
-                        )
-                    })}
-                </ul>
+            {menuTypesClothing.length > 0 &&
+                <div className={cx('fillter-typesproduct')}>
+                    <button className={cx('btn-toggle-suitable')} data-toggle='collapse' data-target='#typesClothing'>
+                        Types Clothing
+                        <span><ArrowDownIcon width='18px' height='18px' /></span>
+                    </button>
+                    <ul className={cx('fillter-types-list')} id='typesClothing'>
+                        {menuTypesClothing.map((type, index) => {
+                            return (
+                                <li key={index} className={cx('fillter-types-item', {
+                                    'active': type.title === type_suitable
+                                })}
+                                    onClick={(e) => {
+                                        if (e.target.innerText !== type_suitable)
+                                            dispatch(actionsFillter.changeSuitable(e.target.innerText));
+                                    }}
+                                >
+                                    {type.title}
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <div className={cx('fillter-separator')}></div>
+                </div>
+            }
+            {menuTypesSuitable &&
+                <div className={cx('fillter-suitable')}>
+                    <button className={cx('btn-toggle-suitable')} data-toggle='collapse' data-target='#suitable'>
+                        Suitable
+                        <span><ArrowDownIcon width='18px' height='18px' /></span>
+                    </button>
+                    <ul className={cx('fillter-suitable-list')} id='suitable'>
+                        {typesSuitableList.map((type, index) => {
+                            return (
+                                <li key={index} className={cx('fillter-suitable-item', {
+                                    'active': type.title === type_suitable
+                                })}
+                                    onClick={(e) => {
+                                        if (e.target.innerText !== type_suitable)
+                                            dispatch(actionsFillter.changeSuitable(e.target.innerText));
+                                    }}
+                                >
+                                    {type.title}
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
             }
             <div className={cx('fillter-separator')}></div>
             {brandList &&
                 <div className={cx('fillter-brands')}>
                     <button className={cx('btn-toggle-brand')} data-toggle='collapse' data-target='#brandlist'>
                         Brands
-                        <span></span>
+                        <span><ArrowDownIcon width='18px' height='18px' /></span>
                     </button>
                     <div className={cx('row', 'collapse', 'show', 'fillter-brands-list')} id='brandlist'>
                         {brandList.map((brand, index) => {
@@ -234,7 +317,7 @@ function Filter({ ...props }, ref) {
                 <div className={cx('fillter-colors', 'container-fluid', 'px-0')}>
                     <button className={cx('btn-toggle-color')} data-toggle='collapse' data-target='#colorlist'>
                         Colour
-                        <span></span>
+                        <span><ArrowDownIcon width='18px' height='18px' /></span>
                     </button>
                     <div className={cx('row', 'collapse', 'show', 'fillter-colors-list')} id='colorlist'>
                         {colorsList.map((color, index) => {
@@ -277,7 +360,7 @@ function Filter({ ...props }, ref) {
                 <div className={cx('fillter-sizes', 'container-fluid', 'px-0')}>
                     <button className={cx('btn-toggle-sizes', 'mx-0')} data-target='#sizelist' data-toggle='collapse'>
                         Sizes
-                        <span></span>
+                        <span><ArrowDownIcon width='18px' height='18px' /></span>
                     </button>
                     <div className={cx('fillter-sizes-list', 'row', 'collapse', 'show')} id='sizelist'>
                         {sizeList.map((size, index) => {
@@ -305,40 +388,47 @@ function Filter({ ...props }, ref) {
                     </div>
                 </div>
             }
-            <div className={cx('fillter-separator')}></div>
-            <div className={cx('fillter-gender', 'container-fluid', 'px-0')}>
-                <button className={cx('btn-toggle-gender', 'mx-0')} data-target='#genderlist' data-toggle='collapse'>
-                    Gender
-                    <span></span>
-                </button>
-                <div className={cx('fillter-gender-list', 'row', 'collapse', 'show')} id='genderlist'>
-                    <div className={cx('fillter-gender-item')}>
-                        <input type='checkbox' checked={(gender.includes('Men'))} value={'Men'}
-                            onChange={(e) => {
-                                let check = !e.target.checked;
-                                let value = e.target.value;
-                                (!check)
-                                    ? dispatch(actionsFillter.addGender(value))
-                                    : dispatch(actionsFillter.cancelGender(value));
-                            }}
-                        />
-                        <span className={cx('fillter-gender-title')}>Men</span>
-                    </div>
-                    <div className={cx('fillter-gender-item')}>
-                        <input type='checkbox' checked={(gender.includes('Women'))} value={'Women'}
-                            onChange={(e) => {
-                                let check = !e.target.checked;
-                                let value = e.target.value;
-                                (!check)
-                                    ? dispatch(actionsFillter.addGender(value))
-                                    : dispatch(actionsFillter.cancelGender(value));
-                            }}
+            {!blockGender &&
+                <>
+                    <div className={cx('fillter-separator')}></div>
+                    <div className={cx('fillter-gender', 'container-fluid', 'px-0')}>
+                        <button className={cx('btn-toggle-gender', 'mx-0')} data-target='#genderlist' data-toggle='collapse'>
+                            Gender
+                            <span><ArrowDownIcon width='18px' height='18px' /></span>
+                        </button>
+                        <div className={cx('fillter-gender-list', 'row', 'collapse', 'show')} id='genderlist'>
+                            <div className={cx('fillter-gender-item')}>
+                                <input type='checkbox' checked={(gender.includes('Men'))} value={'Men'}
+                                    className={cx('filter-gender-checkbox')}
+                                    onChange={(e) => {
+                                        let check = !e.target.checked;
+                                        let value = e.target.value;
+                                        (!check)
+                                            ? dispatch(actionsFillter.addGender(value))
+                                            : dispatch(actionsFillter.cancelGender(value));
+                                    }}
+                                />
+                                <span className={cx('fillter-gender-title')}>Men</span>
+                            </div>
+                            <div className={cx('fillter-gender-item')}>
+                                <input type='checkbox' checked={(gender.includes('Women'))} value={'Women'}
+                                    className={cx('filter-gender-checkbox')
+                                    }
+                                    onChange={(e) => {
+                                        let check = !e.target.checked;
+                                        let value = e.target.value;
+                                        (!check)
+                                            ? dispatch(actionsFillter.addGender(value))
+                                            : dispatch(actionsFillter.cancelGender(value));
+                                    }}
 
-                        />
-                        <span className={cx('fillter-gender-title')}>Women</span>
+                                />
+                                <span className={cx('fillter-gender-title')}>Women</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </>
+            }
         </div>
     )
 }

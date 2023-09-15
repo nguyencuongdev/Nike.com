@@ -83,3 +83,12 @@
 .dorpdown-menu-item:hover {
     color: #757575;
 }
+
+.main-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    height: calc(100vh - 300px);
+    line-height: 5rem;
+}

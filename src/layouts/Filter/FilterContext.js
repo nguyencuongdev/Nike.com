@@ -4,66 +4,66 @@ import { createContext } from 'react';
 export const TypesProduct = createContext([
     {
         title: 'Shoes',
-        url: 'shoes'
-    },
-    {
-        title: 'Clothing',
-        url: 'clothing'
-    },
-    {
-        title: 'Accessories & Equipment',
-        url: 'Accessories & Equipment'
-    }
-])
-
-export const TypesShoes = createContext([
-    {
-        title: 'All',
         url: '/shoes'
     },
     {
+        title: 'Clothing',
+        url: '/clothing'
+    },
+    {
+        title: 'Accessories & Equipment',
+        url: '/Accessories & Equipment'
+    }
+])
+
+export const TypesSuitable = createContext([
+    {
+        title: 'All',
+        url: '/'
+    },
+    {
         title: 'Lifestyle',
-        url: '/shoes/Lifestyle'
+        url: '/Lifestyle'
     },
     {
         title: 'Running',
-        url: '/shoes/Running'
+        url: '/Running'
     },
     {
         title: 'Basketball',
-        url: '/shoes/Basketball'
+        url: '/Basketball'
     },
     {
         title: 'Football',
-        url: '/shoes/Football'
+        url: '/Football'
     },
     {
         title: 'Training & Gym',
-        url: '/shoes/Training & Gym'
+        url: '/Training & Gym'
     },
     {
         title: 'Skateboarding',
-        url: '/shoes/Skateboarding'
+        url: '/Skateboarding'
     },
     {
         title: 'Baseball',
-        url: '/shoes/Baseball'
+        url: '/Baseball'
     },
     {
         title: 'Golf',
-        url: '/shoes/Golf'
+        url: '/Golf'
     },
     {
         title: 'Tennis',
-        url: '/shoes/Tennis'
+        url: '/Tennis'
     },
     {
         title: 'Athletics',
-        url: '/shoes/Athletics'
+        url: '/Athletics'
     },
     {
         title: 'Walking',
-        url: '/shoes/Walking'
+        url: '/Walking'
     }
 
 ])
@@ -142,6 +142,34 @@ export const ColorsList = createContext([
     {
         title: 'Orange',
         value: '#F36B26'
+    },
+    {
+        title: 'Pink',
+        value: '#F0728F'
+    },
+    {
+        title: 'Gray',
+        value: '#808080'
+    },
+    {
+        title: 'White',
+        value: '#FFF'
+    },
+    {
+        title: 'Red',
+        value: '#E7352B'
+    },
+    {
+        title: 'Green',
+        value: '#7BBA3C'
+    },
+    {
+        title: 'Yellow',
+        value: '#FED533'
+    },
+    {
+        title: 'Purple',
+        value: '#8D429F'
     }
 ])
 
