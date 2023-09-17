@@ -8,7 +8,7 @@ import Header from '~/layouts/Header';
 import Footer from '~/layouts/Footer';
 import Filter from '~/layouts/Filter';
 
-import { handleFormatTitle } from '~/helper';
+import { handleStr } from '~/helper';
 import { productListRemainingSelector } from '~/pages/ProductPage/ProductSelector';
 
 import styles from './Default.module.css';
@@ -20,7 +20,7 @@ function DefaultLayout({ children }) {
     // eslint-disable-next-line no-unused-vars
     const [typeContent, setTypeContent] = useState(() => {
         const titleSplited = window.location.pathname;
-        let title = handleFormatTitle(titleSplited);
+        let title = handleStr.handleFormatTitle(titleSplited);
         if (!title) title = 'Products';
         return title;
     })

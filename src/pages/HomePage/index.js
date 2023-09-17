@@ -44,7 +44,7 @@ function HomePage() {
                         classNameAdd={cx('content-media-item', 'col')}
                         title='Step Up Your Style'
                         subtitle='Nike Tech Hera'
-                        href='/shopbybrand/nike'
+                        to='/shopbybrand/nike'
                         button={{ title: 'See All' }}
                     />
                     <Media img={{ src: Media2 }} classNameAdd={cx('content-media-item', 'col')}

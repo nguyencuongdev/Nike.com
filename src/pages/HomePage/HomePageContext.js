@@ -3,52 +3,11 @@ import { createContext } from 'react';
 
 export const MENU_BOTTOM_CONTEXT = createContext([
     {
-        title: 'Icons',
-        children: [
-            {
-                title: 'Air Force 1',
-                url: 'products/shoes/Air-Force-1'
-            },
-            {
-                title: 'Huarache',
-                url: 'products/shoes/Huarache'
-            },
-            {
-                title: 'Air Max 90',
-                url: 'products/shoes/Air-Max-90'
-            },
-            {
-                title: 'Air Max 95',
-                url: 'products/shoes/Air Max 95'
-            },
-            {
-                title: 'Air Max 97',
-                url: 'products/shoes/Air-Max-97'
-            },
-            {
-                title: 'Air Max 270',
-                url: 'products/shoes/Air-Max-270'
-            },
-            {
-                title: 'All Air Max',
-                url: 'products/shoes/Air-Max'
-            },
-            {
-                title: 'Vapormax',
-                url: 'products/shoes/Vapormax'
-            }
-        ]
-    },
-    {
         title: 'Shoes',
         children: [
             {
                 title: 'All Shoes',
                 url: 'products/shoes'
-            },
-            {
-                title: 'Jordan Shoes',
-                url: 'products/shoes/Jordan'
             },
             {
                 title: 'Running Shoes',
@@ -64,7 +23,7 @@ export const MENU_BOTTOM_CONTEXT = createContext([
             },
             {
                 title: 'Gym & Training Shoes',
-                url: 'products/shoes/Gym & Training'
+                url: 'products/shoes/Gym_&_Training'
             },
             {
                 title: 'Lifestyle Shoes',
@@ -80,16 +39,12 @@ export const MENU_BOTTOM_CONTEXT = createContext([
                 url: 'products/clothing'
             },
             {
-                title: 'Modest Wear',
-                url: 'products/clothing/ModestWear'
+                title: 'Hoodies & Sweatshirts',
+                url: 'products/clothing/Hoodies_&_Sweatshirts'
             },
             {
-                title: 'Hoodies & Pullovers',
-                url: 'products/clothing/Hoodies & Pullovers'
-            },
-            {
-                title: 'Shirts',
-                url: 'products/clothing/Shirts'
+                title: 'Tops & T-Shirts',
+                url: 'products/clothing/Tops_&_T-Shirts'
             },
             {
                 title: 'Jackets',
@@ -98,6 +53,10 @@ export const MENU_BOTTOM_CONTEXT = createContext([
             {
                 title: 'Shorts',
                 url: 'products/clothing/Shorts'
+            },
+            {
+                title: 'Modest Wear',
+                url: '/products/clothing/Women/Modest_Wear'
             }
         ]
     },
@@ -105,16 +64,8 @@ export const MENU_BOTTOM_CONTEXT = createContext([
         title: 'Kid\'s',
         children: [
             {
-                title: 'Infant & Toddler Shoes',
-                url: '/kids/shoes/Infant-Toddler'
-            },
-            {
                 title: 'Kids\' Shoes',
                 url: '/kids/shoes'
-            },
-            {
-                title: 'Kids\' Jordan Shoes',
-                url: '/kids/shoes/Jordan'
             },
             {
                 title: 'Kids\' Basketball Shoes',
@@ -127,11 +78,7 @@ export const MENU_BOTTOM_CONTEXT = createContext([
             {
                 title: 'Kids\'s Clothing',
                 url: '/kids/clothing'
-            },
-            {
-                title: 'Kids\'s Backpacks',
-                url: '/kids/backpacks'
-            },
+            }
         ]
     }
 ])

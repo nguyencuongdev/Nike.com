@@ -79,7 +79,7 @@ export const TypesClothing = createContext([
     },
     {
         title: 'Hoodies & Sweatshirts',
-        url: '/clothing/Hoodies- & Sweatshirts'
+        url: '/clothing/Hoodies & Sweatshirts'
     },
     {
         title: 'Jackets',
@@ -98,16 +98,17 @@ export const TypesClothing = createContext([
         url: '/clothing/Shorts'
     },
     {
-        title: 'Commpressiion & Baselayer',
-        url: '/clothing/Commpression & Baselayer'
-    },
-    {
         title: 'Shocks',
         url: '/clothing/Shocks'
     }
 ])
-
-export const TypesClothingOfWoment = [
+export const typesClothingOfMen = [
+    {
+        title: 'Commpressiion & Baselayer',
+        url: '/clothing/Commpression & Baselayer'
+    },
+]
+export const typesClothingOfWoment = [
     {
         title: 'Sports Bras',
         url: '/clothing/Sports Bars'
