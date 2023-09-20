@@ -59,3 +59,8 @@ a {
     src: url('/src/assets/fonts/download.woff');
     font-weight: 400;
 }
+
+/* custom bootstrap */
+.form-group {
+    margin-bottom: 0;
+}

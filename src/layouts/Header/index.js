@@ -73,7 +73,7 @@ function Header() {
                         :
                         <>
                             <Nav.Item as='li' className={cx('header-top-item')}>
-                                <Link to='/join-us' className={cx('nav-link', 'header-top-link')}>Join Us
+                                <Link to='/signup' className={cx('nav-link', 'header-top-link')}>Join Us
                                 </Link>
                             </Nav.Item>
                             <span className={cx('header-top-separator')}>|</span>

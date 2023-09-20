@@ -10,4 +10,9 @@ export const get = async (url, options = {}) => {
     return res.data;
 }
 
+export const post = async (url, data, options = {}) => {
+    const res = await request.post(url, data, options);
+    return res.data;
+}
+
 export default request;

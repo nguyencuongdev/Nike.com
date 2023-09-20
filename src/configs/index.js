@@ -1,5 +1,7 @@
 const configs = {
     router: {
+        signup: '/signup',
+        login: '/login',
         home: '/',
         productAll: '/products',
         productByType: '/products/:type',

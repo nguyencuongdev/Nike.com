@@ -1,324 +1,363 @@
 {
-    "productList": [
-        {
-            "id": 1,
-            "name": "Nike InfinityRN 4 SE",
-            "subTitle": "Shoes for Male, Female",
-            "brand": "Nike",
-            "colors": [
-                "Blue",
-                "White",
-                "Black",
-                "Green"
-            ],
-            "type": "shoes",
-            "gender": [
-                "Men",
-                "Women"
-            ],
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fb5ad585-ec9c-4ab6-ab6f-b0b6b50235a4/infinityrn-4-road-running-shoes-mLRjcz.png",
-            "price": 4699000,
-            "suitable": [
-                "Running",
-                "Tennis",
-                "Walking",
-                "Golf"
-            ],
-            "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fb5ad585-ec9c-4ab6-ab6f-b0b6b50235a4/infinityrn-4-road-running-shoes-mLRjcz.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/71a3d324-05c0-4b8d-9d78-0bd937520798/infinityrn-4-road-running-shoes-mLRjcz.png"
-            ],
-            "sizes": [
-                "35.5",
-                "40",
-                "39",
-                "36",
-                "41"
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Nike Air Force 1 '07",
-            "subTitle": "Men's Shoes",
-            "brand": "Nike",
-            "colors": [
-                "White",
-                "Black"
-            ],
-            "type": "shoes",
-            "gender": [
-                "Men",
-                "Women"
-            ],
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e6da41fa-1be4-4ce5-b89c-22be4f1f02d4/air-force-1-07-shoes-WrLlWX.png",
-            "price": 1999000,
-            "suitable": [
-                "Lifestyle"
-            ],
-            "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/21d38052-598b-44f6-a857-123c9f72b015/air-force-1-07-shoes-WrLlWX.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e6da41fa-1be4-4ce5-b89c-22be4f1f02d4/air-force-1-07-shoes-WrLlWX.png"
-            ],
-            "sizes": [
-                "7",
-                "38",
-                "39",
-                "36",
-                "41"
-            ]
-        },
-        {
-            "id": 3,
-            "name": "Air Jordan 1 Zoom CMFT 2",
-            "subTitle": "Men's Shoes",
-            "brand": "Jordan",
-            "colors": [
-                "Green",
-                "Blue",
-                "Orange"
-            ],
-            "gender": [
-                "Men"
-            ],
-            "type": "shoes",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0068f7a7-6789-4750-b05a-350f80e0684c/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
-            "price": 2599000,
-            "suitable": [
-                "Lifestyle"
-            ],
-            "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/4e9138d9-278f-48b1-851c-f4e51dbb4ee9/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2fd7f3e8-b092-421b-9ca1-fbe92a586aa5/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0068f7a7-6789-4750-b05a-350f80e0684c/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ed71f213-14a5-4d5e-a0d8-1416208566b8/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png"
-            ],
-            "sizes": [
-                "7",
-                "38",
-                "39",
-                "36",
-                "41"
-            ]
-        },
-        {
-            "id": 4,
-            "name": "Jordan Flight Heritage 85",
-            "subTitle": "Men's T-Shirt",
-            "brand": "Jordan",
-            "colors": [
-                "Black",
-                "White"
-            ],
-            "gender": [
-                "Men"
-            ],
-            "type": "clothing",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b59c279d-321b-42ee-902f-dd5a751f6bed/jordan-flight-heritage-85-t-shirt-qVM4Fc.png",
-            "price": 1169000,
-            "suitable": [
-                "Lifestyle",
-                "Basketball",
-                "Tennis",
-                "Walking"
-            ],
-            "sizes": [
-                "36",
-                "41"
-            ],
-            "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a4e98809-0f97-4a55-9297-42ad6d769457/jordan-flight-heritage-85-t-shirt-qVM4Fc.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b59c279d-321b-42ee-902f-dd5a751f6bed/jordan-flight-heritage-85-t-shirt-qVM4Fc.png"
-            ]
-        },
-        {
-            "id": 5,
-            "name": "Nike Dri-FIT Primary",
-            "subTitle": "Men's Training T-Shirt",
-            "brand": "Nike",
-            "colors": [
-                "White",
-                "Black",
-                "Yellow",
-                "Blue"
-            ],
-            "gender": [
-                "Men"
-            ],
-            "type": "clothing",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/77d88870-47a9-4529-8cd6-37194288e0d2/dri-fit-primary-training-t-shirt-z9dSFb.png",
-            "price": 6179000,
-            "suitable": [
-                "Lifestyle",
-                "Basketball",
-                "Tennis",
-                "Walking"
-            ],
-            "sizes": [
-                "37",
-                "38",
-                "39",
-                "36",
-                "41"
-            ],
-            "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/25de54ca-d0d6-4309-b61d-41914aca1267/dri-fit-primary-training-t-shirt-z9dSFb.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/77d88870-47a9-4529-8cd6-37194288e0d2/dri-fit-primary-training-t-shirt-z9dSFb.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/1850f732-d635-44b2-b65a-b3093cd1432d/dri-fit-primary-training-t-shirt-z9dSFb.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/53a6853e-8e50-41b3-974a-9ccbff68f576/dri-fit-primary-training-t-shirt-z9dSFb.png"
-            ]
-        },
-        {
-            "id": 6,
-            "name": "Chelsea F.C. 2023/24 Match Away",
-            "subTitle": "Men's, women's Nike Dri-FIT ADV Football Shirt",
-            "brand": "Nike",
-            "colors": [
-                "Blue"
-            ],
-            "gender": [
-                "Men"
-            ],
-            "type": "clothing",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/48beb34d-6200-4325-b7d1-73cfa5721baa/chelsea-fc-2023-24-match-away-dri-fit-adv-football-shirt-2l80ZZ.png",
-            "price": 1119000,
-            "suitable": [
-                "Football"
-            ],
-            "sizes": [
-                "40",
-                "41"
-            ],
-            "imgSimilar": []
-        },
-        {
-            "id": 7,
-            "name": "Nike Max90",
-            "subTitle": "Men's Basketball T-shirt",
-            "brand": "Nike",
-            "colors": [
-                "Black",
-                "Pink"
-            ],
-            "gender": [
-                "Men"
-            ],
-            "type": "clothing",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d2468621-159a-4013-a193-c57a2915efaf/max90-basketball-t-shirt-jQZ50P.png",
-            "price": 6179000,
-            "suitable": [
-                "Basketball"
-            ],
-            "sizes": [
-                "37",
-                "38"
-            ],
-            "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/bb0f2701-c185-4279-89e5-494cd52e7303/max90-basketball-t-shirt-jQZ50P.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d2468621-159a-4013-a193-c57a2915efaf/max90-basketball-t-shirt-jQZ50P.png"
-            ]
-        },
-        {
-            "id": 8,
-            "name": "Nike Club Cap",
-            "subTitle": "Unstructured Corduroy Cap",
-            "brand": "Nike",
-            "colors": [
-                "Black",
-                "Blue"
-            ],
-            "gender": [
-                "Men",
-                "Women"
-            ],
-            "type": "accessories-equipment",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png",
-            "price": 6179000,
-            "suitable": [
-                "Lifestyle"
-            ],
-            "sizes": [
-                "37",
-                "38"
-            ],
-            "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/304fd33e-d600-4e4d-8f5f-a4895c461d20/club-cap-unstructured-corduroy-cap-r85WQS.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png"
-            ]
-        },
-        {
-            "id": 9,
-            "name": "Nike Sportswear Tech Fleece",
-            "subTitle": "Women's Oversized Asymmetrical Hoodie",
-            "brand": "Nike",
-            "colors": [
-                "Black",
-                "White"
-            ],
-            "gender": [
-                "Women"
-            ],
-            "type": "clothing",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/985c6cd9-ddf9-4d67-a691-f2bc2813a175/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png",
-            "price": 6179000,
-            "suitable": [
-                "Hoodies & Sweatshirts"
-            ],
-            "sizes": [
-                "37",
-                "38"
-            ],
-            "imgSimilar": [
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ff465ca9-7bbe-4cc7-9e23-75c6992d517a/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png",
-                "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/985c6cd9-ddf9-4d67-a691-f2bc2813a175/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png"
-            ]
-        },
-        {
-            "id": 10,
-            "name": "Nike Sportswear",
-            "subTitle": "Women's T-shirt",
-            "brand": "Nike",
-            "colors": [
-                "Green"
-            ],
-            "gender": [
-                "Women"
-            ],
-            "type": "accessories-equipment",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/411e9dbf-bf9f-49ce-959f-3207817858da/sportswear-t-shirt-pptNcN.png",
-            "price": 6179000,
-            "suitable": [
-                "Tops & T-Shirts"
-            ],
-            "sizes": [
-                "35.5",
-                "37",
-                "36"
-            ],
-            "imgSimilar": []
-        },
-        {
-            "id": 11,
-            "name": "Nike Sportswear",
-            "subTitle": "Women's High-Waisted French Terry Shorts",
-            "brand": "Nike",
-            "colors": [
-                "Black",
-                "White"
-            ],
-            "gender": [
-                "Women"
-            ],
-            "type": "clothing",
-            "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/7689b197-de21-4bc1-8e4c-2a778c14d962/sportswear-high-waisted-french-terry-shorts-hFD0rm.png",
-            "price": 6179000,
-            "suitable": [
-                "Shorts"
-            ],
-            "sizes": [
-                "37",
-                "38"
-            ],
-            "imgSimilar": []
-        }
-    ]
+  "productList": [
+    {
+      "id": 1,
+      "name": "Nike InfinityRN 4 SE",
+      "subTitle": "Shoes for Male, Female",
+      "brand": "Nike",
+      "colors": [
+        "Blue",
+        "White",
+        "Black",
+        "Green"
+      ],
+      "type": "shoes",
+      "gender": [
+        "Men",
+        "Women"
+      ],
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fb5ad585-ec9c-4ab6-ab6f-b0b6b50235a4/infinityrn-4-road-running-shoes-mLRjcz.png",
+      "price": 4699000,
+      "suitable": [
+        "Running",
+        "Tennis",
+        "Walking",
+        "Golf"
+      ],
+      "imgSimilar": [
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fb5ad585-ec9c-4ab6-ab6f-b0b6b50235a4/infinityrn-4-road-running-shoes-mLRjcz.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/71a3d324-05c0-4b8d-9d78-0bd937520798/infinityrn-4-road-running-shoes-mLRjcz.png"
+      ],
+      "sizes": [
+        "35.5",
+        "40",
+        "39",
+        "36",
+        "41"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Nike Air Force 1 '07",
+      "subTitle": "Men's Shoes",
+      "brand": "Nike",
+      "colors": [
+        "White",
+        "Black"
+      ],
+      "type": "shoes",
+      "gender": [
+        "Men",
+        "Women"
+      ],
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e6da41fa-1be4-4ce5-b89c-22be4f1f02d4/air-force-1-07-shoes-WrLlWX.png",
+      "price": 1999000,
+      "suitable": [
+        "Lifestyle"
+      ],
+      "imgSimilar": [
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/21d38052-598b-44f6-a857-123c9f72b015/air-force-1-07-shoes-WrLlWX.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e6da41fa-1be4-4ce5-b89c-22be4f1f02d4/air-force-1-07-shoes-WrLlWX.png"
+      ],
+      "sizes": [
+        "7",
+        "38",
+        "39",
+        "36",
+        "41"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Air Jordan 1 Zoom CMFT 2",
+      "subTitle": "Men's Shoes",
+      "brand": "Jordan",
+      "colors": [
+        "Green",
+        "Blue",
+        "Orange"
+      ],
+      "gender": [
+        "Men"
+      ],
+      "type": "shoes",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0068f7a7-6789-4750-b05a-350f80e0684c/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
+      "price": 2599000,
+      "suitable": [
+        "Lifestyle"
+      ],
+      "imgSimilar": [
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/4e9138d9-278f-48b1-851c-f4e51dbb4ee9/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2fd7f3e8-b092-421b-9ca1-fbe92a586aa5/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0068f7a7-6789-4750-b05a-350f80e0684c/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ed71f213-14a5-4d5e-a0d8-1416208566b8/air-jordan-1-zoom-cmft-2-shoes-nX8Qqx.png"
+      ],
+      "sizes": [
+        "7",
+        "38",
+        "39",
+        "36",
+        "41"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Jordan Flight Heritage 85",
+      "subTitle": "Men's T-Shirt",
+      "brand": "Jordan",
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "gender": [
+        "Men"
+      ],
+      "type": "clothing",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b59c279d-321b-42ee-902f-dd5a751f6bed/jordan-flight-heritage-85-t-shirt-qVM4Fc.png",
+      "price": 1169000,
+      "suitable": [
+        "Lifestyle",
+        "Basketball",
+        "Tennis",
+        "Walking"
+      ],
+      "sizes": [
+        "36",
+        "41"
+      ],
+      "imgSimilar": [
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a4e98809-0f97-4a55-9297-42ad6d769457/jordan-flight-heritage-85-t-shirt-qVM4Fc.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b59c279d-321b-42ee-902f-dd5a751f6bed/jordan-flight-heritage-85-t-shirt-qVM4Fc.png"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Nike Dri-FIT Primary",
+      "subTitle": "Men's Training T-Shirt",
+      "brand": "Nike",
+      "colors": [
+        "White",
+        "Black",
+        "Yellow",
+        "Blue"
+      ],
+      "gender": [
+        "Men"
+      ],
+      "type": "clothing",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/77d88870-47a9-4529-8cd6-37194288e0d2/dri-fit-primary-training-t-shirt-z9dSFb.png",
+      "price": 6179000,
+      "suitable": [
+        "Lifestyle",
+        "Basketball",
+        "Tennis",
+        "Walking"
+      ],
+      "sizes": [
+        "37",
+        "38",
+        "39",
+        "36",
+        "41"
+      ],
+      "imgSimilar": [
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/25de54ca-d0d6-4309-b61d-41914aca1267/dri-fit-primary-training-t-shirt-z9dSFb.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/77d88870-47a9-4529-8cd6-37194288e0d2/dri-fit-primary-training-t-shirt-z9dSFb.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/1850f732-d635-44b2-b65a-b3093cd1432d/dri-fit-primary-training-t-shirt-z9dSFb.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/53a6853e-8e50-41b3-974a-9ccbff68f576/dri-fit-primary-training-t-shirt-z9dSFb.png"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Chelsea F.C. 2023/24 Match Away",
+      "subTitle": "Men's, women's Nike Dri-FIT ADV Football Shirt",
+      "brand": "Nike",
+      "colors": [
+        "Blue"
+      ],
+      "gender": [
+        "Men"
+      ],
+      "type": "clothing",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/48beb34d-6200-4325-b7d1-73cfa5721baa/chelsea-fc-2023-24-match-away-dri-fit-adv-football-shirt-2l80ZZ.png",
+      "price": 1119000,
+      "suitable": [
+        "Football"
+      ],
+      "sizes": [
+        "40",
+        "41"
+      ],
+      "imgSimilar": []
+    },
+    {
+      "id": 7,
+      "name": "Nike Max90",
+      "subTitle": "Men's Basketball T-shirt",
+      "brand": "Nike",
+      "colors": [
+        "Black",
+        "Pink"
+      ],
+      "gender": [
+        "Men"
+      ],
+      "type": "clothing",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d2468621-159a-4013-a193-c57a2915efaf/max90-basketball-t-shirt-jQZ50P.png",
+      "price": 6179000,
+      "suitable": [
+        "Basketball"
+      ],
+      "sizes": [
+        "37",
+        "38"
+      ],
+      "imgSimilar": [
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/bb0f2701-c185-4279-89e5-494cd52e7303/max90-basketball-t-shirt-jQZ50P.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d2468621-159a-4013-a193-c57a2915efaf/max90-basketball-t-shirt-jQZ50P.png"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Nike Club Cap",
+      "subTitle": "Unstructured Corduroy Cap",
+      "brand": "Nike",
+      "colors": [
+        "Black",
+        "Blue"
+      ],
+      "gender": [
+        "Men",
+        "Women"
+      ],
+      "type": "accessories-equipment",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png",
+      "price": 6179000,
+      "suitable": [
+        "Lifestyle"
+      ],
+      "sizes": [
+        "37",
+        "38"
+      ],
+      "imgSimilar": [
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/304fd33e-d600-4e4d-8f5f-a4895c461d20/club-cap-unstructured-corduroy-cap-r85WQS.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Nike Sportswear Tech Fleece",
+      "subTitle": "Women's Oversized Asymmetrical Hoodie",
+      "brand": "Nike",
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "gender": [
+        "Women"
+      ],
+      "type": "clothing",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/985c6cd9-ddf9-4d67-a691-f2bc2813a175/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png",
+      "price": 6179000,
+      "suitable": [
+        "Hoodies & Sweatshirts"
+      ],
+      "sizes": [
+        "37",
+        "38"
+      ],
+      "imgSimilar": [
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/ff465ca9-7bbe-4cc7-9e23-75c6992d517a/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/985c6cd9-ddf9-4d67-a691-f2bc2813a175/sportswear-tech-fleece-oversized-asymmetrical-hoodie-QzcJpz.png"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Nike Sportswear",
+      "subTitle": "Women's T-shirt",
+      "brand": "Nike",
+      "colors": [
+        "Green"
+      ],
+      "gender": [
+        "Women"
+      ],
+      "type": "accessories-equipment",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/411e9dbf-bf9f-49ce-959f-3207817858da/sportswear-t-shirt-pptNcN.png",
+      "price": 6179000,
+      "suitable": [
+        "Tops & T-Shirts"
+      ],
+      "sizes": [
+        "35.5",
+        "37",
+        "36"
+      ],
+      "imgSimilar": []
+    },
+    {
+      "id": 11,
+      "name": "Nike Sportswear",
+      "subTitle": "Women's High-Waisted French Terry Shorts",
+      "brand": "Nike",
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "gender": [
+        "Women"
+      ],
+      "type": "clothing",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/7689b197-de21-4bc1-8e4c-2a778c14d962/sportswear-high-waisted-french-terry-shorts-hFD0rm.png",
+      "price": 6179000,
+      "suitable": [
+        "Shorts"
+      ],
+      "sizes": [
+        "37",
+        "38"
+      ],
+      "imgSimilar": []
+    }
+  ],
+  "users": [
+    {
+      "id": "nike1234",
+      "email": "cuong170603@gmail.com",
+      "fullName": "CuongDev",
+      "birthday": "17/06/2003",
+      "gender": "Male"
+    },
+    {
+      "id": "nike1235",
+      "email": "quantran119@gmail.com",
+      "fullName": "QuanDev",
+      "birthday": "11/09/2003",
+      "gender": "Male"
+    },
+    {
+      "id": "nike1235",
+      "email": "ngocanh2206@gmail.com",
+      "fullName": "AnhXau",
+      "birthday": "22/06/2003",
+      "gender": "Female"
+    },
+    {
+      "id": "nike1237",
+      "email": "pna2206@gmail.com",
+      "birhday": "22/06/2003",
+      "gender": "Female"
+    },
+    {
+      "email": "fbsafja@gmail.com",
+      "fullName": "NguyễnCươpngf",
+      "password": "cuong123@C",
+      "gender": "Male",
+      "birthday": "12/7/2003",
+      "createAt": "2023-09-20T04:01:59.333Z",
+      "updateAt": "2023-09-20T04:01:59.333Z",
+      "id": "kySxuaR"
+    }
+  ]
 }
