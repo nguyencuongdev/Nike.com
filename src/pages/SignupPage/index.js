@@ -1,7 +1,9 @@
 import classnames from 'classnames/bind';
 import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { post } from '~/utils/requests';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { registerService } from '~/services/authService';
 import Input from '~/components/Input';
 import { ArrowDownIcon } from '~/components/Icon';
 import styles from './SignupPage.module.css';
@@ -14,22 +16,24 @@ function SignupPage() {
     const [lastNameValue, setLastNameValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [genderValue, setGenderValue] = useState('Male');
-    const [birthDayValue, setBirthDayValue] = useState('');
+    const [numberPhoneValue, setNumberPhoneValue] = useState('');
 
     const [verifyEmailValue, setVerifyEmailValue] = useState(false);
     const [verifyFirstNameValue, setVerifyFirstNameValue] = useState(false);
     const [verifyLastNameValue, setVerifyLastNameValue] = useState(false);
     const [verifyPasswordValue, setVerifyPasswordValue] = useState(false);
-    const [verifyBirthdayValue, setVerifyBirthdayValue] = useState(false);
+    const [verifyNumberPhoneValue, setVerifyNumberPhoneValue] = useState(false);
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const emailFieldRef = useRef(null);
     const firstNameFieldRef = useRef(null);
     const lastNameFieldRef = useRef(null);
     const passwordFieldRef = useRef(null);
-    const birdthdayFieldRef = useRef(null);
+    const numberPhoneFieldRef = useRef(null);
 
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         if (!verifyEmailValue) {
             let inputEmail = emailFieldRef.current.querySelector('#input-email');
@@ -59,31 +63,26 @@ function SignupPage() {
             inputPassword.classList.add('error');
             elementError.innerText = 'Không được để trống trường này!';
         }
-        if (!verifyBirthdayValue) {
-            let inputBirthday = birdthdayFieldRef.current.querySelector('#input-birthday');
-            let elementError = birdthdayFieldRef.current.querySelector(`.${cx('message-error')}`);
+        if (!verifyNumberPhoneValue) {
+            let inputNumberPhone = numberPhoneFieldRef.current.querySelector('#input-numberPhone');
+            let elementError = numberPhoneFieldRef.current.querySelector(`.${cx('message-error')}`);
 
-            inputBirthday.classList.add('error');
+            inputNumberPhone.classList.add('error');
             elementError.innerText = 'Không được để trống trường này!';
         }
         if (verifyEmailValue && verifyFirstNameValue && verifyLastNameValue &&
-            verifyPasswordValue
+            verifyPasswordValue && verifyNumberPhoneValue
         ) {
-            try {
-                const res = await post('/users', {
-                    email: emailValue,
-                    fullName: firstNameValue + lastNameValue,
-                    password: passwordValue,
-                    genderValue: genderValue,
-                    birthday: birthDayValue,
-                    createAt: new Date(),
-                    updateAt: new Date(),
-                })
-                console.log(res);
-                console.log('submited');
-            } catch (e) {
-                console.log(e.message);
+            const user = {
+                email: emailValue,
+                fullName: firstNameValue + lastNameValue,
+                password: passwordValue,
+                genderValue: genderValue,
+                numberPhone: numberPhoneValue,
+                createAt: new Date(),
+                updateAt: new Date(),
             }
+            registerService(user, dispatch, navigate)
         }
         else
             console.log('submit failed');
@@ -281,6 +280,43 @@ function SignupPage() {
         }
     }
 
+    function handleOnChangeNumberPhone(e) {
+        let elementParent = e.target.parentNode;
+        while (!elementParent.classList.contains('form-group')) {
+            elementParent = elementParent.parentNode;
+        }
+        let elementError = elementParent.querySelector(`.${cx('message-error')}`);
+        let value = e.target.value;
+
+        let regx = /[a-zA-z\s\W]/;
+        if (regx.test(value)) {
+            e.target.value = '';
+            return;
+        } else {
+            setNumberPhoneValue(value);
+            e.target.classList.remove(cx('error'));
+            elementError.innerText = ' ';
+        }
+    }
+
+    function handleValidationNumberPhone(e) {
+        let elementParent = e.target.parentNode;
+        while (!elementParent.classList.contains('form-group')) {
+            elementParent = elementParent.parentNode;
+        }
+        let elementError = elementParent.querySelector(`.${cx('message-error')}`);
+        let value = e.target.value;
+
+        let regx = /^[0-9]{10,11}$/;
+        if (regx.test(value)) {
+            setNumberPhoneValue(value);
+            setVerifyNumberPhoneValue(true);
+        } else {
+            setVerifyNumberPhoneValue(false);
+            e.target.classList.add(cx('error'));
+            elementError.innerText = 'Số điện thoại không hợp lệ!';
+        }
+    }
     return (
         <div className={cx('signup')}>
             <div className={cx('overlay')}></div>
@@ -336,17 +372,14 @@ function SignupPage() {
                     />
                     <span className={cx('message-error')}></span>
                 </div>
-                <div className={cx('form-group')} ref={birdthdayFieldRef}>
-                    <Input name='birthday' placeholder='Date of Birth' value={birthDayValue}
-                        id='input-birthday'
+                <div className={cx('form-group')} ref={numberPhoneFieldRef}>
+                    <Input name='numberPhone' placeholder='Number Phone' value={numberPhoneValue}
+                        id='input-numberPhone'
                         type='text'
                         classNameAdd={cx('form-signup-control')}
-                        onChange={(e => {
-                            setBirthDayValue(e.target.value);
-                            setVerifyBirthdayValue(true);
-                        }
-                        )}
+                        onChange={handleOnChangeNumberPhone}
                         onFocus={handleOnFocus}
+                        onBlur={handleValidationNumberPhone}
                     />
                     <span className={cx('message-error')}></span>
                 </div>

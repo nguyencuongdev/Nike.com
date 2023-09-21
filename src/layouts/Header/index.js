@@ -78,8 +78,8 @@ function Header() {
                             </Nav.Item>
                             <span className={cx('header-top-separator')}>|</span>
                             <Nav.Item as='li' className={cx('header-top-item')}>
-                                <Link to='/signin' className={cx('nav-link', 'header-top-link')}>
-                                    Sign in
+                                <Link to='/login' className={cx('nav-link', 'header-top-link')}>
+                                    Login
                                 </Link>
                             </Nav.Item>
                         </>

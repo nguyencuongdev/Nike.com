@@ -358,6 +358,36 @@
       "createAt": "2023-09-20T04:01:59.333Z",
       "updateAt": "2023-09-20T04:01:59.333Z",
       "id": "kySxuaR"
+    },
+    {
+      "email": "cuong170603@gmail.com",
+      "fullName": "NguyễnCường",
+      "password": "Cnm170603@",
+      "genderValue": "Male",
+      "numberPhone": "0399364520",
+      "createAt": "2023-09-20T23:46:25.283Z",
+      "updateAt": "2023-09-20T23:46:25.283Z",
+      "id": "iwvD3OX"
+    },
+    {
+      "email": "cuong170603@gmail.com",
+      "fullName": "Phạm Thị NgọcAnhs",
+      "password": "Cnm170603@",
+      "genderValue": "Female",
+      "numberPhone": "0399364520",
+      "createAt": "2023-09-20T23:50:44.611Z",
+      "updateAt": "2023-09-20T23:50:44.611Z",
+      "id": "NKmY5lp"
+    },
+    {
+      "email": "anhxauxa@gmail.com",
+      "fullName": "AnhPham",
+      "password": "1234567C@Cs",
+      "genderValue": "Female",
+      "numberPhone": "0987654321",
+      "createAt": "2023-09-21T00:24:36.315Z",
+      "updateAt": "2023-09-21T00:24:36.315Z",
+      "id": "mw9U7Lc"
     }
   ]
 }
