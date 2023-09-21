@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { registerService } from '~/services/authService';
+import { EyeBlockIcon, EyeIcon } from '~/components/Icon';
 import Input from '~/components/Input';
 import styles from './LoginPage.module.css';
 const cx = classnames.bind(styles);
@@ -158,7 +159,32 @@ function LoginPage() {
             elementError.innerText = 'Password phải bao gồm 1 ký tự viết hoa, viết thường và 1 ký tự đặc biệt!';
         }
     }
+    function handleShowPassWord(e) {
+        e.stopPropagation();
+        let elementParent = e.target.parentNode;
+        while (!elementParent.classList.contains(cx('form-group'))) {
+            elementParent = elementParent.parentNode;
+        }
+        let elementShowPassword = elementParent.querySelector(`.${cx('form-login-icon-show')}`);
+        let inputPassword = elementParent.querySelector('#input-password');
+        inputPassword.type = 'text';
+        e.target.classList.add(cx('hidden'));
+        elementShowPassword.classList.remove(cx('hidden'));
 
+    }
+    function handleHiddenPassWord(e) {
+        e.stopPropagation();
+        let elementParent = e.target.parentNode;
+        while (!elementParent.classList.contains(cx('form-group'))) {
+            elementParent = elementParent.parentNode;
+        }
+        let elementHiddenPassword = elementParent.querySelector(`.${cx('form-login-icon-hidden')}`);
+        let inputPassword = elementParent.querySelector('#input-password');
+        inputPassword.type = 'password';
+        e.target.classList.add(cx('hidden'));
+        elementHiddenPassword.classList.remove(cx('hidden'));
+
+    }
 
     return (
         <div className={cx('login')}>
@@ -190,6 +216,12 @@ function LoginPage() {
                         onFocus={handleOnFocus}
                         onBlur={handleValidationPassword}
                     />
+                    <EyeBlockIcon className={cx('form-login-icon', 'form-login-icon-hidden', 'show')}
+                        onClick={handleShowPassWord}
+                        width='16px' height='16px' />
+                    <EyeIcon className={cx('form-login-icon', 'form-login-icon-show', 'hidden')}
+                        onClick={handleHiddenPassWord}
+                        width='16px' height='16px' />
                     <span className={cx('message-error')}></span>
                 </div>
                 <button type="submit" className={cx('form-login-submit')}>Login</button>

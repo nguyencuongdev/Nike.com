@@ -12,6 +12,20 @@
     z-index: 1;
 }
 
+.form-login-icon {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
+
+.form-login-icon.show {
+    display: block;
+}
+
+.form-login-icon.hidden {
+    display: none;
+}
+
 .overlay {
     position: absolute;
     top: 0;

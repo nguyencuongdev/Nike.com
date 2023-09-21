@@ -111,6 +111,20 @@
 
 }
 
+.form-signup-icon {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
+
+.form-signup-icon.show {
+    display: block;
+}
+
+.form-signup-icon.hidden {
+    display: none;
+}
+
 .form-icon {
     display: none;
     margin-top: 4px;

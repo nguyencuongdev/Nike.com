@@ -63,4 +63,5 @@ a {
 /* custom bootstrap */
 .form-group {
     margin-bottom: 0;
+    position: relative;
 }

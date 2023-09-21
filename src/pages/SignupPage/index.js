@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { registerService } from '~/services/authService';
 import Input from '~/components/Input';
-import { ArrowDownIcon } from '~/components/Icon';
+import { ArrowDownIcon, EyeBlockIcon, EyeIcon } from '~/components/Icon';
 import styles from './SignupPage.module.css';
 const cx = classnames.bind(styles);
 
@@ -317,6 +317,33 @@ function SignupPage() {
             elementError.innerText = 'Số điện thoại không hợp lệ!';
         }
     }
+
+    function handleShowPassWord(e) {
+        e.stopPropagation();
+        let elementParent = e.target.parentNode;
+        while (!elementParent.classList.contains(cx('form-group'))) {
+            elementParent = elementParent.parentNode;
+        }
+        let elementShowPassword = elementParent.querySelector(`.${cx('form-signup-icon-show')}`);
+        let inputPassword = elementParent.querySelector('#input-password');
+        inputPassword.type = 'text';
+        e.target.classList.add(cx('hidden'));
+        elementShowPassword.classList.remove(cx('hidden'));
+
+    }
+    function handleHiddenPassWord(e) {
+        e.stopPropagation();
+        let elementParent = e.target.parentNode;
+        while (!elementParent.classList.contains(cx('form-group'))) {
+            elementParent = elementParent.parentNode;
+        }
+        let elementHiddenPassword = elementParent.querySelector(`.${cx('form-signup-icon-hidden')}`);
+        let inputPassword = elementParent.querySelector('#input-password');
+        inputPassword.type = 'password';
+        e.target.classList.add(cx('hidden'));
+        elementHiddenPassword.classList.remove(cx('hidden'));
+
+    }
     return (
         <div className={cx('signup')}>
             <div className={cx('overlay')}></div>
@@ -370,6 +397,12 @@ function SignupPage() {
                         onFocus={handleOnFocus}
                         onBlur={handleValidationPassword}
                     />
+                    <EyeBlockIcon className={cx('form-signup-icon', 'form-signup-icon-hidden', 'show')}
+                        onClick={handleShowPassWord}
+                        width='16px' height='16px' />
+                    <EyeIcon className={cx('form-signup-icon', 'form-signup-icon-show', 'hidden')}
+                        onClick={handleHiddenPassWord}
+                        width='16px' height='16px' />
                     <span className={cx('message-error')}></span>
                 </div>
                 <div className={cx('form-group')} ref={numberPhoneFieldRef}>
