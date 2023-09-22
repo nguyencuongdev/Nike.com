@@ -4,6 +4,7 @@ const configs = {
         login: '/login',
         home: '/',
         productAll: '/products',
+        detail: '/product/detail/:id',
         productByType: '/products/:type',
         productByTypeAndGender: '/products/:type/:gender',
         productByTypeAndGenderAndSuitableFor: '/products/:type/:gender/:suitable',

@@ -13,6 +13,7 @@ function Button(
         primary = false,
         small = false,
         large = false,
+        block,
         outline = false,
         disable = false,
         iconLeft = false,
@@ -32,6 +33,7 @@ function Button(
         outline,
         disable,
         separator,
+        block
     });
 
     const props = {

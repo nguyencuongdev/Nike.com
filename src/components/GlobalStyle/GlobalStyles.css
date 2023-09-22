@@ -4,6 +4,8 @@
 :root {
     --white-color: #fff;
     --text-color: #111;
+    --primary-color: #111;
+    --foreign-color: #757557;
 }
 
 * {

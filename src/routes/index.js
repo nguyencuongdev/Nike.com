@@ -1,6 +1,6 @@
 import { routerConfig } from '~/configs';
 import { OnlyHeaderLayout } from '~/layouts';
-import { HomePage, ProductPage, LoginPage, SignupPage } from '~/pages';
+import { HomePage, ProductPage, LoginPage, SignupPage, DetailProductPage } from '~/pages';
 
 export const publicRoutes = [
     {
@@ -47,6 +47,11 @@ export const publicRoutes = [
         path: routerConfig.shopbyGender,
         component: ProductPage,
     },
+    {
+        path: routerConfig.detail,
+        component: DetailProductPage,
+        layout: OnlyHeaderLayout
+    }
 
 ];
 

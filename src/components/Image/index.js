@@ -26,7 +26,7 @@ const Image = forwardRef((
 
 Image.propTypes = {
     src: propTypes.string.isRequired,
-    alt: propTypes.string.isRequired,
+    alt: propTypes.string,
     customFallback: propTypes.string
 }
 
