@@ -42,6 +42,11 @@
     object-fit: contain;
     background: rgb(245, 245, 245);
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.content-detail-imgsDetail-item>img:hover {
+    filter: brightness(85%);
 }
 
 .content-detail-imgProduct {
@@ -96,7 +101,7 @@
 }
 
 .content-detail-infor {
-    margin-bottom: 48px;
+    margin-bottom: 28px;
 }
 
 .content-detail-title {
@@ -113,6 +118,39 @@
 .content-detail-price {
     font-size: 1.6rem;
     font-weight: 500;
+}
+
+.content-detail-imgSimilar {
+    margin-bottom: 20px;
+}
+
+.content-detail-imgSimilar-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    user-select: none;
+    line-height: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.content-detail-imgSilimar-item {
+    padding-left: 4px;
+    padding-right: 4px;
+    overflow: hidden;
+    height: 84.75px;
+    margin-bottom: 8px;
+}
+
+.content-detail-imgSilimar-item>img {
+    border: 1px solid transparent;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.content-detail-imgSilimar-item>img:hover {
+    border-color: var(--primary-color);
 }
 
 .content-detail-selectSize-list {
@@ -139,7 +177,14 @@
     padding-bottom: 4px;
     background-color: var(--white-color);
     font-size: 1.6rem;
+    cursor: pointer;
 }
+
+.content-detail-selectSize-btn.active,
+.content-detail-selectSize-btn:hover {
+    border-color: var(--primary-color);
+}
+
 
 .content-detail-btn-group {
     margin-top: 10px;
@@ -147,6 +192,11 @@
 
 .content-detail-feature {
     margin-top: 28px;
+    padding: 0 8px;
+}
+
+.content-detail-reviews {
+    padding: 0 8px;
 }
 
 .content-detail-reviews-btnToggle,
@@ -181,4 +231,50 @@
 .content-detail-feature-list-item {
     font-size: 1.6rem;
     line-height: 2.2rem;
+}
+
+.content-productList-item {
+    padding: 0 8px;
+}
+
+.content-productList-ForYou-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 8px;
+    align-items: center;
+}
+
+.content-productList-ForYou-text {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.slick-slider-controls {
+    display: flex;
+}
+
+.slick-slider-btn {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    margin-left: 12px;
+    border: none;
+    background-color: rgb(229, 229, 229);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slick-slider-btn:hover {
+    background-color: #CACACB;
+}
+
+.slick-slider-btn-prev {
+    padding-right: 2px;
+}
+
+.slick-slider-btn-next {
+    padding-left: 2px;
 }

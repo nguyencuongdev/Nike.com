@@ -2,6 +2,9 @@ import checkIcon from '~/assets/images/check.png';
 import arrowDownicon from '~/assets/images/iconDown.png';
 import eyeBlockIcon from '~/assets/images/eye-crossed.png';
 import eyeIcon from '~/assets/images/eye.png';
+import arrowRightLarge from '~/assets/images/arrowRightLarge.png';
+import arrowLeftLarge from '~/assets/images/arrowLeftLarge.png';
+
 
 export function SearchIcon({ width = '24px', height = '24px', color = 'none' }) {
     return (
@@ -195,6 +198,26 @@ export function ArrowRightBoldIcon({ width = '24px', height = '24px', color, cla
         </svg>
     )
 }
+
+
+export function ArrowLeftLargeIcon({ width = '24px', height = '24px', className, props }) {
+    return (
+        <img src={arrowLeftLarge} alt="arrow-icon" width={width} height={height}
+            {...props}
+            className={className}
+        />
+    )
+}
+
+export function ArrowRightLargeIcon({ width = '24px', height = '24px', className, props }) {
+    return (
+        <img src={arrowRightLarge} alt="arrow-icon" width={width} height={height}
+            {...props}
+            className={className}
+        />
+    )
+}
+
 
 
 
