@@ -21,9 +21,9 @@ function ProductPage() {
             dispatch(actionProduct.store(productList));
         }
         getProduct();
-        return () => {
-            dispatch(actionProduct.clearStore());
-        }
+        // return () => {
+        //     dispatch(actionProduct.clearStore());
+        // }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -33,7 +33,7 @@ function ProductPage() {
                 {dataProductList &&
                     dataProductList.map((product, index) =>
                         <div className={cx('product-card-item', 'col-lg-4')} key={index}>
-                            <ProductCard to={`/products/details/${product.id}`}
+                            <ProductCard to={`/product/detail/${product.id}`}
                                 productImgSrc={product.img}
                                 productTitle={product.name}
                                 productTypes={product.subTitle}

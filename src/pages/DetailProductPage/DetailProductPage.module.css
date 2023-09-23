@@ -119,6 +119,13 @@
     padding: 0;
 }
 
+.content-detail-selectSize-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    user-select: none !important;
+}
+
 .content-detail-selectSize-item {
     padding: 0 4px;
     margin-bottom: 8px;

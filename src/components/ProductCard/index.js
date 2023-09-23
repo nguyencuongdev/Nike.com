@@ -54,7 +54,7 @@ function ProductCard({
                 <p className={cx('product-card-price', 'card-text')}>{productPrice}đ</p>
             </div>
             <div className={cx('card-body', 'product-card-ImgSimilar', 'px-0')} ref={productImgSimilarRef}>
-                {subProductImg &&
+                {subProductImg.length > 0 &&
                     <div className={cx('product-card-ImgSimilar-list')}>
                         {(subProductImg.length > 3) ?
                             <Fragment>

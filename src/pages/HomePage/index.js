@@ -4,6 +4,7 @@ import classnames from 'classnames/bind';
 import ListMenu from '~/components/ListMenu';
 import Banner from '~/components/Banner';
 import Media from '~/components/Media';
+
 import { MENU_BOTTOM_CONTEXT } from './HomePageContext';
 
 import BannerImg from '~/assets/images/Banner-nike-just-do-it.jpg';
@@ -21,6 +22,7 @@ const cx = classnames.bind(styles);
 
 function HomePage() {
     const MENU_BOTTOM = useContext(MENU_BOTTOM_CONTEXT);
+
     return (
         <div className={cx('content')}>
             <div className={cx('content-item')}>

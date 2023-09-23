@@ -1,7 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 import * as FillterSelector from '~/layouts/Filter/FillterSelector';
 import { checkProduct } from '~/helper/';
+
+
 export const productListSelector = (state) => state.productList;
+
 export const typeProductSelector = (state) => state.fillter.type;
 
 export const productListRemainingSelector = createSelector(
