@@ -8,8 +8,8 @@ const cx = classnames.bind(styles);
 
 function ProductCard({
     to = '',
-    classNameAdd, productImgSrc, productTitle, productTypes,
-    productPrice = '0', productColors = [], subProductImg = [], ...propsAdd
+    classNameAdd, productImgSrc, productTitle, subProductTitle,
+    productPrice = '0', productColors = [], imgsProductByColor = [], ...propsAdd
 }) {
     const className = cx('card', 'product-card', classNameAdd);
 
@@ -47,40 +47,40 @@ function ProductCard({
             <Image src={productImgSrc} className={cx('card-img-top', 'product-card-img')} alt="product-card" />
             <div className={cx('card-body', 'product-card-infomation', 'px-0')} ref={productInforRef}>
                 <h3 className={cx('card-title', 'product-card-title')}>{productTitle}</h3>
-                <h4 className={cx('product-card-types')}>{productTypes}</h4>
+                <h4 className={cx('product-card-types')}>{subProductTitle}</h4>
                 <p className={cx('product-card-colors')}>
                     {(!productColors) ? 'Không xác định' : productColors.length} Colours
                 </p>
                 <p className={cx('product-card-price', 'card-text')}>{productPrice}đ</p>
             </div>
             <div className={cx('card-body', 'product-card-ImgSimilar', 'px-0')} ref={productImgSimilarRef}>
-                {subProductImg.length > 0 &&
+                {imgsProductByColor?.length > 0 &&
                     <div className={cx('product-card-ImgSimilar-list')}>
-                        {(subProductImg.length > 3) ?
+                        {(imgsProductByColor?.length > 3) ?
                             <Fragment>
                                 <div className={cx('product-card-ImgSimilar-item')}>
-                                    <Image src={subProductImg[0]} alt='img 1'
+                                    <Image src={imgsProductByColor[0]?.src} alt='img 1'
                                         onMouseOver={(e) => handleShowImgSimilar(e)}
                                     />
                                 </div>
                                 <div className={cx('product-card-ImgSimilar-item')}>
-                                    <Image src={subProductImg[1]} alt='img 2'
+                                    <Image src={imgsProductByColor[1]?.src} alt='img 2'
                                         onMouseOver={(e) => handleShowImgSimilar(e)}
                                     />
                                 </div>
                                 <div className={cx('product-card-ImgSimilar-item')}>
-                                    <Image src={subProductImg[2]} alt='img 3'
+                                    <Image src={imgsProductByColor[2]?.src} alt='img 3'
                                         onMouseOver={(e) => handleShowImgSimilar(e)}
                                     />
                                 </div>
                                 <div className={cx('product-card-ImgSimilar-item')}>
-                                    <span>+{subProductImg.length - 3}</span>
+                                    <span>+{imgsProductByColor.length - 3}</span>
                                 </div>
                             </Fragment>
                             :
-                            subProductImg.map((img, index) => {
+                            imgsProductByColor.map((img, index) => {
                                 return <div className={cx('product-card-ImgSimilar-item')} key={index}>
-                                    <Image src={img} alt={`img ${index}`}
+                                    <Image src={img?.src} alt={`img ${index}`}
                                         onMouseOver={(e) => handleShowImgSimilar(e)}
                                     />
                                 </div>

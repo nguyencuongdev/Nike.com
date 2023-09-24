@@ -21,14 +21,20 @@ const cx = classnames.bind(styles);
 
 function DetailProductPage() {
     const [product, setProduct] = useState(null);
+    const [sizeProductAddToCart, setSizeProductAddToCart] = useState('');
+    const [colorProductAddToCart, setColorProductAddToCart] = useState('');
 
     let pathName = window.location.pathname.split('/');
     if (pathName[pathName.length - 1] === '') pathName.pop();
     let id = pathName[pathName.length - 1];
-    console.log(id);
+
     const dispatch = useDispatch();
     const productListForYou = useSelector(productListSelector);
+
     const slider = useRef(null);
+    const imgProductRef = useRef(null);
+    const indexImgDetailProduct = useRef(0);
+
     useEffect(() => {
         const getProductDetail = async (id) => {
             const res = await ProductService.getProductService('/productList/' + id);
@@ -59,13 +65,21 @@ function DetailProductPage() {
                         <div className={cx('col-lg-7', 'container-fluid', 'content-detail-left')}>
                             <div className={cx('row')}>
                                 {/* hình ảnh mô tả chi tiết sản phẩm */}
-                                {product?.imgDescription.length > 0 &&
+                                {product?.imgsProductDetail.length > 0 &&
                                     <div className={cx('col-lg-2', 'content-detail-imgsDetail')}>
-                                        {product.imgDescription.map((img, index) =>
+                                        {product?.imgsProductDetail.map((img, index) =>
                                             <div className={cx('content-detail-imgsDetail-item')}
                                                 key={index}
                                             >
-                                                <Image src={img} alt='img-detail' />
+                                                <Image src={img} alt='img-detail' index-value={index}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        let src = e.target?.src;
+                                                        let index = +e.target.getAttribute('index-value');
+                                                        imgProductRef.current.src = src;
+                                                        indexImgDetailProduct.current = index;
+                                                    }}
+                                                />
                                             </div>
                                         )}
                                     </div>
@@ -73,15 +87,45 @@ function DetailProductPage() {
                                 {/* Hình ảnh chính của sản phẩm */}
                                 <div className={cx('col', 'content-detail-imgProduct')}>
                                     <div className={cx('content-detail-imgProduct-img')}>
-                                        <Image src={product?.img} alt='img-product' />
+                                        <Image src={product?.img} alt='img-product' ref={imgProductRef} />
                                     </div>
                                     <div className={cx('content-detail-control')}>
                                         <button
-                                            className={cx('content-detail-control-prev', 'content-detail-control-item')}>
+                                            className={cx('content-detail-control-prev', 'content-detail-control-item')}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                let indexPrev = indexImgDetailProduct.current - 1;
+                                                if (indexPrev === -1) {
+                                                    indexPrev = product?.imgsProductDetail.length - 1;
+                                                    indexImgDetailProduct.current = indexPrev;
+                                                }
+                                                else {
+                                                    indexImgDetailProduct.current = indexPrev;
+                                                }
+                                                let srcImg = product?.imgsProductDetail[indexPrev];
+                                                console.log(indexPrev);
+                                                imgProductRef.current.src = srcImg;
+                                            }}
+                                        >
                                             <ArrowLeftIcon width='8px' heihgt='8px' />
                                         </button>
                                         <button
-                                            className={cx('content-detail-control-next', 'content-detail-control-item')}>
+                                            className={cx('content-detail-control-next', 'content-detail-control-item')}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                let indexNext = indexImgDetailProduct.current + 1;
+                                                if (indexNext === product?.imgsProductDetail.length) {
+                                                    indexNext = 0;
+                                                    indexImgDetailProduct.current = indexNext;
+                                                }
+                                                else {
+                                                    indexImgDetailProduct.current = indexNext;
+                                                }
+                                                console.log(indexNext);
+                                                let srcImg = product?.imgsProductDetail[indexNext];
+                                                imgProductRef.current.src = srcImg;
+                                            }}
+                                        >
                                             <ArrowRightBoldIcon width='8px' heihgt='8px' />
                                         </button>
                                     </div>
@@ -95,19 +139,30 @@ function DetailProductPage() {
                                 <h4 className={cx('content-detail-subTitle')}>{product?.subTitle}</h4>
                                 <p className={cx('content-detail-price')}>{product?.price}đ</p>
                             </div>
-                            {/* img silimar */}
-                            {product?.imgSimilar.length > 0 &&
+                            {/* list imgs of product by color*/}
+                            {product?.imgsProductByColor.length > 0 &&
                                 <div className={cx('content-detail-imgSimilar', 'container-fluid')}>
                                     <h3 className={cx('content-detail-imgSimilar-title', 'row')}>
                                         Colors:
                                     </h3>
                                     <div className={cx('row')}>
-                                        {product?.imgSimilar?.map((imgItem, index) =>
+                                        {product?.imgsProductByColor?.map((imgItem, index) =>
                                             <div className=
                                                 {cx('col-lg-3', 'content-detail-imgSilimar-item')}
                                                 key={index}
                                             >
-                                                <Image src={imgItem} alt='imgSimilar-item' />
+                                                <Image src={imgItem?.src}
+                                                    className={cx('content-detail-imgSilimar-img', {
+                                                        'active': colorProductAddToCart === imgItem.typeColor
+                                                    })}
+                                                    alt='imgSimilar-item' data-value={imgItem?.typeColor}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        let color = e.target.getAttribute('data-value');
+                                                        console.log(color);
+                                                        setColorProductAddToCart(color);
+                                                    }}
+                                                />
                                             </div>
                                         )}
                                     </div>
@@ -123,7 +178,16 @@ function DetailProductPage() {
                                         {product?.sizes.map((size, index) =>
                                             <div key={index}
                                                 className={cx('content-detail-selectSize-item', 'col-lg-4')}>
-                                                <button className={cx('content-detail-selectSize-btn')}>
+                                                <button className={cx('content-detail-selectSize-btn',
+                                                    {
+                                                        'active': sizeProductAddToCart === size
+                                                    }
+                                                )}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setSizeProductAddToCart(e.target.innerText);
+                                                    }}
+                                                >
                                                     {size}
                                                 </button>
                                             </div>
@@ -148,13 +212,12 @@ function DetailProductPage() {
                             </div>
                         </div>
                     </div>
-                    {/* </div > */}
-                    {/* infor detail về các tính năng của sản phẩm */}
-                    <div div className={cx('row')} >
+                    {/* infor detail về sản phẩm */}
+                    <div className={cx('row')} >
                         {
-                            product?.detailProduct.length > 0 &&
+                            product?.inforProductDetail.length > 0 &&
                             <div className={cx('content-detail-feature', 'col-lg-12')}>
-                                {product?.detailProduct.map((feature, index) =>
+                                {product?.inforProductDetail.map((feature, index) =>
                                     <div className={cx('cotent-detail-feature-item')} key={index}>
                                         <button className={cx('content-detail-feature-title')}
                                             data-target={`#${feature?.id}`} data-toggle='collapse'
@@ -231,12 +294,12 @@ function DetailProductPage() {
                                     {productListForYou?.map((productItem, index) => {
                                         return <ProductCard productImgSrc={productItem?.img}
                                             key={index}
-                                            to={`/product/detail/${productItem.id}`} Ư
+                                            to={`/product/detail/${productItem.id}`}
                                             productTitle={productItem?.name}
-                                            productTypes={productItem?.subTitle}
+                                            subProductTitle={productItem?.subTitle}
                                             productPrice={productItem?.price}
                                             productColors={productItem?.colors}
-                                            subProductImg={productItem?.imgSimilar}
+                                            imgsProductByColor={productItem?.imgsProductByColor}
                                             classNameAdd={cx('content-productList-item')}
                                         />
                                     })}

@@ -33,13 +33,13 @@ function ProductPage() {
                 {dataProductList &&
                     dataProductList.map((product, index) =>
                         <div className={cx('product-card-item', 'col-lg-4')} key={index}>
-                            <ProductCard to={`/product/detail/${product.id}`}
-                                productImgSrc={product.img}
-                                productTitle={product.name}
-                                productTypes={product.subTitle}
-                                subProductImg={product.imgSimilar}
-                                productPrice={product.price}
-                                productColors={product.colors}
+                            <ProductCard to={`/product/detail/${product?.id}`}
+                                productImgSrc={product?.img}
+                                productTitle={product?.name}
+                                subProductTitle={product?.subTitle}
+                                imgsProductByColor={product?.imgsProductByColor}
+                                productPrice={product?.price}
+                                productColors={product?.colors}
                             />
                         </div>
                     )
