@@ -92,7 +92,6 @@ function DetailProductPage() {
                                                     indexImgDetailProduct.current = indexPrev;
                                                 }
                                                 let srcImg = product?.imgsProductDetail[indexPrev];
-                                                console.log(indexPrev);
                                                 imgProductRef.current.src = srcImg;
                                             }}
                                         >
@@ -110,7 +109,6 @@ function DetailProductPage() {
                                                 else {
                                                     indexImgDetailProduct.current = indexNext;
                                                 }
-                                                console.log(indexNext);
                                                 let srcImg = product?.imgsProductDetail[indexNext];
                                                 imgProductRef.current.src = srcImg;
                                             }}
@@ -147,10 +145,15 @@ function DetailProductPage() {
                                                     alt='imgSimilar-item' data-value={imgItem?.typeColor}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
-                                                        let color = e.target.getAttribute('data-value');
-                                                        imgProductRef.current.src = e.target.getAttribute('src');
-                                                        indexImgDetailProduct.current = -1;
-                                                        setColorProductAddToCart(color);
+                                                        if (!e.target.classList.contains(cx('active'))) {
+                                                            let color = e.target.getAttribute('data-value');
+                                                            imgProductRef.current.src = e.target.getAttribute('src');
+                                                            indexImgDetailProduct.current = -1;
+                                                            setColorProductAddToCart(color);
+                                                            return;
+                                                        }
+                                                        e.target.classList.remove(cx('active'));
+                                                        setColorProductAddToCart('');
                                                     }}
                                                 />
                                             </div>
@@ -175,8 +178,13 @@ function DetailProductPage() {
                                                 )}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
-                                                        let size = e.target.innerText;
-                                                        setSizeProductAddToCart(size);
+                                                        if (!e.target.classList.contains(cx('active'))) {
+                                                            let size = e.target.innerText;
+                                                            setSizeProductAddToCart(size);
+                                                            return;
+                                                        }
+                                                        e.target.classList.remove(cx('active'));
+                                                        setSizeProductAddToCart('');
                                                     }}
                                                 >
                                                     {size}
