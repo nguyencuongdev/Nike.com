@@ -7,15 +7,24 @@ import Image from '~/components/Image';
 const cx = classnames.bind(styles);
 
 function ProductCard({
-    to = '',
+    to = '', href = '',
     classNameAdd, productImgSrc, productTitle, subProductTitle,
     productPrice = '0', productColors = [], imgsProductByColor = [], ...propsAdd
 }) {
-    const className = cx('card', 'product-card', classNameAdd);
 
+    let Comp = 'div';
+    const className = cx('card', 'product-card', classNameAdd);
     const props = {
         className,
         ...propsAdd
+    }
+
+    if (to) {
+        Comp = Link;
+        props.to = to;
+    } else if (href) {
+        Comp = 'a';
+        props.href = href;
     }
 
     const productRef = useRef(null);
@@ -40,7 +49,7 @@ function ProductCard({
     }
 
     return (
-        <Link to={to} {...props} ref={productRef}
+        <Comp {...props} ref={productRef}
             onMouseOver={handleMouseOverProductCard}
             onMouseOut={handleMouseOutProductCard}
         >
@@ -91,7 +100,7 @@ function ProductCard({
                 <h3 className={cx('card-title', 'product-card-title')}>{productTitle}</h3>
                 <p className={cx('product-card-price', 'card-text')}>{productPrice}</p>
             </div>
-        </Link>
+        </Comp>
     )
 }
 

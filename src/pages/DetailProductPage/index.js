@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Slider from "react-slick";
 import classnames from 'classnames/bind';
 
-import { ProductService } from '~/services';
+import { ProductService, CartService } from '~/services';
+
 import Image from '~/components/Image';
 import Button from '~/components/Button';
 import ProductCard from '~/components/ProductCard';
@@ -14,10 +15,12 @@ import {
 }
     from '~/components/Icon';
 
-import styles from './DetailProductPage.module.css';
-import { actionProduct } from '../ProductPage/ProductPageSlice';
+import { actionsCart } from '~/redux/cartSlice';
 import { productListSelector } from '../ProductPage/ProductSelector';
+
+import styles from './DetailProductPage.module.css';
 const cx = classnames.bind(styles);
+
 
 function DetailProductPage() {
     const [product, setProduct] = useState(null);
@@ -27,7 +30,6 @@ function DetailProductPage() {
     let pathName = window.location.pathname.split('/');
     if (pathName[pathName.length - 1] === '') pathName.pop();
     let id = pathName[pathName.length - 1];
-
     const dispatch = useDispatch();
     const productListForYou = useSelector(productListSelector);
 
@@ -42,19 +44,6 @@ function DetailProductPage() {
         }
         getProductDetail(id);
     }, [id])
-
-    useEffect(() => {
-        const getProduct = async () => {
-            const res = await ProductService.getProductService('/productList/');
-            dispatch(actionProduct.store(res.slice(0, 10)));
-        }
-        getProduct();
-        return () => {
-            dispatch(actionProduct.clearStore());
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
 
     return (
         //Nếu có product thì ta mới render ra detail infor của product
@@ -159,7 +148,8 @@ function DetailProductPage() {
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         let color = e.target.getAttribute('data-value');
-                                                        console.log(color);
+                                                        imgProductRef.current.src = e.target.getAttribute('src');
+                                                        indexImgDetailProduct.current = -1;
                                                         setColorProductAddToCart(color);
                                                     }}
                                                 />
@@ -185,7 +175,8 @@ function DetailProductPage() {
                                                 )}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
-                                                        setSizeProductAddToCart(e.target.innerText);
+                                                        let size = e.target.innerText;
+                                                        setSizeProductAddToCart(size);
                                                     }}
                                                 >
                                                     {size}
@@ -197,7 +188,30 @@ function DetailProductPage() {
                             </div>
                             <div className={cx('content-detail-btn')}>
                                 <div className={cx('content-detail-btn-group')}>
-                                    <Button classNameAdd={cx('content-detail-btn-addBag')} primary block
+                                    <Button classNameAdd={cx('content-detail-btn-addBag')}
+                                        primary block
+                                        disable={!(colorProductAddToCart !== '' &&
+                                            sizeProductAddToCart !== '')}
+                                        onClick={(e) => {
+                                            const productAddToCart = {
+                                                name: product?.name,
+                                                subType: product?.subTitle,
+                                                color: colorProductAddToCart,
+                                                size: sizeProductAddToCart,
+                                                price: product?.price,
+                                                img: imgProductRef.current.src,
+                                                quanlity: 1,
+                                            }
+                                            dispatch(actionsCart.addProductToCart(productAddToCart));
+                                            const addProductToCartInDB = async (product) => {
+                                                await CartService.addProductToCartService('/cart', product);
+                                                alert('Added product to cart');
+                                            }
+                                            addProductToCartInDB(productAddToCart);
+                                            imgProductRef.current.src = product?.img;
+                                            setColorProductAddToCart('');
+                                            setSizeProductAddToCart('');
+                                        }}
                                     >
                                         Add to Bag
                                     </Button>
@@ -294,7 +308,7 @@ function DetailProductPage() {
                                     {productListForYou?.map((productItem, index) => {
                                         return <ProductCard productImgSrc={productItem?.img}
                                             key={index}
-                                            to={`/product/detail/${productItem.id}`}
+                                            href={`/product/detail/${productItem.id}`}
                                             productTitle={productItem?.name}
                                             subProductTitle={productItem?.subTitle}
                                             productPrice={productItem?.price}
