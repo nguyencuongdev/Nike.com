@@ -1,9 +1,10 @@
 import { Nav, Navbar, Carousel } from 'react-bootstrap';
 import { useContext, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Tipy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
-
+import { cartSelector } from '~/pages/CartPage/cartSelector';
 import MenuItem from '~/components/Menu/MenuItem';
 import ListMenu from '~/components/ListMenu';
 import AccountMenu from '~/components/AccoutMenu';
@@ -28,6 +29,7 @@ function Header() {
     const [dataListMenu, setDataListMenu] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [currentUser, setCurrentUser] = useState('');
+    const carSize = useSelector(cartSelector).length ?? 0;
 
     const listMenuRef = useRef(null);
     const dataSiderbarMenuCurrent = dataSidebarMenu[dataSidebarMenu.length - 1];
@@ -123,8 +125,18 @@ function Header() {
                         />
                     </div>
                     <div className={cx('header-btn')}>
-                        <Link to='/favorites' className={cx('header-btn-item')}><HeartIcon /></Link>
-                        <Link to='/cart' className={cx('header-btn-item')}><CartIcon /></Link>
+                        <Link to='/favorites' className={cx('header-btn-item')}>
+                            <HeartIcon />
+                            <span className={cx('badge badge-light', 'header-center-cart-size')}>
+                                {carSize}
+                            </span>
+                        </Link>
+                        <Link to='/cart' className={cx('header-btn-item')}>
+                            <CartIcon />
+                            <span className={cx('badge badge-light', 'header-center-cart-size')}>
+                                {carSize}
+                            </span>
+                        </Link>
                     </div>
                 </div>
             </Navbar>

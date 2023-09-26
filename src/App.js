@@ -5,9 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { actionsCart } from '~/redux/cartSlice';
+import { actionsCart } from '~/pages/CartPage/cartSlice';
 import { actionProduct } from '~/pages/ProductPage/ProductPageSlice';
-import { CartService, ProductService } from '~/services';
+import { actionsFavourite } from '~/pages/FavouritePage/favouriteSlice';
+import { CartService, ProductService, } from '~/services';
 import { DefaultLayout } from '~/layouts';
 import { publicRoutes } from '~/routes';
 function App() {
@@ -30,11 +31,18 @@ function App() {
       dispatch(actionProduct.store(productList));
     }
     getProduct();
-    // return () => {
-    //     dispatch(actionProduct.clearStore());
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
+  useEffect(() => {
+    const getProductFavorite = async () => {
+      const data = await ProductService.getProductService('/favourites');
+      dispatch(actionsFavourite.storeFavorites(data));
+    }
+    getProductFavorite();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <BrowserRouter>

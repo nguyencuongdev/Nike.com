@@ -28,7 +28,7 @@ Input.propTypes = {
     type: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     name: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.any,
     autoComplete: PropTypes.bool,
     spellCheck: PropTypes.bool,
     classNameAdd: PropTypes.string,

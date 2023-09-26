@@ -193,6 +193,15 @@
     color: #111;
     margin-right: 12px;
     border-radius: 50%;
+    position: relative;
+}
+
+.header-center-cart-size {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    background-color: red;
+    color: var(--white-color);
 }
 
 .header-btn-item>svg {

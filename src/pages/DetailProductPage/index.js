@@ -7,6 +7,7 @@ import { ProductService, CartService } from '~/services';
 
 import Image from '~/components/Image';
 import Button from '~/components/Button';
+import Input from '~/components/Input';
 import ProductCard from '~/components/ProductCard';
 import {
     ArrowLeftIcon, ArrowRightBoldIcon,
@@ -15,23 +16,29 @@ import {
 }
     from '~/components/Icon';
 
-import { actionsCart } from '~/redux/cartSlice';
-import { productListSelector } from '../ProductPage/ProductSelector';
+import { actionsCart } from '~/pages/CartPage/cartSlice';
+import { productListSelector } from '~/pages/ProductPage/ProductSelector';
+import { favouritesSlector } from '~/pages/FavouritePage/favouriteSelector';
 
 import styles from './DetailProductPage.module.css';
+import { actionsFavourite } from '../FavouritePage/favouriteSlice';
 const cx = classnames.bind(styles);
 
 
 function DetailProductPage() {
+    const [checkFavouriteValue, setCheckFavourite] = useState(false);
+
     const [product, setProduct] = useState(null);
     const [sizeProductAddToCart, setSizeProductAddToCart] = useState('');
     const [colorProductAddToCart, setColorProductAddToCart] = useState('');
+    const [quantity, setQuantity] = useState(0);
 
     let pathName = window.location.pathname.split('/');
     if (pathName[pathName.length - 1] === '') pathName.pop();
     let id = pathName[pathName.length - 1];
     const dispatch = useDispatch();
-    const productListForYou = useSelector(productListSelector);
+    const productListForYou = useSelector(productListSelector) ?? [];
+    const favouritesList = useSelector(favouritesSlector) ?? [];
 
     const slider = useRef(null);
     const imgProductRef = useRef(null);
@@ -44,6 +51,90 @@ function DetailProductPage() {
         }
         getProductDetail(id);
     }, [id])
+
+    useEffect(() => {
+        // handle check product favourite
+        favouritesList.forEach((item) => {
+            if (item.id === product?.id) {
+                setCheckFavourite(true);
+                return;
+            }
+        })
+        return;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    });
+
+    function handleChangeQuantity(e) {
+        let quantityValue = e.target.value;
+        if (!quantityValue) {
+            setQuantity(0);
+            return;
+        }
+        const regx = /^\d{1,4}$/;
+        if (!regx.test(quantityValue)) return;
+        quantityValue = parseInt(quantityValue);
+        setQuantity(quantityValue);
+    }
+
+    function handleIncreaseQuantity() {
+        setQuantity((prev) => {
+            let value = parseInt(prev) + 1;
+            if (value > 9999) return value - 1;
+            return value;
+        });
+    }
+
+    function handleSubtractQuantity() {
+        setQuantity((prev) => {
+            let value = parseInt(prev) - 1;
+            if (value < 0) value = 0;
+            return value;
+        });
+    }
+
+    async function handleAddProductToCart() {
+        const productAddToCart = {
+            name: product?.name,
+            subType: product?.subTitle,
+            color: colorProductAddToCart,
+            size: sizeProductAddToCart,
+            price: product?.price,
+            img: imgProductRef.current.src,
+            quantity,
+        }
+        dispatch(actionsCart.addProductToCart(productAddToCart));
+        //add product to cart in database
+        await CartService.addProductToCartService('/cart', productAddToCart);
+
+        alert('Added product to cart');
+        imgProductRef.current.src = product?.img;
+        setColorProductAddToCart('');
+        setSizeProductAddToCart('');
+        setQuantity('0');
+    }
+
+    async function handleAddProductToFavorite(e) {
+        let element = e.target;
+        while (!element.classList.contains(cx('content-detail-btn-addFavorite'))) {
+            element = element.parentNode;
+        }
+        element.classList.toggle(cx('active'));
+        if (element.classList.contains(cx('active'))) {
+            const inforProduct = {
+                ...product,
+                idUser: 1,
+            }
+            dispatch(actionsFavourite.addFavourite(inforProduct));
+            //add product to cart in database
+            await ProductService.tickProductFavoriteService('/favourites', inforProduct);
+            return;
+        }
+        // cancel product favorites
+        dispatch(actionsFavourite.cancelFavourite(product?.id));
+        ProductService.cancelProductFavoriteService('/favourites', product?.id);
+
+    }
+
 
     return (
         //Nếu có product thì ta mới render ra detail infor của product
@@ -164,7 +255,7 @@ function DetailProductPage() {
                             {/* list sizes của product */}
                             <div className={cx('content-detail-selectSize', 'container-fluid')}>
                                 <h3 className={cx('row', 'content-detail-selectSize-title')}>
-                                    Select Size
+                                    Select Size:
                                 </h3>
                                 {product?.sizes.length > 0 &&
                                     <div className={cx('row', 'content-detail-selectSize-list')}>
@@ -194,39 +285,52 @@ function DetailProductPage() {
                                     </div>
                                 }
                             </div>
+                            {/* Số lượng mua */}
+                            <div className={cx('content-detail-quantity')}>
+                                <h3 className={cx('content-detail-quantity-title')}>Quantity: </h3>
+                                <div className={cx('content-detail-quantity-control')}>
+                                    <Button
+                                        outline
+                                        className={cx('content-detail-quantity-control-btn', 'disable')}
+                                        onClick={handleSubtractQuantity}
+                                    >
+                                        -
+                                    </Button>
+                                    <Input className={cx('content-detail-quantity-value')} type='text'
+                                        value={quantity}
+                                        onChange={handleChangeQuantity}
+                                    />
+                                    <Button
+                                        outline
+                                        className={cx('content-detail-quantity-control-btn')}
+                                        onClick={handleIncreaseQuantity}
+                                    >
+                                        +
+                                    </Button>
+                                </div>
+                            </div>
                             <div className={cx('content-detail-btn')}>
                                 <div className={cx('content-detail-btn-group')}>
                                     <Button classNameAdd={cx('content-detail-btn-addBag')}
                                         primary block
-                                        disable={!(colorProductAddToCart !== '' &&
-                                            sizeProductAddToCart !== '')}
-                                        onClick={(e) => {
-                                            const productAddToCart = {
-                                                name: product?.name,
-                                                subType: product?.subTitle,
-                                                color: colorProductAddToCart,
-                                                size: sizeProductAddToCart,
-                                                price: product?.price,
-                                                img: imgProductRef.current.src,
-                                                quanlity: 1,
-                                            }
-                                            dispatch(actionsCart.addProductToCart(productAddToCart));
-                                            const addProductToCartInDB = async (product) => {
-                                                await CartService.addProductToCartService('/cart', product);
-                                                alert('Added product to cart');
-                                            }
-                                            addProductToCartInDB(productAddToCart);
-                                            imgProductRef.current.src = product?.img;
-                                            setColorProductAddToCart('');
-                                            setSizeProductAddToCart('');
-                                        }}
+                                        disable={
+                                            !(colorProductAddToCart !== '' &&
+                                                sizeProductAddToCart !== '' &&
+                                                quantity !== 0
+                                            )
+                                        }
+                                        onClick={handleAddProductToCart}
                                     >
                                         Add to Bag
                                     </Button>
                                 </div>
                                 <div className={cx('content-detail-btn-group')}>
-                                    <Button classNameAdd={cx('content-detail-btn-addBag')} outline block
+                                    <Button classNameAdd={cx('content-detail-btn-addFavorite', {
+                                        'active': checkFavouriteValue
+                                    })}
+                                        outline block
                                         iconRight={<HeartIcon width='16px' height='16px' />}
+                                        onClick={handleAddProductToFavorite}
                                     >
                                         Favourite
                                     </Button>
@@ -286,6 +390,7 @@ function DetailProductPage() {
                             <ul className={cx('content-detail-reviews-list')} id='reviews'></ul>
                         </div>
                     </div>
+                    {/* Danh sách sản phẩm bạn có thể thích */}
                     <div className={cx('row', 'content-productList-ForYou')}>
                         <div className={cx('col-lg-12', 'content-productList-ForYou-title')}>
                             <h4 className={cx('content-productList-ForYou-text')}>You Might Also Like</h4>
@@ -311,7 +416,6 @@ function DetailProductPage() {
                                     autoplaySpeed={5000}
                                     swipe={false}
                                     arrows={false}
-                                // adaptiveHeight
                                 >
                                     {productListForYou?.map((productItem, index) => {
                                         return <ProductCard productImgSrc={productItem?.img}

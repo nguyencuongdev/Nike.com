@@ -11,8 +11,8 @@ export const TypesProduct = createContext([
         url: '/clothing'
     },
     {
-        title: 'Accessories & Equipment',
-        url: '/Accessories & Equipment'
+        title: 'Accessories-Equipment',
+        url: '/Accessories-Equipment'
     }
 ])
 
