@@ -161,6 +161,15 @@ export function DeleteIcon({ width = '24px', height = '24px', color = 'none' }) 
         </svg>
     )
 }
+
+export function CrossIcon({ width = '24px', height = '24px', color = 'none' }) {
+    return (
+        <svg aria-hidden="true" className="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width={width} height={height} fill={color}
+        >
+            <path stroke="currentColor" d="M18.973 5.027L5.028 18.972M5.027 5.027l13.945 13.945"></path>
+        </svg>
+    )
+}
 export function CheckIcon({ width = '24px', height = '24px', className }) {
     return (
         <img src={checkIcon} alt="check-icon" width={width} height={height} className={className}

@@ -1,5 +1,6 @@
 import { routerConfig } from '~/configs';
 import { OnlyHeaderLayout } from '~/layouts';
+import Search from '~/layouts/Search';
 import {
     HomePage, ProductPage, LoginPage,
     SignupPage, DetailProductPage,
@@ -60,8 +61,12 @@ export const publicRoutes = [
         path: routerConfig.cart,
         component: CartPage,
         layout: OnlyHeaderLayout
+    },
+    {
+        path: '/search',
+        component: Search,
+        layout: OnlyHeaderLayout
     }
-
 ];
 
 export const privateRoutes = [];
