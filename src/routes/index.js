@@ -1,6 +1,10 @@
 import { routerConfig } from '~/configs';
 import { OnlyHeaderLayout } from '~/layouts';
-import { HomePage, ProductPage, LoginPage, SignupPage, DetailProductPage } from '~/pages';
+import {
+    HomePage, ProductPage, LoginPage,
+    SignupPage, DetailProductPage,
+    CartPage
+} from '~/pages';
 
 export const publicRoutes = [
     {
@@ -50,6 +54,11 @@ export const publicRoutes = [
     {
         path: routerConfig.detail,
         component: DetailProductPage,
+        layout: OnlyHeaderLayout
+    },
+    {
+        path: routerConfig.cart,
+        component: CartPage,
         layout: OnlyHeaderLayout
     }
 

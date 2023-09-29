@@ -838,6 +838,16 @@
       "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/411e9dbf-bf9f-49ce-959f-3207817858da/sportswear-t-shirt-pptNcN.png",
       "quantity": 2,
       "id": 9
+    },
+    {
+      "name": "Nike Club Cap",
+      "subType": "Unstructured Corduroy Cap",
+      "color": "Black",
+      "size": "37",
+      "price": 6179000,
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/304fd33e-d600-4e4d-8f5f-a4895c461d20/club-cap-unstructured-corduroy-cap-r85WQS.png",
+      "quantity": 1,
+      "id": 10
     }
   ],
   "users": [
@@ -1081,6 +1091,73 @@
       "imgsProductByColor": [
         {
           "src": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/48beb34d-6200-4325-b7d1-73cfa5721baa/chelsea-fc-2023-24-match-away-dri-fit-adv-football-shirt-2l80ZZ.png",
+          "typeColor": "Blue"
+        }
+      ],
+      "imgsProductDetail": [
+        "https://static.nike.com/a/images/t_default/a1d9e66f-21dc-4051-9002-71dbebc9086a/infinityrn-4-road-running-shoes-9fcndR.png",
+        "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a3284bcc-d530-4541-929d-6678f354d795/infinityrn-4-road-running-shoes-9fcndR.png",
+        "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/add22bc2-0805-45f2-a3f8-4cead06a63c7/infinityrn-4-road-running-shoes-9fcndR.png",
+        "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b476c597-7dd4-43f1-b024-1286f82ce773/infinityrn-4-road-running-shoes-9fcndR.png"
+      ],
+      "inforProductDetail": [
+        {
+          "id": "1fasdf",
+          "title": "Description",
+          "subTitle": "The radiance lives on in the Nike Air Force 1 '07, the basketball original that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.",
+          "content": "Colour Shown: White/Light Lemon Twist/Volt/Black\nStyle: DR2670-101"
+        },
+        {
+          "id": "2fasfdas",
+          "title": "Size & Fit",
+          "subTitle": "",
+          "content": "Snug fit; we recommend ordering half a size up\nSize Guide"
+        },
+        {
+          "id": "3fafsd",
+          "title": "Free Delivery and Returns",
+          "subtitle": "Your order of 5.000.000₫ or more gets free standard delivery.",
+          "content": "Standard delivered 4-5 Business Days\nExpress delivered 2-4 Business Days"
+        }
+      ],
+      "reviews": [
+        {
+          "name": "Honest Review",
+          "contetent": "I'm going to be honest here. Nike InfinityRN is very comfortable, but the shoes become slightly heavier when you're running uphill. Overall, I'll give this a 3 out of 5!"
+        }
+      ],
+      "idUser": 1
+    },
+    {
+      "id": 8,
+      "name": "Nike Club Cap",
+      "subTitle": "Unstructured Corduroy Cap",
+      "brand": "Nike",
+      "gender": [
+        "Men",
+        "Women"
+      ],
+      "colors": [
+        "Black",
+        "Blue"
+      ],
+      "type": "accessories-equipment",
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png",
+      "price": 6179000,
+      "suitable": [
+        "Lifestyle"
+      ],
+      "sizes": [
+        "37",
+        "38"
+      ],
+      "imgsProductByColor": [
+        {
+          "src": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/304fd33e-d600-4e4d-8f5f-a4895c461d20/club-cap-unstructured-corduroy-cap-r85WQS.png",
+          "typeColor": "Black"
+        },
+        {
+          "src": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/20f135ba-270d-4cb2-84a8-d12c45daaf9e/club-cap-unstructured-corduroy-cap-r85WQS.png",
           "typeColor": "Blue"
         }
       ],

@@ -1,8 +1,9 @@
 const configs = {
     router: {
+        home: '/',
         signup: '/signup',
         login: '/login',
-        home: '/',
+        cart: '/cart',
         productAll: '/products',
         detail: '/product/detail/:id',
         productByType: '/products/:type',
