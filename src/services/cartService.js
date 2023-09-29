@@ -1,4 +1,4 @@
-import { post, get } from '~/utils/requests';
+import { post, get, deleteMethod } from '~/utils/requests';
 
 export const addProductToCartService = async (url, product, options = {}) => {
     try {
@@ -9,6 +9,17 @@ export const addProductToCartService = async (url, product, options = {}) => {
         console.log(err);
     }
 }
+
+export const deleteProductTInCartService = async (url, id, options = {}) => {
+    try {
+        const res = await deleteMethod(url + '/' + id, options);
+        return res;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
 
 
 export const getProductsTFromCartService = async (url, options = {}) => {

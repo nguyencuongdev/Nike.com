@@ -2,6 +2,19 @@
     margin: 40px auto;
 }
 
+
+.cart-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-message-text {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #707072;
+}
+
 .cart-infor {
     padding: 0;
 }
@@ -47,9 +60,17 @@
 
 .cart-item-price {
     font-size: 1.6rem;
+    line-height: 1.6rem;
     font-weight: 500;
 }
 
+.cart-item-total {
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    color: red;
+}
+
+.cart-payment-ship-value,
 .cart-item-color,
 .cart-item-quantity-title,
 .cart-item-sizes-selected,

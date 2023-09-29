@@ -8,8 +8,8 @@ const cartSlice = createSlice({
             state.push(action.payload);
             return state;
         },
-        removeProductFromCart: (state, id) => {
-            state = state.filter(product => product.id !== id);
+        deleteProductInCart: (state, action) => {
+            state = state.filter(product => product.id !== action.payload);
             return state;
         },
         storeCart: (state, action) => {

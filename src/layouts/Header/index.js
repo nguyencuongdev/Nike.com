@@ -30,7 +30,6 @@ function Header() {
     const [searchValue, setSearchValue] = useState('');
     const [currentUser, setCurrentUser] = useState('');
     const carSize = useSelector(cartSelector).length ?? 0;
-
     const listMenuRef = useRef(null);
     const dataSiderbarMenuCurrent = dataSidebarMenu[dataSidebarMenu.length - 1];
 

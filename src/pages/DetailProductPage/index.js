@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from "react-slick";
+import { nanoid } from 'nanoid';
 import classnames from 'classnames/bind';
 
 import { ProductService, CartService } from '~/services';
@@ -15,7 +16,7 @@ import {
     ArrowLeftLargeIcon, ArrowRightLargeIcon,
 }
     from '~/components/Icon';
-
+import { formatPrice } from '~/helper';
 import { actionsCart } from '~/pages/CartPage/cartSlice';
 import { productListSelector } from '~/pages/ProductPage/ProductSelector';
 import { favouritesSlector } from '~/pages/FavouritePage/favouriteSelector';
@@ -45,11 +46,11 @@ function DetailProductPage() {
     const indexImgDetailProduct = useRef(0);
 
     useEffect(() => {
-        const getProductDetail = async (id) => {
+        const getInforProductDetail = async (id) => {
             const res = await ProductService.getProductService('/productList/' + id);
             setProduct(res);
         }
-        getProductDetail(id);
+        getInforProductDetail(id);
     }, [id])
 
     useEffect(() => {
@@ -94,6 +95,9 @@ function DetailProductPage() {
 
     async function handleAddProductToCart() {
         const productAddToCart = {
+            // itemCode: nanoid(),
+            id: nanoid(),
+            idProduct: product?.id,
             name: product?.name,
             subType: product?.subTitle,
             color: colorProductAddToCart,
@@ -101,11 +105,11 @@ function DetailProductPage() {
             price: product?.price,
             img: imgProductRef.current.src,
             quantity,
+            total: product?.price * quantity
         }
-        dispatch(actionsCart.addProductToCart(productAddToCart));
         //add product to cart in database
         await CartService.addProductToCartService('/cart', productAddToCart);
-
+        dispatch(actionsCart.addProductToCart(productAddToCart));
         alert('Added product to cart');
         imgProductRef.current.src = product?.img;
         setColorProductAddToCart('');
@@ -215,7 +219,7 @@ function DetailProductPage() {
                             <div className={cx('content-detail-infor')}>
                                 <h2 className={cx('content-detail-title')}>{product?.name}</h2>
                                 <h4 className={cx('content-detail-subTitle')}>{product?.subTitle}</h4>
-                                <p className={cx('content-detail-price')}>{product?.price}đ</p>
+                                <p className={cx('content-detail-price')}>{formatPrice(product?.price)}</p>
                             </div>
                             {/* list imgs of product by color*/}
                             {product?.imgsProductByColor.length > 0 &&
@@ -434,6 +438,11 @@ function DetailProductPage() {
                         </div>
                     </div>
                 </div >
+            }
+            {!product &&
+                <div className={cx('col')}>
+                    <h2 className={cx('text-center')}>Can't find what you requested!</h2>
+                </div>
             }
         </div >
     );
