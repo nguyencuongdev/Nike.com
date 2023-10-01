@@ -1,17 +1,54 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { memo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames/bind';
 import { Navbar, Form, FormControl } from 'react-bootstrap';
-
+import { actionsFillter } from '~/layouts/Filter/FillterSlice';
+import { productListBySearchValueSelector } from '~/pages/ProductPage/ProductSelector';
 import Button from '~/components/Button';
 import ProductCard from '~/components/ProductCard';
 import { SearchIcon, CrossIcon } from '~/components/Icon';
 
 import styles from './Search.module.css';
 const cx = classnames.bind(styles);
-function Search() {
+
+
+function Search(
+    { value, cancelSearch,
+        changeSearchValue, clearSearchValue,
+        ...props
+    }) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const productList = useSelector(productListBySearchValueSelector);
+
+
+    const handleOverItemTopSearch = (e) => {
+        let itemValue = e.target.innerText;
+        dispatch(actionsFillter.changeSearchValue(itemValue));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+
+    const handleOutItemTopSearch = (e) => {
+        dispatch(actionsFillter.changeSearchValue(value));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+
+    const handleSearchBySearchValue = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (value) {
+            navigate('/products');
+        }
+    }
+
+
     return (
-        <div className={cx('search')}>
-            <div className={cx('search-overlay')}></div>
+        <div className={cx('search', {
+            'show': value,
+        })}
+            {...props}
+        >
             <div className={cx('search-container')}>
                 <header className={cx('header')}>
                     <Navbar bg='light' className={cx('navbar')}>
@@ -22,15 +59,29 @@ function Search() {
                             </svg>
                         </Link>
                         <Form className={cx('navbar-form')} >
-                            <Button className={cx('navbar-form-btn', 'navbar-form-btn-search')}>
+                            <Button
+                                className={cx('navbar-form-btn', 'navbar-form-btn-search')}
+                                onClick={handleSearchBySearchValue}
+                            >
                                 <SearchIcon />
                             </Button>
-                            <FormControl type='text' placeholder='Search' className={cx('navbar-form-value')} />
-                            <Button className={cx('navbar-form-btn', 'navbar-form-btn-cancel')}>
+                            <FormControl type='text' placeholder='Search'
+                                className={cx('navbar-form-value')}
+                                onChange={changeSearchValue}
+                                value={value}
+                            />
+                            <Button
+                                className={cx('navbar-form-btn', 'navbar-form-btn-cancel')}
+                                onClick={clearSearchValue}
+                            >
                                 <CrossIcon />
                             </Button>
                         </Form>
-                        <button className={cx('navbar-btn-cancel')}>Cancel</button>
+                        <button className={cx('navbar-btn-cancel')}
+                            onClick={cancelSearch}
+                        >
+                            Cancel
+                        </button>
                     </Navbar>
                 </header>
                 <main className={cx('content')}>
@@ -38,73 +89,50 @@ function Search() {
                         <h2 className={cx('content-topSearch-title')}>Top Search</h2>
                         <Link className={cx('content-topSearch-item')}
                             to='/products/Shoes'
+                            onMouseOver={handleOverItemTopSearch}
+                            onMouseOut={handleOutItemTopSearch}
                         >
                             Shoes
                         </Link>
                         <Link className={cx('content-topSearch-item')}
                             to='/products/Clothing'
+                            onMouseOver={handleOverItemTopSearch}
+                            onMouseOut={handleOutItemTopSearch}
                         >
                             Clothing
                         </Link>
                         <Link className={cx('content-topSearch-item')}
                             to='/products/Accessories-Equipment'
+                            onMouseOver={handleOverItemTopSearch}
+                            onMouseOut={handleOutItemTopSearch}
                         >
                             Accessories-Equipment
                         </Link>
                     </div>
                     <div className={cx('content-search-result', 'container-fluid')}>
                         <div className={cx('row', 'row-cols-5')}>
-                            <div className={cx('content-search-item')}>
-                                <Link className={cx('content-search-link')}>
-                                    <ProductCard productImgSrc={'https://static.nike.com/a/images/t_default/da68e143-88fc-4973-a9c6-0954a8e24389/sb-skate-t-shirt-3KcnZg.png'}
-                                        productTitle='Nike SB'
-                                        subProductTitle='Men shoes'
-                                        productPrice='111000đ'
-                                    />
-                                </Link>
-                            </div>
-                            <div className={cx('content-search-item')}>
-                                <Link className={cx('content-search-link')}>
-                                    <ProductCard productImgSrc={'https://static.nike.com/a/images/t_default/da68e143-88fc-4973-a9c6-0954a8e24389/sb-skate-t-shirt-3KcnZg.png'}
-                                        productTitle='Nike SB'
-                                        subProductTitle='Men shoes'
-                                        productPrice='111000đ'
-                                    />
-                                </Link>
-                            </div>
-                            <div className={cx('content-search-item')}>
-                                <Link className={cx('content-search-link')}>
-                                    <ProductCard productImgSrc={'https://static.nike.com/a/images/t_default/da68e143-88fc-4973-a9c6-0954a8e24389/sb-skate-t-shirt-3KcnZg.png'}
-                                        productTitle='Nike SB'
-                                        subProductTitle='Men shoes'
-                                        productPrice='111000đ'
-                                    />
-                                </Link>
-                            </div>
-                            <div className={cx('content-search-item')}>
-                                <Link className={cx('content-search-link')}>
-                                    <ProductCard productImgSrc={'https://static.nike.com/a/images/t_default/da68e143-88fc-4973-a9c6-0954a8e24389/sb-skate-t-shirt-3KcnZg.png'}
-                                        productTitle='Nike SB'
-                                        subProductTitle='Men shoes'
-                                        productPrice='111000đ'
-                                    />
-                                </Link>
-                            </div>
-                            <div className={cx('content-search-item')}>
-                                <Link className={cx('content-search-link')}>
-                                    <ProductCard productImgSrc={'https://static.nike.com/a/images/t_default/da68e143-88fc-4973-a9c6-0954a8e24389/sb-skate-t-shirt-3KcnZg.png'}
-                                        productTitle='Nike SB'
-                                        subProductTitle='Men shoes'
-                                        productPrice='111000đ'
-                                    />
-                                </Link>
-                            </div>
+                            {productList?.length > 0 &&
+                                productList?.map((product, index) =>
+                                    <div className={cx('content-search-item')} key={index}>
+                                        <Link className={cx('content-search-link')}
+                                            to={`/product/detail/${product.id}`}
+                                        >
+                                            <ProductCard productImgSrc={product?.img}
+                                                productTitle={product?.name}
+                                                subProductTitle={product?.subTitle}
+                                                productPrice={product?.price}
+                                            />
+                                        </Link>
+                                    </div>
+                                )
+                            }
                         </div>
                     </div>
                 </main>
             </div>
+            <div className={cx('search-overlay')}></div>
         </div>
     )
 }
 
-export default Search;
+export default memo(Search);

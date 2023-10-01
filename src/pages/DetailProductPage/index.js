@@ -24,18 +24,17 @@ const cx = classnames.bind(styles);
 
 
 function DetailProductPage() {
-    const [checkFavouriteValue, setCheckFavourite] = useState(false);
-
+    const dispatch = useDispatch();
     const [product, setProduct] = useState(null);
+    const [quantity, setQuantity] = useState(0);
+    const [checkFavouriteValue, setCheckFavourite] = useState(false);
     const [sizeProductAddToCart, setSizeProductAddToCart] = useState('');
     const [colorProductAddToCart, setColorProductAddToCart] = useState('');
-    const [quantity, setQuantity] = useState(0);
 
     let pathName = window.location.pathname.split('/');
     if (pathName[pathName.length - 1] === '') pathName.pop();
     let id = pathName[pathName.length - 1];
 
-    const dispatch = useDispatch();
     const favouritesList = useSelector(favouritesSlector) ?? [];
 
     const imgProductRef = useRef(null);

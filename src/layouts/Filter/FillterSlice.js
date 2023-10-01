@@ -7,7 +7,8 @@ const initialState = {
     colors: [],
     sizes: [],
     gender: [],
-    sort: 'desc'
+    sort: 'desc',
+    searchValue: ''
 };
 
 const sliceFillter = createSlice({
@@ -56,6 +57,10 @@ const sliceFillter = createSlice({
         },
         changeSort: (state, action) => {
             state.sort = action.payload;
+            return state;
+        },
+        changeSearchValue: (state, action) => {
+            state.searchValue = action.payload;
             return state;
         }
     }

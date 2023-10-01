@@ -26,7 +26,7 @@ import styles from './Filter.module.css';
 const cx = classnames.bind(styles);
 
 function Filter({ ...props }, ref) {
-
+    const dispatch = useDispatch();
     const typesProduct = useContext(TypesProduct);
     const typesSuitableList = useContext(TypesSuitable);
     const typesClothingList = useContext(TypesClothing);
@@ -39,7 +39,6 @@ function Filter({ ...props }, ref) {
     const [menuTypesProduct, setMenuTypesProduct] = useState(false);
     const [blockGender, setBlockGender] = useState(false);
 
-    const dispatch = useDispatch();
     useEffect(() => {
         handleTypeContent();
         return () => {

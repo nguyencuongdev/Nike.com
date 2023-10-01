@@ -1,9 +1,10 @@
 import { Nav, Navbar, Carousel } from 'react-bootstrap';
-import { useContext, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useContext, useRef, useState, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Tipy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
+import { actionsFillter } from '~/layouts/Filter/FillterSlice';
 import { cartSelector } from '~/pages/CartPage/cartSelector';
 import MenuItem from '~/components/Menu/MenuItem';
 import ListMenu from '~/components/ListMenu';
@@ -18,10 +19,12 @@ import {
 import { MENU_ACCOUNT_CONTEXT, NAVIGATION_ITEM_CONTEXT } from './HeaderContext';
 
 import styles from './Header.module.css';
+import Search from '../Search';
 const cx = classnames.bind(styles);
 
 
 function Header() {
+    const dispatch = useDispatch();
     const NAVIGATION_ITEM = useContext(NAVIGATION_ITEM_CONTEXT);
     const MENU_ACCOUNT = useContext(MENU_ACCOUNT_CONTEXT);
 
@@ -39,6 +42,27 @@ function Header() {
         })
     }
 
+
+    const handleChangeSearchValue = useCallback((e) => {
+        setSearchValue(e.target.value);
+        dispatch(actionsFillter.changeSearchValue(e.target.value));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const handleClearSearchValue = useCallback((e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setSearchValue('');
+        dispatch(actionsFillter.changeSearchValue(''));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const handleCancelSearch = useCallback(() => {
+        setSearchValue('');
+        dispatch(actionsFillter.changeSearchValue(''));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+    console.log(searchValue);
     return (
         <header className={cx('header')}>
             <Navbar
@@ -120,7 +144,10 @@ function Header() {
                             <SearchIcon />
                         </span>
                         <input className={cx('header-search-input')} placeholder='Search' type='text'
-                            value={searchValue} onChange={(e) => setSearchValue(e.target.value)}
+                            value={searchValue} onChange={(e) => {
+                                setSearchValue(e.target.value)
+                                dispatch(actionsFillter.changeSearchValue(e.target.value))
+                            }}
                         />
                     </div>
                     <div className={cx('header-btn')}>
@@ -265,6 +292,12 @@ function Header() {
                     </p>
                 </Carousel.Item>
             </Carousel>
+            {/* Search component */}
+            <Search value={searchValue}
+                cancelSearch={handleCancelSearch}
+                changeSearchValue={handleChangeSearchValue}
+                clearSearchValue={handleClearSearchValue}
+            />
         </header>
     )
 }

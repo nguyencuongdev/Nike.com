@@ -12,7 +12,9 @@ export const productListRemainingSelector = createSelector(
     FillterSelector.FillterSuitableSelector, FillterSelector.FillterBrandsSelector,
     FillterSelector.FillterColorsSelector, FillterSelector.FillterSizesSelector,
     FillterSelector.FillterGendersSelector, FillterSelector.FillterSortSelector,
-    (productList, filterType, filterSuitable, filterBrands, filterColors, filterSizes, filterGenders, filterSort) => {
+    FillterSelector.FillterSearchValueSelector,
+    (productList, filterType, filterSuitable, filterBrands, filterColors,
+        filterSizes, filterGenders, filterSort, filterSearchValue) => {
 
         let checkColor = false, checkSize = false, checkGender = false, checkBrand = false;
         const data = productList.filter((product) => {
@@ -31,15 +33,20 @@ export const productListRemainingSelector = createSelector(
                 : checkBrand = true;
 
             if (filterSuitable === 'All' && filterType === '') {
-                return checkBrand && checkColor && checkSize && checkGender; //trả về tất cả sản phẩm của tất cả thể loại nhưng phải khớp với fillter;
+                return checkBrand && checkColor && checkSize && checkGender &&
+                    (product.name.includes(filterSearchValue) || product.type.includes(filterSearchValue))
+                //trả về tất cả sản phẩm của tất cả thể loại nhưng phải khớp với fillter;
             }
             else if (filterSuitable === 'All' && filterType !== '') {
                 //trả về tất cả sản phẩm có type khớp với type of filter;
-                return (product.type === filterType) && checkBrand && checkColor && checkSize && checkGender
+                return (product.type === filterType) && checkBrand && checkColor && checkSize &&
+                    checkGender &&
+                    (product.name.includes(filterSearchValue) || product.type.includes(filterSearchValue))
             }
             else {
                 //trả về tất cả sản phầm khớp với suitable và type khớp với type of filter;
-                return product.suitable.includes(filterSuitable) && product.type === filterType && checkBrand && checkColor && checkSize && checkGender;
+                return product.suitable.includes(filterSuitable) && product.type === filterType && checkBrand && checkColor && checkSize && checkGender &&
+                    (product.name.includes(filterSearchValue) || product.type.includes(filterSearchValue));
             }
         })
 
@@ -50,4 +57,17 @@ export const productListRemainingSelector = createSelector(
         }
     }
 )
+
+export const productListBySearchValueSelector = createSelector(
+    productListSelector,
+    FillterSelector.FillterSearchValueSelector,
+    (productList, searchValue) => {
+        const data = productList.filter((product) =>
+        (
+            product?.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+            product?.type.toLowerCase() === searchValue.toLowerCase() ||
+            product?.suitable.toString().toLowerCase().includes(searchValue.toLowerCase())
+        ))
+        return data.slice(0, 5);// limit 5 item;
+    })
 

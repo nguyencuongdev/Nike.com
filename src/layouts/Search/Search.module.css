@@ -1,3 +1,29 @@
+.search {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+}
+
+.search.show {
+    display: flex;
+}
+
+.search-container {
+    background-color: var(--white-color);
+}
+
+.search-overlay {
+    background-color: rgba(18, 18, 18, 0.36);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    flex: 1;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
