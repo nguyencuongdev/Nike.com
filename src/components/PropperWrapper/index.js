@@ -1,4 +1,5 @@
 import classnames from 'classnames/bind';
+import Proptypes from 'prop-types';
 import styles from './Propper.module.css';
 
 
@@ -14,6 +15,11 @@ function ProppWrapper(
             {children}
         </div>
     )
+}
+
+ProppWrapper.propTypes = {
+    children: Proptypes.node,
+    oneMenu: Proptypes.bool,
 }
 
 export default ProppWrapper;

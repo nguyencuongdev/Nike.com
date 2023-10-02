@@ -1,7 +1,8 @@
 import { forwardRef, useRef, useImperativeHandle } from 'react';
-import Menu from '~/components/Menu';
+import Proptypes from 'prop-types';
 import classnames from 'classnames/bind';
 
+import Menu from '~/components/Menu';
 import PropperWrapper from '~/components/PropperWrapper';
 
 import styles from './ListMenu.module.css';

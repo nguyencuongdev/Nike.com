@@ -2,7 +2,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { memo, forwardRef, useImperativeHandle, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames/bind';
+import PropTypes from 'prop-types'
 import { Navbar, Form, FormControl } from 'react-bootstrap';
+
 import { actionsFillter } from '~/layouts/Filter/FillterSlice';
 import { productListBySearchValueSelector } from '~/pages/ProductPage/ProductSelector';
 import Button from '~/components/Button';
@@ -143,4 +145,10 @@ const Search = forwardRef(
         )
     })
 
+Search.propTypes = {
+    value: PropTypes.string,
+    cancelSearch: PropTypes.func,
+    changeSearchValue: PropTypes.func,
+    clearSearchValue: PropTypes.func,
+}
 export default memo(Search);

@@ -34,7 +34,7 @@ function Header() {
     const [dataSidebarMenu, setDataSidebarMenu] = useState(() => { return [NAVIGATION_ITEM] });
     const [dataListMenu, setDataListMenu] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [currentUser, setCurrentUser] = useState('');
+    const [currentUser, setCurrentUser] = useState('Cường');
     const valueSearch = useSelector(FillterSearchValueSelector);
     const carSize = useSelector(cartSelector).length ?? 0;
     const listMenuRef = useRef(null);
@@ -316,5 +316,4 @@ function Header() {
         </header>
     )
 }
-
 export default Header;

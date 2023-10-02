@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import classnames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { FilterIcon } from '~/components/Icon';
@@ -90,5 +91,9 @@ function DefaultLayout({ children }) {
             <Footer />
         </div >
     )
+}
+
+DefaultLayout.propTypes = {
+    children: PropTypes.element
 }
 export default DefaultLayout;

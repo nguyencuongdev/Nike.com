@@ -1,7 +1,9 @@
-import classnames from 'classnames/bind';
-import { Link } from 'react-router-dom';
 import { useRef, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import Proptypes from 'prop-types';
+import classnames from 'classnames/bind';
 
+import { formatPrice } from '~/helper';
 import styles from './ProductCard.module.css';
 import Image from '~/components/Image';
 const cx = classnames.bind(styles);
@@ -60,7 +62,7 @@ function ProductCard({
                 <p className={cx('product-card-colors')}>
                     {(!productColors) ? 'Không xác định' : productColors.length} Colours
                 </p>
-                <p className={cx('product-card-price', 'card-text')}>{productPrice}đ</p>
+                <p className={cx('product-card-price', 'card-text')}>{formatPrice(productPrice)}</p>
             </div>
             <div className={cx('card-body', 'product-card-ImgSimilar', 'px-0')} ref={productImgSimilarRef}>
                 {imgsProductByColor?.length > 0 &&
@@ -98,10 +100,20 @@ function ProductCard({
                     </div>
                 }
                 <h3 className={cx('card-title', 'product-card-title')}>{productTitle}</h3>
-                <p className={cx('product-card-price', 'card-text')}>{productPrice}</p>
+                <p className={cx('product-card-price', 'card-text')}>{formatPrice(productPrice)}</p>
             </div>
         </Comp>
     )
 }
-
+ProductCard.propTypes = {
+    to: Proptypes.string,
+    href: Proptypes.string,
+    classNameAdd: Proptypes.string,
+    productImgSrc: Proptypes.string,
+    productTitle: Proptypes.string,
+    subProductTitle: Proptypes.string,
+    productPrice: Proptypes.number,
+    productColors: Proptypes.array,
+    imgsProductByColor: Proptypes.array,
+}
 export default ProductCard;

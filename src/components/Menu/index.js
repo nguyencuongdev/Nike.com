@@ -1,4 +1,5 @@
 import { ListGroup } from 'react-bootstrap';
+import Proptypes from 'prop-types';
 import classnames from 'classnames/bind';
 
 import MenuItem from './MenuItem';
@@ -19,6 +20,11 @@ function Menu({ title, menuItems }) {
             </ListGroup>
         </div>
     )
+}
+
+Menu.propTypes = {
+    title: Proptypes.string,
+    menuItems: Proptypes.array.isRequired
 }
 
 

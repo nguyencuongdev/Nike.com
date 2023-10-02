@@ -1,4 +1,5 @@
 import Tipy from '@tippyjs/react/headless';
+import Proptypes from 'prop-types';
 import classnames from 'classnames/bind';
 
 import Menu from '~/components/Menu';
@@ -29,4 +30,8 @@ function AccountMenu({ children, data }) {
     )
 }
 
+AccountMenu.propTypes = {
+    children: Proptypes.element,
+    data: Proptypes.object,
+}
 export default AccountMenu;

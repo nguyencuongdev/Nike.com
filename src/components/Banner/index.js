@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import Proptypes from 'prop-types';
 import styles from './Banner.module.css';
 
 import Button from '~/components/Button';
@@ -37,6 +38,16 @@ function Banner({ img, classNameAdd = '', title = '', subtitle = '', text = '', 
             }
         </Comp>
     );
+}
+
+Banner.propTypes = {
+    img: Proptypes.object,
+    classNameAdd: Proptypes.string,
+    title: Proptypes.string,
+    subtitle: Proptypes.string,
+    text: Proptypes.string,
+    to: Proptypes.string,
+    button: Proptypes.object
 }
 
 export default Banner;
