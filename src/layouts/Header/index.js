@@ -4,8 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Tipy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames/bind';
+
 import { actionsFillter } from '~/layouts/Filter/FillterSlice';
+import { FillterSearchValueSelector } from '../Filter/FillterSelector';
 import { cartSelector } from '~/pages/CartPage/cartSelector';
+
 import MenuItem from '~/components/Menu/MenuItem';
 import ListMenu from '~/components/ListMenu';
 import AccountMenu from '~/components/AccoutMenu';
@@ -14,7 +17,7 @@ import AccountMenu from '~/components/AccoutMenu';
 import {
     SearchIcon, HeartIcon, CartIcon,
     UserIcon, MenuIcon, CloseIcon,
-    ArrowRightIcon, OrderIcon, ShopIcon, HelpIcon,
+    ArrowRightIcon, OrderIcon, ShopIcon, HelpIcon, CloseBackgroundBoldIcon
 } from '~/components/Icon';
 import { MENU_ACCOUNT_CONTEXT, NAVIGATION_ITEM_CONTEXT } from './HeaderContext';
 
@@ -32,8 +35,10 @@ function Header() {
     const [dataListMenu, setDataListMenu] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [currentUser, setCurrentUser] = useState('');
+    const valueSearch = useSelector(FillterSearchValueSelector);
     const carSize = useSelector(cartSelector).length ?? 0;
     const listMenuRef = useRef(null);
+    const searchRef = useRef(null);
     const dataSiderbarMenuCurrent = dataSidebarMenu[dataSidebarMenu.length - 1];
 
     function handleChangeSiderbarMenu(dataMenu) {
@@ -59,10 +64,11 @@ function Header() {
 
     const handleCancelSearch = useCallback(() => {
         setSearchValue('');
+        searchRef.current.onHidden();
         dispatch(actionsFillter.changeSearchValue(''));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(searchValue);
+
     return (
         <header className={cx('header')}>
             <Navbar
@@ -144,11 +150,20 @@ function Header() {
                             <SearchIcon />
                         </span>
                         <input className={cx('header-search-input')} placeholder='Search' type='text'
-                            value={searchValue} onChange={(e) => {
+                            value={valueSearch} onChange={(e) => {
+                                searchRef.current.onShow();
                                 setSearchValue(e.target.value)
                                 dispatch(actionsFillter.changeSearchValue(e.target.value))
                             }}
                         />
+                        <span className={cx('header-search-closeIcon')}
+                            onClick={() => {
+                                setSearchValue('');
+                                dispatch(actionsFillter.changeSearchValue(''));
+                            }}
+                        >
+                            <CloseBackgroundBoldIcon width='16px' height='16px' />
+                        </span>
                     </div>
                     <div className={cx('header-btn')}>
                         <Link to='/favorites' className={cx('header-btn-item')}>
@@ -293,7 +308,7 @@ function Header() {
                 </Carousel.Item>
             </Carousel>
             {/* Search component */}
-            <Search value={searchValue}
+            <Search value={searchValue} ref={searchRef}
                 cancelSearch={handleCancelSearch}
                 changeSearchValue={handleChangeSearchValue}
                 clearSearchValue={handleClearSearchValue}

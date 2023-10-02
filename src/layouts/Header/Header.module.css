@@ -164,6 +164,11 @@
     font-weight: 500;
 }
 
+.header-search-closeIcon {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
 .header-search>.header-search-icon:hover {
     background: #e5e5e5;
 }
@@ -178,6 +183,14 @@
     background-color: transparent;
     height: 100%;
     padding-bottom: 1px;
+}
+
+.header-search-closeIcon {
+    display: none;
+}
+
+.header-search-input:not(:placeholder-shown)~.header-search-closeIcon {
+    display: block;
 }
 
 .header-btn {

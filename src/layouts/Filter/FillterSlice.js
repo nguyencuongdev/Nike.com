@@ -15,8 +15,17 @@ const sliceFillter = createSlice({
     name: 'fillter',
     initialState,
     reducers: {
-        clearFilter: () => {
-            return initialState;
+        clearFilter: (state) => {
+            return {
+                ...state,
+                type: '',
+                suitable: 'All',
+                brands: [],
+                colors: [],
+                sizes: [],
+                gender: [],
+                sort: 'desc',
+            }
         },
         changeType: (state, action) => {
             state.type = action.payload;

@@ -5,6 +5,7 @@ import eyeIcon from '~/assets/images/eye.png';
 import arrowRightLarge from '~/assets/images/arrowRightLarge.png';
 import arrowLeftLarge from '~/assets/images/arrowLeftLarge.png';
 import heartAtive from '~/assets/images/heartActive.png';
+import closeBackgroundBoldIcon from '~/assets/images/closeSearch.png';
 
 
 export function SearchIcon({ width = '24px', height = '24px', color = 'none' }) {
@@ -241,6 +242,15 @@ export function ArrowRightLargeIcon({ width = '24px', height = '24px', className
 export function HeartActiveIcon({ width = '24px', height = '24px', className, ...props }) {
     return (
         <img src={heartAtive} alt="heart-active-icon" width={width} height={height}
+            {...props}
+            className={className}
+        />
+    )
+}
+
+export function CloseBackgroundBoldIcon({ width = '24px', height = '24px', className, ...props }) {
+    return (
+        <img src={closeBackgroundBoldIcon} alt="close-bold-background-icon" width={width} height={height}
             {...props}
             className={className}
         />

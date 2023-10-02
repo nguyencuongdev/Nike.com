@@ -748,7 +748,20 @@
       ]
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": "6_KWfHM_9OQ9NVzIEtwk6",
+      "idProduct": 1,
+      "name": "Nike InfinityRN 4 SE",
+      "subType": "Shoes for Male, Female",
+      "color": "Green",
+      "size": "41",
+      "price": 4699000,
+      "img": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/71a3d324-05c0-4b8d-9d78-0bd937520798/infinityrn-4-road-running-shoes-mLRjcz.png",
+      "quantity": 1,
+      "total": 4699000
+    }
+  ],
   "users": [
     {
       "id": "nike1234",

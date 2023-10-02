@@ -42,6 +42,7 @@ function Filter({ ...props }, ref) {
     useEffect(() => {
         handleTypeContent();
         return () => {
+            // console.log('re-rendering')
             dispatch(actionsFillter.clearFilter());
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

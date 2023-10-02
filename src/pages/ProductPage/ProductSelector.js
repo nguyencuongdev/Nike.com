@@ -14,7 +14,7 @@ export const productListRemainingSelector = createSelector(
     FillterSelector.FillterGendersSelector, FillterSelector.FillterSortSelector,
     FillterSelector.FillterSearchValueSelector,
     (productList, filterType, filterSuitable, filterBrands, filterColors,
-        filterSizes, filterGenders, filterSort, filterSearchValue) => {
+        filterSizes, filterGenders, filterSort, searchValue) => {
 
         let checkColor = false, checkSize = false, checkGender = false, checkBrand = false;
         const data = productList.filter((product) => {
@@ -34,19 +34,31 @@ export const productListRemainingSelector = createSelector(
 
             if (filterSuitable === 'All' && filterType === '') {
                 return checkBrand && checkColor && checkSize && checkGender &&
-                    (product.name.includes(filterSearchValue) || product.type.includes(filterSearchValue))
+                    (
+                        product?.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                        product?.type.toLowerCase() === searchValue.toLowerCase() ||
+                        product?.suitable.toString().toLowerCase().includes(searchValue.toLowerCase())
+                    )
                 //trả về tất cả sản phẩm của tất cả thể loại nhưng phải khớp với fillter;
             }
             else if (filterSuitable === 'All' && filterType !== '') {
                 //trả về tất cả sản phẩm có type khớp với type of filter;
                 return (product.type === filterType) && checkBrand && checkColor && checkSize &&
                     checkGender &&
-                    (product.name.includes(filterSearchValue) || product.type.includes(filterSearchValue))
+                    (
+                        product?.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                        product?.type.toLowerCase() === searchValue.toLowerCase() ||
+                        product?.suitable.toString().toLowerCase().includes(searchValue.toLowerCase())
+                    )
             }
             else {
                 //trả về tất cả sản phầm khớp với suitable và type khớp với type of filter;
                 return product.suitable.includes(filterSuitable) && product.type === filterType && checkBrand && checkColor && checkSize && checkGender &&
-                    (product.name.includes(filterSearchValue) || product.type.includes(filterSearchValue));
+                    (
+                        product?.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+                        product?.type.toLowerCase() === searchValue.toLowerCase() ||
+                        product?.suitable.toString().toLowerCase().includes(searchValue.toLowerCase())
+                    )
             }
         })
 

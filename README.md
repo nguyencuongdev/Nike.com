@@ -2,7 +2,7 @@
 
 # Run app
 
-`npx json-server --watch db.json \
+npx json-server --watch db.json \
 npm start
 
 # Getting Started with Create React App
