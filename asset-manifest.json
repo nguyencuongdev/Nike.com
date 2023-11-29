@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Nike.com/static/css/main.d9bce215.css",
-    "main.js": "/Nike.com/static/js/main.d0670375.js",
+    "main.js": "/Nike.com/static/js/main.454dfebd.js",
     "static/js/787.1a03e7ee.chunk.js": "/Nike.com/static/js/787.1a03e7ee.chunk.js",
     "static/media/Banner-nike-just-do-it.jpg": "/Nike.com/static/media/Banner-nike-just-do-it.7f2dc8d68cb6292a28eb.jpg",
     "static/media/Banner-nike-2.jpg": "/Nike.com/static/media/Banner-nike-2.782486fae3b532a0b9fa.jpg",
@@ -22,11 +22,11 @@
     "index.html": "/Nike.com/index.html",
     "static/media/logo.svg": "/Nike.com/static/media/logo.8caa334328542835451a10899fe8517d.svg",
     "main.d9bce215.css.map": "/Nike.com/static/css/main.d9bce215.css.map",
-    "main.d0670375.js.map": "/Nike.com/static/js/main.d0670375.js.map",
+    "main.454dfebd.js.map": "/Nike.com/static/js/main.454dfebd.js.map",
     "787.1a03e7ee.chunk.js.map": "/Nike.com/static/js/787.1a03e7ee.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d9bce215.css",
-    "static/js/main.d0670375.js"
+    "static/js/main.454dfebd.js"
   ]
 }
