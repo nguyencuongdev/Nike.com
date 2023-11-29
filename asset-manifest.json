@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/nguyencuongdev/Nike.com.git/static/css/main.49bb8994.css",
+    "main.js": "/nguyencuongdev/Nike.com.git/static/js/main.3d550e3b.js",
+    "static/js/787.1a03e7ee.chunk.js": "/nguyencuongdev/Nike.com.git/static/js/787.1a03e7ee.chunk.js",
+    "static/media/Banner-nike-just-do-it.jpg": "/nguyencuongdev/Nike.com.git/static/media/Banner-nike-just-do-it.7f2dc8d68cb6292a28eb.jpg",
+    "static/media/Banner-nike-2.jpg": "/nguyencuongdev/Nike.com.git/static/media/Banner-nike-2.782486fae3b532a0b9fa.jpg",
+    "static/media/Banner-jordan.png": "/nguyencuongdev/Nike.com.git/static/media/Banner-jordan.114ed2cb6b9c911176b8.png",
+    "static/media/Banner-nike-3.jpg": "/nguyencuongdev/Nike.com.git/static/media/Banner-nike-3.6d1afbc42cd8c7eee28f.jpg",
+    "static/media/media-men.png": "/nguyencuongdev/Nike.com.git/static/media/media-men.05fb12b5c1929d033dd5.png",
+    "static/media/Nike-TG.woff2": "/nguyencuongdev/Nike.com.git/static/media/Nike-TG.09c42f1c578c9bc2bf18.woff2",
+    "static/media/media-women.png": "/nguyencuongdev/Nike.com.git/static/media/media-women.6c81eff2c6464942a0c9.png",
+    "static/media/media1.png": "/nguyencuongdev/Nike.com.git/static/media/media1.656a6a89421c50105b63.png",
+    "static/media/media-kids.png": "/nguyencuongdev/Nike.com.git/static/media/media-kids.914b42c131c131f86505.png",
+    "static/media/Nike-Futura.woff2": "/nguyencuongdev/Nike.com.git/static/media/Nike-Futura.c1890bff23ebb590aa42.woff2",
+    "static/media/media2.png": "/nguyencuongdev/Nike.com.git/static/media/media2.787d03f53c85da242af8.png",
+    "static/media/download.woff": "/nguyencuongdev/Nike.com.git/static/media/download.5fd557e9a01b49a10f01.woff",
+    "static/media/slick.svg": "/nguyencuongdev/Nike.com.git/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/nguyencuongdev/Nike.com.git/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/nguyencuongdev/Nike.com.git/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/nguyencuongdev/Nike.com.git/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/nguyencuongdev/Nike.com.git/index.html",
+    "static/media/logo.svg": "/nguyencuongdev/Nike.com.git/static/media/logo.8caa334328542835451a10899fe8517d.svg",
+    "main.49bb8994.css.map": "/nguyencuongdev/Nike.com.git/static/css/main.49bb8994.css.map",
+    "main.3d550e3b.js.map": "/nguyencuongdev/Nike.com.git/static/js/main.3d550e3b.js.map",
+    "787.1a03e7ee.chunk.js.map": "/nguyencuongdev/Nike.com.git/static/js/787.1a03e7ee.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.49bb8994.css",
+    "static/js/main.3d550e3b.js"
+  ]
+}
